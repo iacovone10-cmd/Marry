@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Invito Digitale</title>
   <meta name="theme-color" content="#0b1b2b" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
@@ -33,12 +33,17 @@
           <div class="letterCard">
             <div class="letterTop">
               <div class="tinyFoil">✨</div>
+
               <div class="names">
                 <div class="name">Vincenzo</div>
                 <div class="amp">&amp;</div>
                 <div class="name">Maria Giovanna</div>
               </div>
-              <div class="subtitle">Annunciano con grande gioia<br/>il loro matrimonio</div>
+
+              <div class="subtitle">
+                Annunciano con grande gioia<br />
+                il loro matrimonio
+              </div>
             </div>
 
             <div class="letterBody">
@@ -47,11 +52,23 @@
                 <span class="chip ghost">Marano di Napoli</span>
               </div>
 
-              <div class="countdown" id="countdown">
-                <div class="cdBox"><div class="cdNum" id="cdDays">--</div><div class="cdLab">giorni</div></div>
-                <div class="cdBox"><div class="cdNum" id="cdHours">--</div><div class="cdLab">ore</div></div>
-                <div class="cdBox"><div class="cdNum" id="cdMins">--</div><div class="cdLab">min</div></div>
-                <div class="cdBox"><div class="cdNum" id="cdSecs">--</div><div class="cdLab">sec</div></div>
+              <div class="countdown" id="countdown" aria-label="Conto alla rovescia">
+                <div class="cdBox">
+                  <div class="cdNum" id="cdDays">--</div>
+                  <div class="cdLab">giorni</div>
+                </div>
+                <div class="cdBox">
+                  <div class="cdNum" id="cdHours">--</div>
+                  <div class="cdLab">ore</div>
+                </div>
+                <div class="cdBox">
+                  <div class="cdNum" id="cdMins">--</div>
+                  <div class="cdLab">min</div>
+                </div>
+                <div class="cdBox">
+                  <div class="cdNum" id="cdSecs">--</div>
+                  <div class="cdLab">sec</div>
+                </div>
               </div>
 
               <div class="actions">
@@ -63,7 +80,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -79,7 +95,10 @@
         <div class="heroGrid">
           <div class="infoCard">
             <div class="infoTitle">Cerimonia</div>
-            <div class="infoText">Chiesa Maria SS. Immacolata<br/>Marano di Napoli</div>
+            <div class="infoText">
+              Chiesa Maria SS. Immacolata<br />
+              Marano di Napoli
+            </div>
           </div>
           <div class="infoCard">
             <div class="infoTitle">Ricevimento</div>
@@ -88,8 +107,13 @@
         </div>
 
         <div class="heroBtns">
-          <!-- Sostituisci con i tuoi link reali -->
-          <a class="btn primary" href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026." target="_blank" rel="noopener">RSVP su WhatsApp</a>
+          <!-- Sostituisci questo link WhatsApp con un testo o numero specifico se vuoi -->
+          <a class="btn primary"
+             href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
+             target="_blank" rel="noopener">
+            RSVP su WhatsApp
+          </a>
+
           <a class="btn" href="#mappa">Apri mappa</a>
         </div>
       </div>
@@ -98,14 +122,20 @@
     <section class="section" id="info">
       <div class="sectionCard">
         <h2>Dettagli</h2>
+
         <div class="twoCols">
           <div class="block">
             <h3>Dress code</h3>
-            <p>Tema elegante con tocchi <strong>azzurro polvere</strong> e dettagli <strong>argento</strong>.</p>
+            <p>
+              Tema elegante con tocchi <strong>azzurro polvere</strong> e dettagli <strong>argento</strong>.
+            </p>
           </div>
+
           <div class="block">
             <h3>Note</h3>
-            <p>Se hai esigenze particolari (intolleranze, passeggini, ecc.) scrivici su WhatsApp.</p>
+            <p>
+              Se hai esigenze particolari (intolleranze, passeggini, ecc.) scrivici su WhatsApp.
+            </p>
           </div>
         </div>
       </div>
@@ -114,7 +144,10 @@
     <section class="section" id="mappa">
       <div class="sectionCard">
         <h2>Mappa</h2>
-        <p class="muted">Inserisci qui i link Google Maps reali (cerimonia e location).</p>
+        <p class="muted">
+          Inserisci qui i link Google Maps reali (cerimonia e location).
+        </p>
+
         <div class="heroBtns">
           <a class="btn" href="https://www.google.com/maps" target="_blank" rel="noopener">Chiesa (Maps)</a>
           <a class="btn" href="https://www.google.com/maps" target="_blank" rel="noopener">Ricevimento (Maps)</a>
@@ -130,10 +163,8 @@
     </footer>
   </main>
 
-  <button class="floating" id="openBtn" aria-label="Apri invito">
-    Apri
-  </button>
+  <button class="floating" id="openBtn" aria-label="Apri invito">Apri</button>
 
-  <script src="app.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
