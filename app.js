@@ -3,7 +3,7 @@
   const openHint = document.getElementById("openHint");
   const goDown = document.getElementById("goDown");
 
-  // Countdown
+  // Countdown elements
   const cdDays = document.getElementById("cdDays");
   const cdHours = document.getElementById("cdHours");
   const cdMins = document.getElementById("cdMins");
@@ -14,6 +14,8 @@
   const pad = (n) => String(n).padStart(2, "0");
 
   function updateCountdown() {
+    if (!cdDays || !cdHours || !cdMins || !cdSecs) return;
+
     const now = new Date();
     const diff = weddingDate.getTime() - now.getTime();
 
@@ -44,6 +46,7 @@
     if (!envelope) return;
     envelope.classList.add("is-open");
     if (openHint) openHint.style.opacity = "0";
+    envelope.blur();
   }
 
   if (openHint) openHint.addEventListener("click", openEnvelope);
@@ -55,7 +58,7 @@
     });
   }
 
-  // Scroll to details
+  // Scroll to invite section
   if (goDown) {
     goDown.addEventListener("click", () => {
       const invite = document.getElementById("invite");
@@ -79,7 +82,7 @@
   }
 
   function downloadICS() {
-    // Evento: 10:30 -> 18:30 (modificabile)
+    // Evento: 10:30 -> 18:30 (puoi cambiare durata)
     const startLocal = new Date(2026, 6, 31, 10, 30, 0);
     const endLocal   = new Date(2026, 6, 31, 18, 30, 0);
 
