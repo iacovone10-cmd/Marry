@@ -6,7 +6,6 @@
   <title>Invito • Vincenzo & Maria Giovanna</title>
   <meta name="theme-color" content="#87BEEA" />
 
-  <!-- Modern elegant fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,19 +14,29 @@
 </head>
 
 <body>
-  <!-- Background -->
   <div class="bg" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- Top subtle sparkle -->
   <div class="sparkles" aria-hidden="true">
     <span class="sp s1"></span><span class="sp s2"></span><span class="sp s3"></span>
     <span class="sp s4"></span><span class="sp s5"></span>
   </div>
 
-  <!-- INTRO / SEAL -->
+  <!-- Topbar -->
+  <div class="topbar" role="navigation" aria-label="Controlli">
+    <a class="topLink" href="#invite">Invito</a>
+    <a class="topLink" href="#details">Dettagli</a>
+
+    <!-- Day/Night toggle -->
+    <button class="modeToggle" id="modeToggle" type="button" aria-label="Cambia modalità giorno/notte">
+      <span class="modeIcon" aria-hidden="true">☀️</span>
+      <span class="modeText" id="modeText">Giorno</span>
+    </button>
+  </div>
+
+  <!-- INTRO -->
   <section class="intro" id="intro" aria-label="Invito digitale">
-    <div class="introCard" role="group" aria-label="Busta digitale">
+    <div class="introCard" role="group" aria-label="Invito digitale">
 
       <div class="crest" aria-hidden="true">
         <div class="crestRing"></div>
@@ -66,14 +75,13 @@
           <a class="btn btnGhost" href="#details">Dettagli</a>
         </div>
 
-        <p class="hint">Tocca “Apri l’invito” ✨</p>
+        <p class="hint">Design moderno • super leggibile • celeste polvere dominante ✨</p>
       </div>
     </div>
   </section>
 
   <!-- MAIN CONTENT -->
   <main class="main" id="main" aria-label="Invito">
-    <!-- HERO -->
     <header class="hero" id="invite">
       <div class="heroShell">
         <div class="heroHeader">
@@ -93,7 +101,6 @@
           <article class="eventCard">
             <div class="eventTop">
               <div class="iconBox" aria-hidden="true">
-                <!-- church -->
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M12 2v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
                   <path d="M10 4h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
@@ -115,7 +122,6 @@
           <article class="eventCard">
             <div class="eventTop">
               <div class="iconBox" aria-hidden="true">
-                <!-- restaurant -->
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M6 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
                   <path d="M4 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
@@ -136,12 +142,11 @@
           </article>
         </div>
 
+        <!-- ACTIONS: no WhatsApp, only Calendar + RSVP section link -->
         <div class="actionsRow">
-          <a class="btn btnPrimary"
-             href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
-             target="_blank" rel="noopener">
-            RSVP su WhatsApp
-          </a>
+          <button class="btn btnPrimary" id="scrollRSVP" type="button">
+            RSVP (Conferma presenza) <span class="btnIco">✓</span>
+          </button>
 
           <button class="btn btnGhost" id="addToCalendar" type="button">
             📅 Aggiungi al calendario
@@ -154,6 +159,55 @@
           <span class="dot"></span>
           <span>Celeste polvere dominante • dettagli argento</span>
         </div>
+
+        <!-- RSVP inline mini form -->
+        <section class="rsvp" id="rsvp">
+          <div class="rsvpHead">
+            <h3>RSVP</h3>
+            <p>Conferma in pochi secondi. (Apre un modulo esterno pulito e professionale)</p>
+          </div>
+
+          <form class="rsvpForm" id="rsvpForm">
+            <div class="field">
+              <label for="rsvpName">Nome e cognome</label>
+              <input id="rsvpName" name="name" type="text" placeholder="Es. Giuseppe Rossi" required />
+            </div>
+
+            <div class="grid2">
+              <div class="field">
+                <label for="rsvpPeople">Numero persone</label>
+                <select id="rsvpPeople" name="people">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="rsvpAnswer">Risposta</label>
+                <select id="rsvpAnswer" name="answer">
+                  <option value="Sì, ci sarò">Sì, ci sarò</option>
+                  <option value="No, non riesco">No, non riesco</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="rsvpNotes">Note (intolleranze / esigenze)</label>
+              <textarea id="rsvpNotes" name="notes" rows="3" placeholder="Scrivi qui eventuali note..."></textarea>
+            </div>
+
+            <!-- Replace RSVP_EXTERNAL_URL with your Tally/GoogleForm URL -->
+            <button class="btn btnPrimary btnFull" id="submitRSVP" type="submit">
+              Invia RSVP <span class="btnIco">✦</span>
+            </button>
+
+            <div class="microNote">
+              Suggerito: Tally / Google Form per raccogliere tutte le risposte in automatico.
+            </div>
+          </form>
+        </section>
       </div>
     </header>
 
@@ -162,7 +216,7 @@
       <div class="detailsShell">
         <div class="sectionHead">
           <h3>Dettagli</h3>
-          <p>Un invito essenziale, elegante, e super leggibile su mobile.</p>
+          <p>Essenziale, elegante, leggibile. Nessuna sezione “Programma” o “Mappa”.</p>
         </div>
 
         <div class="detailGrid">
@@ -181,23 +235,11 @@
           <article class="detailCard">
             <div class="detailTitle">Note</div>
             <ul class="list">
-              <li>Intolleranze o esigenze particolari? Scrivici su WhatsApp.</li>
+              <li>Intolleranze? Scrivile nel RSVP.</li>
               <li>Se hai bimbi o passeggini, nessun problema.</li>
-              <li>Se vuoi aggiungere info parcheggio, dimmelo e lo impagino “premium”.</li>
+              <li>Vuoi aggiungere parcheggio/indicazioni? Lo impagino in modo premium.</li>
             </ul>
           </article>
-        </div>
-
-        <div class="ctaPanel">
-          <div>
-            <div class="ctaTitle">Conferma la tua presenza</div>
-            <div class="ctaSub">Un click e il messaggio è già pronto.</div>
-          </div>
-          <a class="btn btnPrimary"
-             href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
-             target="_blank" rel="noopener">
-            RSVP
-          </a>
         </div>
 
         <footer class="footer">
@@ -210,11 +252,14 @@
     </section>
   </main>
 
-  <!-- Floating Open -->
   <button class="floatOpen" id="floatOpen" type="button" aria-label="Apri invito">
     Apri <span class="miniStar">✦</span>
   </button>
 
+  <script>
+    // Put your external RSVP form URL here (Tally/Google Form)
+    window.RSVP_EXTERNAL_URL = "RSVP_EXTERNAL_URL";
+  </script>
   <script src="./app.js"></script>
 </body>
 </html>
