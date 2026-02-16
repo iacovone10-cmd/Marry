@@ -3,228 +3,217 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Invito Digitale</title>
-  <meta name="theme-color" content="#0b1b2b" />
+  <title>Invito • Vincenzo & Maria Giovanna</title>
+  <meta name="theme-color" content="#87BEEA" />
 
-  <!-- Elegant fonts -->
+  <!-- Modern elegant fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
+  <!-- Background -->
   <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-  <!-- Decorative floating motifs (global) -->
-  <div class="ornaments" aria-hidden="true">
-    <span class="orn o1"></span>
-    <span class="orn o2"></span>
-    <span class="orn o3"></span>
-    <span class="orn o4"></span>
+  <!-- Top subtle sparkle -->
+  <div class="sparkles" aria-hidden="true">
+    <span class="sp s1"></span><span class="sp s2"></span><span class="sp s3"></span>
+    <span class="sp s4"></span><span class="sp s5"></span>
   </div>
 
-  <!-- INTRO: ENVELOPE -->
-  <section class="intro" id="intro" aria-label="Invito - Busta">
-    <div class="pageOrn pageOrn--intro" aria-hidden="true"></div>
+  <!-- INTRO / SEAL -->
+  <section class="intro" id="intro" aria-label="Invito digitale">
+    <div class="introCard" role="group" aria-label="Busta digitale">
 
-    <div class="envelopeWrap">
-      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri la busta">
-        <div class="envShadow"></div>
-        <div class="envBack"></div>
+      <div class="crest" aria-hidden="true">
+        <div class="crestRing"></div>
+        <div class="crestCore">
+          <div class="crestMonogram">V<span class="heart">♥</span>M</div>
+          <div class="crestSub">31 • 07 • 2026</div>
+        </div>
+        <div class="crestShine" aria-hidden="true"></div>
+      </div>
 
-        <div class="envFlap" id="flap">
-          <div class="foilEdge" aria-hidden="true"></div>
+      <div class="introText">
+        <p class="kicker">INVITO</p>
+        <h1 class="title">
+          Vincenzo <span class="amp">&amp;</span><br class="brSm"> Maria Giovanna
+        </h1>
+        <p class="subtitle">
+          Annunciano con grande gioia il loro matrimonio
+        </p>
+
+        <div class="chips">
+          <span class="chip">Marano di Napoli</span>
+          <span class="chip chipSoft">Celeste polvere • Argento</span>
         </div>
 
-        <div class="seal" id="seal" aria-hidden="true">
-          <div class="sealInner">
-            <span class="sealText">V ♥ M</span>
-          </div>
+        <div class="countdown" aria-label="Conto alla rovescia">
+          <div class="tile"><div class="num" id="cdDays">--</div><div class="lab">giorni</div></div>
+          <div class="tile"><div class="num" id="cdHours">--</div><div class="lab">ore</div></div>
+          <div class="tile"><div class="num" id="cdMins">--</div><div class="lab">min</div></div>
+          <div class="tile"><div class="num" id="cdSecs">--</div><div class="lab">sec</div></div>
         </div>
 
-        <div class="letter" id="letter" aria-hidden="true">
-          <div class="letterCard">
-            <div class="letterTop">
-              <div class="tinyFoil">✦</div>
-
-              <div class="names">
-                <div class="name">Vincenzo</div>
-                <div class="amp">&amp;</div>
-                <div class="name">Maria Giovanna</div>
-              </div>
-
-              <div class="subtitle">
-                Annunciano con grande gioia<br />
-                il loro matrimonio
-              </div>
-            </div>
-
-            <div class="letterBody">
-              <div class="dateRow">
-                <span class="chip">31 · 07 · 2026</span>
-                <span class="chip ghost">Marano di Napoli</span>
-              </div>
-
-              <div class="countdown" id="countdown" aria-label="Conto alla rovescia">
-                <div class="cdBox"><div class="cdNum" id="cdDays">--</div><div class="cdLab">giorni</div></div>
-                <div class="cdBox"><div class="cdNum" id="cdHours">--</div><div class="cdLab">ore</div></div>
-                <div class="cdBox"><div class="cdNum" id="cdMins">--</div><div class="cdLab">min</div></div>
-                <div class="cdBox"><div class="cdNum" id="cdSecs">--</div><div class="cdLab">sec</div></div>
-              </div>
-
-              <div class="actions">
-                <a class="btn primary" href="#invito" id="goInvite">Apri l’invito</a>
-                <a class="btn" href="#dettagli">Dettagli</a>
-              </div>
-
-              <div class="hint">Tocca la busta per aprire ✨</div>
-            </div>
-          </div>
+        <div class="ctaRow">
+          <button class="btn btnPrimary" id="openInvite" type="button">
+            Apri l’invito <span class="btnIco">✦</span>
+          </button>
+          <a class="btn btnGhost" href="#details">Dettagli</a>
         </div>
+
+        <p class="hint">Tocca “Apri l’invito” ✨</p>
       </div>
     </div>
   </section>
 
-  <!-- MAIN -->
-  <main class="main" id="main" aria-label="Contenuto invito">
-
-    <!-- PAGE 2: INVITO -->
-    <header class="hero" id="invito">
-      <div class="pageOrn pageOrn--hero" aria-hidden="true"></div>
-
-      <div class="heroCard heroCard--paper">
-        <div class="heroTopline">
-          <span class="pill">INVITO</span>
-          <span class="pill pill--soft">31 Luglio 2026</span>
+  <!-- MAIN CONTENT -->
+  <main class="main" id="main" aria-label="Invito">
+    <!-- HERO -->
+    <header class="hero" id="invite">
+      <div class="heroShell">
+        <div class="heroHeader">
+          <div class="badge">INVITO</div>
+          <div class="heroDate">31 Luglio 2026</div>
         </div>
 
-        <h1 class="heroTitle heroTitle--ink">Vincenzo <span class="amp2">&amp;</span> Maria Giovanna</h1>
-        <p class="heroSub heroSub--ink">Un giorno speciale da vivere insieme.</p>
+        <h2 class="heroTitle">
+          Vincenzo <span class="amp2">&amp;</span> Maria Giovanna
+        </h2>
 
-        <div class="heroGrid">
-          <div class="infoCard infoCard--light">
-            <div class="infoHead">
-              <span class="ico" aria-hidden="true">
-                <!-- CHURCH ICON -->
+        <p class="heroLead">
+          Una giornata speciale da vivere insieme.
+        </p>
+
+        <div class="eventGrid">
+          <article class="eventCard">
+            <div class="eventTop">
+              <div class="iconBox" aria-hidden="true">
+                <!-- church -->
                 <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M10 4h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M4 10l8-5 8 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M6 10v10h12V10" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                  <path d="M10 20v-5a2 2 0 0 1 4 0v5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  <path d="M12 2v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M10 4h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M4 10l8-5 8 5" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+                  <path d="M6 10v10h12V10" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+                  <path d="M10 20v-5a2 2 0 0 1 4 0v5" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
                 </svg>
-              </span>
+              </div>
               <div>
-                <div class="infoTitle">Cerimonia</div>
-                <div class="infoMeta">Marano di Napoli</div>
+                <div class="eventLabel">Cerimonia</div>
+                <div class="eventMeta">Marano di Napoli</div>
               </div>
             </div>
-            <div class="infoText infoText--ink">Chiesa Maria SS. Immacolata</div>
-            <div class="miniRow">
-              <span class="miniChip">⏰ 10:30</span>
-            </div>
-          </div>
 
-          <div class="infoCard infoCard--light">
-            <div class="infoHead">
-              <span class="ico" aria-hidden="true">
-                <!-- RESTAURANT ICON -->
+            <div class="eventName">Chiesa Maria SS. Immacolata</div>
+            <div class="eventTime">⏰ 10:30</div>
+          </article>
+
+          <article class="eventCard">
+            <div class="eventTop">
+              <div class="iconBox" aria-hidden="true">
+                <!-- restaurant -->
                 <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M6 2v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M4 2v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M8 2v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M5 10v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M14 2v8c0 1.5 1.2 2.7 2.7 2.7H18V22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M14 6h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M6 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M4 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M8 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M5 10v12" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M14 2v8c0 1.5 1.2 2.7 2.7 2.7H18V22" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14 6h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
                 </svg>
-              </span>
+              </div>
               <div>
-                <div class="infoTitle">Ricevimento</div>
-                <div class="infoMeta">Bacoli</div>
+                <div class="eventLabel">Ricevimento</div>
+                <div class="eventMeta">Bacoli</div>
               </div>
             </div>
-            <div class="infoText infoText--ink">Il Gabbiano</div>
-            <div class="miniRow">
-              <span class="miniChip">⏰ 14:00</span>
-            </div>
-          </div>
+
+            <div class="eventName">Il Gabbiano</div>
+            <div class="eventTime">⏰ 14:00</div>
+          </article>
         </div>
 
-        <div class="heroBtns">
-          <a class="btn primary btn--ink"
+        <div class="actionsRow">
+          <a class="btn btnPrimary"
              href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
              target="_blank" rel="noopener">
             RSVP su WhatsApp
           </a>
 
-          <a class="btn btn--ink" href="#dettagli">Dettagli</a>
+          <button class="btn btnGhost" id="addToCalendar" type="button">
+            📅 Aggiungi al calendario
+          </button>
 
-          <a class="btn btn--ink" id="addToCalendar" href="#" role="button">📅 Aggiungi al calendario</a>
+          <a class="btn btnGhost" href="#details">Dettagli</a>
         </div>
 
-        <div class="wowLine">
-          <span class="spark">✦</span> Tema: <strong>celeste polvere</strong> & dettagli <strong>argento</strong>
+        <div class="fineLine">
+          <span class="dot"></span>
+          <span>Celeste polvere dominante • dettagli argento</span>
         </div>
       </div>
     </header>
 
-    <!-- PAGE 3: DETTAGLI -->
-    <section class="section" id="dettagli">
-      <div class="pageOrn pageOrn--details" aria-hidden="true"></div>
-
-      <div class="sectionCard sectionCard--wow">
+    <!-- DETAILS -->
+    <section class="details" id="details">
+      <div class="detailsShell">
         <div class="sectionHead">
-          <h2>Dettagli</h2>
-          <p class="muted">Tutto l’essenziale in stile elegante e pulito.</p>
+          <h3>Dettagli</h3>
+          <p>Un invito essenziale, elegante, e super leggibile su mobile.</p>
         </div>
 
-        <div class="split">
-          <div class="box box--paper">
-            <h3>Dress code</h3>
-            <p class="ink">
-              Tema elegante con tocchi <strong>azzurro polvere</strong> e dettagli <strong>argento</strong>.
-            </p>
-            <div class="badgeRow">
-              <span class="badge">👗 Elegante</span>
-              <span class="badge">🩵 Celeste polvere</span>
-              <span class="badge">✨ Argento</span>
+        <div class="detailGrid">
+          <article class="detailCard">
+            <div class="detailTitle">Dress code</div>
+            <div class="detailText">
+              Tema elegante con tocchi <strong>celeste polvere</strong> e dettagli <strong>argento</strong>.
             </div>
-          </div>
+            <div class="tags">
+              <span class="tag">👗 Elegante</span>
+              <span class="tag">🩵 Powder Blue</span>
+              <span class="tag">✨ Silver</span>
+            </div>
+          </article>
 
-          <div class="box box--paper">
-            <h3>Note</h3>
-            <ul class="cleanList ink">
+          <article class="detailCard">
+            <div class="detailTitle">Note</div>
+            <ul class="list">
               <li>Intolleranze o esigenze particolari? Scrivici su WhatsApp.</li>
               <li>Se hai bimbi o passeggini, nessun problema.</li>
-              <li>Parcheggio / indicazioni: (da inserire se vuoi).</li>
+              <li>Se vuoi aggiungere info parcheggio, dimmelo e lo impagino “premium”.</li>
             </ul>
-          </div>
+          </article>
         </div>
 
-        <div class="ctaBar">
-          <div class="ctaText">
+        <div class="ctaPanel">
+          <div>
             <div class="ctaTitle">Conferma la tua presenza</div>
             <div class="ctaSub">Un click e il messaggio è già pronto.</div>
           </div>
-          <a class="btn primary" target="_blank" rel="noopener"
-             href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026.">
+          <a class="btn btnPrimary"
+             href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
+             target="_blank" rel="noopener">
             RSVP
           </a>
         </div>
+
+        <footer class="footer">
+          <div class="footerInner">
+            <div class="footerSmall">Con amore,</div>
+            <div class="footerNames">Vincenzo &amp; Maria Giovanna</div>
+          </div>
+        </footer>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="footerCard">
-        <div class="footerLine">Con amore,</div>
-        <div class="footerNames">Vincenzo &amp; Maria Giovanna</div>
-      </div>
-    </footer>
   </main>
 
-  <button class="floating" id="openBtn" aria-label="Apri invito">Apri</button>
+  <!-- Floating Open -->
+  <button class="floatOpen" id="floatOpen" type="button" aria-label="Apri invito">
+    Apri <span class="miniStar">✦</span>
+  </button>
 
   <script src="./app.js"></script>
 </body>
