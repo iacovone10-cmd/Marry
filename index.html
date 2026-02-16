@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Invito • Vincenzo & Maria Giovanna</title>
-  <meta name="theme-color" content="#87BEEA" />
+  <meta name="theme-color" content="#79B8E8" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,13 +19,29 @@
 
   <!-- INTRO: BUSTA + LETTERA -->
   <section class="intro" id="intro" aria-label="Busta invito">
-    <div class="envelopeStage" aria-label="Tocca per aprire la busta">
+    <div class="envelopeStage">
       <button class="openHint" id="openHint" type="button" aria-label="Apri busta">
         Tocca la busta per aprire ✨
       </button>
 
       <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri invito">
-        <!-- lettera che esce -->
+        <div class="envBack" aria-hidden="true"></div>
+        <div class="envSide envLeft" aria-hidden="true"></div>
+        <div class="envSide envRight" aria-hidden="true"></div>
+        <div class="envBottom" aria-hidden="true"></div>
+
+        <!-- lembo alto -->
+        <div class="envFlap" aria-hidden="true"></div>
+
+        <!-- sigillo -->
+        <div class="seal" aria-hidden="true">
+          <div class="sealInner">
+            <div class="sealMono">V<span class="heart">♥</span>M</div>
+          </div>
+          <div class="sealShine" aria-hidden="true"></div>
+        </div>
+
+        <!-- LETTERA PER ULTIMA: deve stare sopra e uscire -->
         <div class="letter" id="letter" aria-hidden="true">
           <div class="letterInner">
             <div class="letterKicker">INVITO</div>
@@ -67,24 +83,9 @@
             <div class="microNote">Scorri verso il basso</div>
           </div>
         </div>
-
-        <!-- Parti busta -->
-        <div class="envBack" aria-hidden="true"></div>
-        <div class="envSide envLeft" aria-hidden="true"></div>
-        <div class="envSide envRight" aria-hidden="true"></div>
-        <div class="envBottom" aria-hidden="true"></div>
-
-        <!-- lembo alto che si apre -->
-        <div class="envFlap" aria-hidden="true"></div>
-
-        <!-- sigillo -->
-        <div class="seal" aria-hidden="true">
-          <div class="sealInner">
-            <div class="sealMono">V<span class="heart">♥</span>M</div>
-          </div>
-          <div class="sealShine" aria-hidden="true"></div>
-        </div>
       </div>
+
+      <div class="scrollTip">Scorri ↓</div>
     </div>
   </section>
 
@@ -104,7 +105,7 @@
           <article class="eventCard">
             <div class="eventTop">
               <div class="iconBox" aria-hidden="true">
-                <!-- chiesa -->
+                <!-- Chiesa icon -->
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M12 2v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
                   <path d="M10 4h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
@@ -125,7 +126,7 @@
           <article class="eventCard">
             <div class="eventTop">
               <div class="iconBox" aria-hidden="true">
-                <!-- ristorante -->
+                <!-- Ristorante icon -->
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M6 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
                   <path d="M4 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
