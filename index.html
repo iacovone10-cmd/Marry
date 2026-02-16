@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Invito Digitale</title>
+  <meta name="theme-color" content="#0b1b2b" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- ENVELOPE INTRO -->
+  <section class="intro" id="intro" aria-label="Invito - Busta">
+    <div class="envelopeWrap">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri la busta">
+        <div class="envShadow"></div>
+
+        <div class="envBack"></div>
+
+        <div class="envFlap" id="flap">
+          <div class="foilEdge" aria-hidden="true"></div>
+        </div>
+
+        <div class="seal" id="seal" aria-hidden="true">
+          <div class="sealInner">
+            <span class="sealText">V ♥ M</span>
+          </div>
+        </div>
+
+        <div class="letter" id="letter" aria-hidden="true">
+          <div class="letterCard">
+            <div class="letterTop">
+              <div class="tinyFoil">✨</div>
+              <div class="names">
+                <div class="name">Vincenzo</div>
+                <div class="amp">&amp;</div>
+                <div class="name">Maria Giovanna</div>
+              </div>
+              <div class="subtitle">Annunciano con grande gioia<br/>il loro matrimonio</div>
+            </div>
+
+            <div class="letterBody">
+              <div class="dateRow">
+                <span class="chip">31 · 07 · 2026</span>
+                <span class="chip ghost">Marano di Napoli</span>
+              </div>
+
+              <div class="countdown" id="countdown">
+                <div class="cdBox"><div class="cdNum" id="cdDays">--</div><div class="cdLab">giorni</div></div>
+                <div class="cdBox"><div class="cdNum" id="cdHours">--</div><div class="cdLab">ore</div></div>
+                <div class="cdBox"><div class="cdNum" id="cdMins">--</div><div class="cdLab">min</div></div>
+                <div class="cdBox"><div class="cdNum" id="cdSecs">--</div><div class="cdLab">sec</div></div>
+              </div>
+
+              <div class="actions">
+                <a class="btn primary" href="#invito" id="goInvite">Apri l’invito</a>
+                <a class="btn" href="#info">Info</a>
+              </div>
+
+              <div class="hint">Tocca la busta per aprire ✨</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="main" id="main" aria-label="Contenuto invito">
+    <header class="hero" id="invito">
+      <div class="heroCard">
+        <div class="heroKicker">INVITO</div>
+        <h1 class="heroTitle">Vincenzo &amp; Maria Giovanna</h1>
+        <p class="heroSub">31 Luglio 2026</p>
+
+        <div class="heroGrid">
+          <div class="infoCard">
+            <div class="infoTitle">Cerimonia</div>
+            <div class="infoText">Chiesa Maria SS. Immacolata<br/>Marano di Napoli</div>
+          </div>
+          <div class="infoCard">
+            <div class="infoTitle">Ricevimento</div>
+            <div class="infoText">Il Gabbiano · Bacoli</div>
+          </div>
+        </div>
+
+        <div class="heroBtns">
+          <!-- Sostituisci con i tuoi link reali -->
+          <a class="btn primary" href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026." target="_blank" rel="noopener">RSVP su WhatsApp</a>
+          <a class="btn" href="#mappa">Apri mappa</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="info">
+      <div class="sectionCard">
+        <h2>Dettagli</h2>
+        <div class="twoCols">
+          <div class="block">
+            <h3>Dress code</h3>
+            <p>Tema elegante con tocchi <strong>azzurro polvere</strong> e dettagli <strong>argento</strong>.</p>
+          </div>
+          <div class="block">
+            <h3>Note</h3>
+            <p>Se hai esigenze particolari (intolleranze, passeggini, ecc.) scrivici su WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mappa">
+      <div class="sectionCard">
+        <h2>Mappa</h2>
+        <p class="muted">Inserisci qui i link Google Maps reali (cerimonia e location).</p>
+        <div class="heroBtns">
+          <a class="btn" href="https://www.google.com/maps" target="_blank" rel="noopener">Chiesa (Maps)</a>
+          <a class="btn" href="https://www.google.com/maps" target="_blank" rel="noopener">Ricevimento (Maps)</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footerCard">
+        <div class="footerLine">Con amore,</div>
+        <div class="footerNames">Vincenzo &amp; Maria Giovanna</div>
+      </div>
+    </footer>
+  </main>
+
+  <button class="floating" id="openBtn" aria-label="Apri invito">
+    Apri
+  </button>
+
+  <script src="app.js"></script>
+</body>
+</html>
