@@ -11,12 +11,11 @@
 <body>
   <div class="bg" aria-hidden="true"></div>
 
-  <!-- ENVELOPE INTRO -->
+  <!-- INTRO: ENVELOPE -->
   <section class="intro" id="intro" aria-label="Invito - Busta">
     <div class="envelopeWrap">
       <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri la busta">
         <div class="envShadow"></div>
-
         <div class="envBack"></div>
 
         <div class="envFlap" id="flap">
@@ -53,27 +52,15 @@
               </div>
 
               <div class="countdown" id="countdown" aria-label="Conto alla rovescia">
-                <div class="cdBox">
-                  <div class="cdNum" id="cdDays">--</div>
-                  <div class="cdLab">giorni</div>
-                </div>
-                <div class="cdBox">
-                  <div class="cdNum" id="cdHours">--</div>
-                  <div class="cdLab">ore</div>
-                </div>
-                <div class="cdBox">
-                  <div class="cdNum" id="cdMins">--</div>
-                  <div class="cdLab">min</div>
-                </div>
-                <div class="cdBox">
-                  <div class="cdNum" id="cdSecs">--</div>
-                  <div class="cdLab">sec</div>
-                </div>
+                <div class="cdBox"><div class="cdNum" id="cdDays">--</div><div class="cdLab">giorni</div></div>
+                <div class="cdBox"><div class="cdNum" id="cdHours">--</div><div class="cdLab">ore</div></div>
+                <div class="cdBox"><div class="cdNum" id="cdMins">--</div><div class="cdLab">min</div></div>
+                <div class="cdBox"><div class="cdNum" id="cdSecs">--</div><div class="cdLab">sec</div></div>
               </div>
 
               <div class="actions">
                 <a class="btn primary" href="#invito" id="goInvite">Apri l’invito</a>
-                <a class="btn" href="#info">Info</a>
+                <a class="btn" href="#programma">Programma</a>
               </div>
 
               <div class="hint">Tocca la busta per aprire ✨</div>
@@ -84,73 +71,167 @@
     </div>
   </section>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <main class="main" id="main" aria-label="Contenuto invito">
+
+    <!-- PAGE 2: HERO WOW -->
     <header class="hero" id="invito">
-      <div class="heroCard">
-        <div class="heroKicker">INVITO</div>
-        <h1 class="heroTitle">Vincenzo &amp; Maria Giovanna</h1>
-        <p class="heroSub">31 Luglio 2026</p>
+      <div class="heroCard heroCard--paper">
+        <div class="heroTopline">
+          <span class="pill">INVITO</span>
+          <span class="pill pill--soft">31 Luglio 2026</span>
+        </div>
+
+        <h1 class="heroTitle heroTitle--ink">Vincenzo <span class="amp2">&amp;</span> Maria Giovanna</h1>
+        <p class="heroSub heroSub--ink">Un giorno speciale da condividere con le persone che amiamo.</p>
 
         <div class="heroGrid">
-          <div class="infoCard">
-            <div class="infoTitle">Cerimonia</div>
-            <div class="infoText">
-              Chiesa Maria SS. Immacolata<br />
-              Marano di Napoli
+          <div class="infoCard infoCard--light">
+            <div class="infoHead">
+              <span class="ico" aria-hidden="true">
+                <!-- CHURCH ICON (inline SVG) -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M10 4h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M4 10l8-5 8 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6 10v10h12V10" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  <path d="M10 20v-5a2 2 0 0 1 4 0v5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <div class="infoTitle">Cerimonia</div>
+                <div class="infoMeta">Marano di Napoli</div>
+              </div>
+            </div>
+            <div class="infoText infoText--ink">
+              Chiesa Maria SS. Immacolata
+            </div>
+            <div class="miniRow">
+              <span class="miniChip">⏰ Orario: da inserire</span>
+              <a class="miniLink" href="#mappa">📍 Apri mappa</a>
             </div>
           </div>
-          <div class="infoCard">
-            <div class="infoTitle">Ricevimento</div>
-            <div class="infoText">Il Gabbiano · Bacoli</div>
+
+          <div class="infoCard infoCard--light">
+            <div class="infoHead">
+              <span class="ico" aria-hidden="true">
+                <!-- RESTAURANT ICON (inline SVG) -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M6 2v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M4 2v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M8 2v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M5 10v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M14 2v8c0 1.5 1.2 2.7 2.7 2.7H18V22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14 6h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div>
+                <div class="infoTitle">Ricevimento</div>
+                <div class="infoMeta">Bacoli</div>
+              </div>
+            </div>
+            <div class="infoText infoText--ink">
+              Il Gabbiano
+            </div>
+            <div class="miniRow">
+              <span class="miniChip">🍽️ Cena & festa</span>
+              <a class="miniLink" href="#mappa">📍 Apri mappa</a>
+            </div>
           </div>
         </div>
 
         <div class="heroBtns">
-          <!-- Sostituisci questo link WhatsApp con un testo o numero specifico se vuoi -->
-          <a class="btn primary"
+          <a class="btn primary btn--ink"
              href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
              target="_blank" rel="noopener">
             RSVP su WhatsApp
           </a>
+          <a class="btn btn--ink" href="#programma">Vedi programma</a>
+        </div>
 
-          <a class="btn" href="#mappa">Apri mappa</a>
+        <div class="wowLine">
+          <span class="spark">✦</span> Tema: <strong>celeste polvere</strong> & dettagli <strong>argento</strong>
         </div>
       </div>
     </header>
 
-    <section class="section" id="info">
-      <div class="sectionCard">
-        <h2>Dettagli</h2>
+    <!-- PAGE 3: PROGRAMMA WOW (nuova) -->
+    <section class="section" id="programma">
+      <div class="sectionCard sectionCard--wow">
+        <div class="sectionHead">
+          <h2>Programma della giornata</h2>
+          <p class="muted">Una timeline elegante, semplice e super “premium”.</p>
+        </div>
 
-        <div class="twoCols">
-          <div class="block">
-            <h3>Dress code</h3>
-            <p>
-              Tema elegante con tocchi <strong>azzurro polvere</strong> e dettagli <strong>argento</strong>.
-            </p>
+        <div class="timeline">
+          <div class="tlItem">
+            <div class="tlDot">⛪</div>
+            <div class="tlCard">
+              <div class="tlTime">Cerimonia</div>
+              <div class="tlText">Chiesa Maria SS. Immacolata · Marano di Napoli</div>
+              <div class="tlMini">Orario: da inserire</div>
+            </div>
           </div>
 
-          <div class="block">
-            <h3>Note</h3>
-            <p>
-              Se hai esigenze particolari (intolleranze, passeggini, ecc.) scrivici su WhatsApp.
-            </p>
+          <div class="tlItem">
+            <div class="tlDot">📸</div>
+            <div class="tlCard">
+              <div class="tlTime">Foto & brindisi</div>
+              <div class="tlText">Momento foto e saluti (location da inserire)</div>
+              <div class="tlMini">Orario: da inserire</div>
+            </div>
+          </div>
+
+          <div class="tlItem">
+            <div class="tlDot">🍽️</div>
+            <div class="tlCard">
+              <div class="tlTime">Ricevimento</div>
+              <div class="tlText">Il Gabbiano · Bacoli</div>
+              <div class="tlMini">Orario: da inserire</div>
+            </div>
+          </div>
+
+          <div class="tlItem">
+            <div class="tlDot">🎉</div>
+            <div class="tlCard">
+              <div class="tlTime">Party</div>
+              <div class="tlText">Musica, balli e torta ✨</div>
+              <div class="tlMini">Dress code: elegante, dettagli celeste polvere</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="box">
+            <h3>Note utili</h3>
+            <ul class="cleanList">
+              <li>✅ Intolleranze? Scrivici su WhatsApp</li>
+              <li>✅ Passeggini / bimbi: nessun problema</li>
+              <li>✅ Parcheggio: da inserire</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3>Conferma presenza</h3>
+            <p class="muted">Clicca e mandaci il messaggio già pronto.</p>
+            <a class="btn primary" target="_blank" rel="noopener"
+               href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026.">
+              RSVP adesso
+            </a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- MAPPA -->
     <section class="section" id="mappa">
       <div class="sectionCard">
         <h2>Mappa</h2>
-        <p class="muted">
-          Inserisci qui i link Google Maps reali (cerimonia e location).
-        </p>
+        <p class="muted">Qui metti i link Google Maps reali (Chiesa e Ristorante).</p>
 
         <div class="heroBtns">
-          <a class="btn" href="https://www.google.com/maps" target="_blank" rel="noopener">Chiesa (Maps)</a>
-          <a class="btn" href="https://www.google.com/maps" target="_blank" rel="noopener">Ricevimento (Maps)</a>
+          <a class="btn" href="https://www.google.com/maps" target="_blank" rel="noopener">⛪ Chiesa (Maps)</a>
+          <a class="btn" href="https://www.google.com/maps" target="_blank" rel="noopener">🍽️ Ristorante (Maps)</a>
         </div>
       </div>
     </section>
