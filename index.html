@@ -17,70 +17,78 @@
   <div class="bg" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
-  <div class="sparkles" aria-hidden="true">
-    <span class="sp s1"></span><span class="sp s2"></span><span class="sp s3"></span>
-    <span class="sp s4"></span><span class="sp s5"></span>
-  </div>
+  <!-- INTRO: BUSTA + LETTERA -->
+  <section class="intro" id="intro" aria-label="Busta invito">
+    <div class="envelopeStage" aria-label="Tocca per aprire la busta">
+      <button class="openHint" id="openHint" type="button" aria-label="Apri busta">
+        Tocca la busta per aprire ✨
+      </button>
 
-  <!-- Topbar -->
-  <div class="topbar" role="navigation" aria-label="Controlli">
-    <a class="topLink" href="#invite">Invito</a>
-    <a class="topLink" href="#details">Dettagli</a>
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri invito">
+        <!-- lettera che esce -->
+        <div class="letter" id="letter" aria-hidden="true">
+          <div class="letterInner">
+            <div class="letterKicker">INVITO</div>
 
-    <!-- Day/Night toggle -->
-    <button class="modeToggle" id="modeToggle" type="button" aria-label="Cambia modalità giorno/notte">
-      <span class="modeIcon" aria-hidden="true">☀️</span>
-      <span class="modeText" id="modeText">Giorno</span>
-    </button>
-  </div>
+            <h1 class="letterTitle">
+              Vincenzo <span class="amp">&amp;</span><br> Maria Giovanna
+            </h1>
 
-  <!-- INTRO -->
-  <section class="intro" id="intro" aria-label="Invito digitale">
-    <div class="introCard" role="group" aria-label="Invito digitale">
+            <div class="letterSub">
+              Annunciano con grande gioia<br>
+              il loro matrimonio
+            </div>
 
-      <div class="crest" aria-hidden="true">
-        <div class="crestRing"></div>
-        <div class="crestCore">
-          <div class="crestMonogram">V<span class="heart">♥</span>M</div>
-          <div class="crestSub">31 • 07 • 2026</div>
-        </div>
-        <div class="crestShine" aria-hidden="true"></div>
-      </div>
+            <div class="letterChips">
+              <span class="chip">31 • 07 • 2026</span>
+              <span class="chip chipSoft">Marano di Napoli</span>
+            </div>
 
-      <div class="introText">
-        <p class="kicker">INVITO</p>
-        <h1 class="title">
-          Vincenzo <span class="amp">&amp;</span><br class="brSm"> Maria Giovanna
-        </h1>
-        <p class="subtitle">
-          Annunciano con grande gioia il loro matrimonio
-        </p>
+            <div class="countdown" aria-label="Conto alla rovescia">
+              <div class="tile"><div class="num" id="cdDays">--</div><div class="lab">giorni</div></div>
+              <div class="tile"><div class="num" id="cdHours">--</div><div class="lab">ore</div></div>
+              <div class="tile"><div class="num" id="cdMins">--</div><div class="lab">min</div></div>
+              <div class="tile"><div class="num" id="cdSecs">--</div><div class="lab">sec</div></div>
+            </div>
 
-        <div class="chips">
-          <span class="chip">Marano di Napoli</span>
-          <span class="chip chipSoft">Celeste polvere • Argento</span>
-        </div>
+            <!-- CTA: solo WhatsApp -->
+            <div class="ctaRow">
+              <a class="btn btnPrimary"
+                 href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
+                 target="_blank" rel="noopener">
+                RSVP su WhatsApp <span class="btnIco">✓</span>
+              </a>
 
-        <div class="countdown" aria-label="Conto alla rovescia">
-          <div class="tile"><div class="num" id="cdDays">--</div><div class="lab">giorni</div></div>
-          <div class="tile"><div class="num" id="cdHours">--</div><div class="lab">ore</div></div>
-          <div class="tile"><div class="num" id="cdMins">--</div><div class="lab">min</div></div>
-          <div class="tile"><div class="num" id="cdSecs">--</div><div class="lab">sec</div></div>
-        </div>
+              <button class="btn btnGhost" id="goDown" type="button">
+                Apri i dettagli <span class="btnIco">↓</span>
+              </button>
+            </div>
 
-        <div class="ctaRow">
-          <button class="btn btnPrimary" id="openInvite" type="button">
-            Apri l’invito <span class="btnIco">✦</span>
-          </button>
-          <a class="btn btnGhost" href="#details">Dettagli</a>
+            <div class="microNote">Scorri verso il basso</div>
+          </div>
         </div>
 
-        <p class="hint">Design moderno • super leggibile • celeste polvere dominante ✨</p>
+        <!-- Parti busta -->
+        <div class="envBack" aria-hidden="true"></div>
+        <div class="envSide envLeft" aria-hidden="true"></div>
+        <div class="envSide envRight" aria-hidden="true"></div>
+        <div class="envBottom" aria-hidden="true"></div>
+
+        <!-- lembo alto che si apre -->
+        <div class="envFlap" aria-hidden="true"></div>
+
+        <!-- sigillo -->
+        <div class="seal" aria-hidden="true">
+          <div class="sealInner">
+            <div class="sealMono">V<span class="heart">♥</span>M</div>
+          </div>
+          <div class="sealShine" aria-hidden="true"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- MAIN CONTENT -->
+  <!-- CONTENUTO -->
   <main class="main" id="main" aria-label="Invito">
     <header class="hero" id="invite">
       <div class="heroShell">
@@ -89,18 +97,14 @@
           <div class="heroDate">31 Luglio 2026</div>
         </div>
 
-        <h2 class="heroTitle">
-          Vincenzo <span class="amp2">&amp;</span> Maria Giovanna
-        </h2>
-
-        <p class="heroLead">
-          Una giornata speciale da vivere insieme.
-        </p>
+        <h2 class="heroTitle">Vincenzo <span class="amp2">&amp;</span> Maria Giovanna</h2>
+        <p class="heroLead">Una giornata speciale da vivere insieme.</p>
 
         <div class="eventGrid">
           <article class="eventCard">
             <div class="eventTop">
               <div class="iconBox" aria-hidden="true">
+                <!-- chiesa -->
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M12 2v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
                   <path d="M10 4h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
@@ -114,7 +118,6 @@
                 <div class="eventMeta">Marano di Napoli</div>
               </div>
             </div>
-
             <div class="eventName">Chiesa Maria SS. Immacolata</div>
             <div class="eventTime">⏰ 10:30</div>
           </article>
@@ -122,6 +125,7 @@
           <article class="eventCard">
             <div class="eventTop">
               <div class="iconBox" aria-hidden="true">
+                <!-- ristorante -->
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M6 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
                   <path d="M4 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
@@ -136,94 +140,42 @@
                 <div class="eventMeta">Bacoli</div>
               </div>
             </div>
-
             <div class="eventName">Il Gabbiano</div>
             <div class="eventTime">⏰ 14:00</div>
           </article>
         </div>
 
-        <!-- ACTIONS: no WhatsApp, only Calendar + RSVP section link -->
         <div class="actionsRow">
-          <button class="btn btnPrimary" id="scrollRSVP" type="button">
-            RSVP (Conferma presenza) <span class="btnIco">✓</span>
-          </button>
+          <a class="btn btnPrimary"
+             href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
+             target="_blank" rel="noopener">
+            RSVP su WhatsApp <span class="btnIco">✓</span>
+          </a>
 
           <button class="btn btnGhost" id="addToCalendar" type="button">
             📅 Aggiungi al calendario
           </button>
-
-          <a class="btn btnGhost" href="#details">Dettagli</a>
         </div>
 
         <div class="fineLine">
           <span class="dot"></span>
           <span>Celeste polvere dominante • dettagli argento</span>
         </div>
-
-        <!-- RSVP inline mini form -->
-        <section class="rsvp" id="rsvp">
-          <div class="rsvpHead">
-            <h3>RSVP</h3>
-            <p>Conferma in pochi secondi. (Apre un modulo esterno pulito e professionale)</p>
-          </div>
-
-          <form class="rsvpForm" id="rsvpForm">
-            <div class="field">
-              <label for="rsvpName">Nome e cognome</label>
-              <input id="rsvpName" name="name" type="text" placeholder="Es. Giuseppe Rossi" required />
-            </div>
-
-            <div class="grid2">
-              <div class="field">
-                <label for="rsvpPeople">Numero persone</label>
-                <select id="rsvpPeople" name="people">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="rsvpAnswer">Risposta</label>
-                <select id="rsvpAnswer" name="answer">
-                  <option value="Sì, ci sarò">Sì, ci sarò</option>
-                  <option value="No, non riesco">No, non riesco</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="rsvpNotes">Note (intolleranze / esigenze)</label>
-              <textarea id="rsvpNotes" name="notes" rows="3" placeholder="Scrivi qui eventuali note..."></textarea>
-            </div>
-
-            <!-- Replace RSVP_EXTERNAL_URL with your Tally/GoogleForm URL -->
-            <button class="btn btnPrimary btnFull" id="submitRSVP" type="submit">
-              Invia RSVP <span class="btnIco">✦</span>
-            </button>
-
-            <div class="microNote">
-              Suggerito: Tally / Google Form per raccogliere tutte le risposte in automatico.
-            </div>
-          </form>
-        </section>
       </div>
     </header>
 
-    <!-- DETAILS -->
     <section class="details" id="details">
       <div class="detailsShell">
         <div class="sectionHead">
           <h3>Dettagli</h3>
-          <p>Essenziale, elegante, leggibile. Nessuna sezione “Programma” o “Mappa”.</p>
+          <p>Tema elegante con tocchi celeste polvere e argento.</p>
         </div>
 
         <div class="detailGrid">
           <article class="detailCard">
             <div class="detailTitle">Dress code</div>
             <div class="detailText">
-              Tema elegante con tocchi <strong>celeste polvere</strong> e dettagli <strong>argento</strong>.
+              Elegante con tocchi <strong>celeste polvere</strong> e dettagli <strong>argento</strong>.
             </div>
             <div class="tags">
               <span class="tag">👗 Elegante</span>
@@ -235,9 +187,8 @@
           <article class="detailCard">
             <div class="detailTitle">Note</div>
             <ul class="list">
-              <li>Intolleranze? Scrivile nel RSVP.</li>
-              <li>Se hai bimbi o passeggini, nessun problema.</li>
-              <li>Vuoi aggiungere parcheggio/indicazioni? Lo impagino in modo premium.</li>
+              <li>Intolleranze o esigenze particolari? Scrivici su WhatsApp.</li>
+              <li>Bimbi/passeggini: nessun problema.</li>
             </ul>
           </article>
         </div>
@@ -252,14 +203,6 @@
     </section>
   </main>
 
-  <button class="floatOpen" id="floatOpen" type="button" aria-label="Apri invito">
-    Apri <span class="miniStar">✦</span>
-  </button>
-
-  <script>
-    // Put your external RSVP form URL here (Tally/Google Form)
-    window.RSVP_EXTERNAL_URL = "RSVP_EXTERNAL_URL";
-  </script>
   <script src="./app.js"></script>
 </body>
 </html>
