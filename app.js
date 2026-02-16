@@ -1,29 +1,28 @@
 (() => {
-  const envelope = document.getElementById("envelope");
   const main = document.getElementById("main");
-  const openBtn = document.getElementById("openBtn");
-  const goInvite = document.getElementById("goInvite");
+  const openInvite = document.getElementById("openInvite");
+  const floatOpen = document.getElementById("floatOpen");
 
-  // Countdown elements
+  // Countdown
   const cdDays = document.getElementById("cdDays");
   const cdHours = document.getElementById("cdHours");
   const cdMins = document.getElementById("cdMins");
   const cdSecs = document.getElementById("cdSecs");
 
-  // Wedding date/time (local)
-  const weddingDate = new Date(2026, 6, 31, 10, 30, 0); // 31/07/2026 10:30
+  // Wedding date (local): 31/07/2026 10:30
+  const weddingDate = new Date(2026, 6, 31, 10, 30, 0);
 
-  function pad(n){ return String(n).padStart(2,"0"); }
+  const pad = (n) => String(n).padStart(2, "0");
 
-  function updateCountdown(){
+  function updateCountdown() {
     const now = new Date();
     const diff = weddingDate.getTime() - now.getTime();
 
     if (diff <= 0) {
       if (cdDays) cdDays.textContent = "0";
-      if (cdHours) cdHours.textContent = "0";
-      if (cdMins) cdMins.textContent = "0";
-      if (cdSecs) cdSecs.textContent = "0";
+      if (cdHours) cdHours.textContent = "00";
+      if (cdMins) cdMins.textContent = "00";
+      if (cdSecs) cdSecs.textContent = "00";
       return;
     }
 
@@ -42,45 +41,23 @@
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  function openInvite(){
-    if (envelope) envelope.classList.add("is-open");
+  function openNow() {
     if (main) main.classList.add("is-visible");
-    // scroll to invite after a tiny delay for smoothness
     setTimeout(() => {
-      const invite = document.getElementById("invito");
+      const invite = document.getElementById("invite");
       if (invite) invite.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 350);
+    }, 120);
   }
 
-  if (envelope) {
-    envelope.addEventListener("click", openInvite);
-    envelope.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        openInvite();
-      }
-    });
-  }
-
-  if (openBtn) openBtn.addEventListener("click", openInvite);
-
-  if (goInvite) {
-    goInvite.addEventListener("click", (e) => {
-      // ensure open state first (if user taps before opening)
-      if (envelope && !envelope.classList.contains("is-open")) {
-        e.preventDefault();
-        openInvite();
-      }
-    });
-  }
+  if (openInvite) openInvite.addEventListener("click", openNow);
+  if (floatOpen) floatOpen.addEventListener("click", openNow);
 
   // -----------------------------
-  // ADD TO CALENDAR (.ics)
+  // Add to calendar (.ics)
   // -----------------------------
   const addToCalendarBtn = document.getElementById("addToCalendar");
 
-  // Converts local date to UTC ICS format (YYYYMMDDTHHMMSSZ)
-  function toICSDateUTC(d){
+  function toICSDateUTC(d) {
     const dt = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
     return (
       dt.getUTCFullYear() +
@@ -92,9 +69,8 @@
     );
   }
 
-  function downloadICS(){
-    // ✅ Orari impostati:
-    // Cerimonia 10:30 — evento complessivo fino alle 18:30 (puoi cambiare)
+  function downloadICS() {
+    // Evento: 10:30 -> 18:30 (cambia quando vuoi)
     const startLocal = new Date(2026, 6, 31, 10, 30, 0);
     const endLocal   = new Date(2026, 6, 31, 18, 30, 0);
 
@@ -104,8 +80,7 @@
     const title = "Matrimonio Vincenzo & Maria Giovanna";
     const location = "Chiesa Maria SS. Immacolata (Marano di Napoli) · Il Gabbiano (Bacoli)";
     const description =
-      "Cerimonia ore 10:30. Ricevimento ore 14:00. " +
-      "RSVP via WhatsApp.";
+      "Cerimonia ore 10:30. Ricevimento ore 14:00. RSVP via WhatsApp.";
 
     const uid = `marry-${Date.now()}@githubpages`;
 
