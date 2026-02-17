@@ -66,6 +66,15 @@
     });
   }
 
+  // Click su tutta la card (Maps)
+  document.querySelectorAll(".eventLink").forEach(card => {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return; // se clicchi il bottone, lascia fare al link
+      const href = card.getAttribute("data-href");
+      if (href) window.open(href, "_blank", "noopener");
+    });
+  });
+
   // Add to calendar (.ics)
   const addToCalendarBtn = document.getElementById("addToCalendar");
 
@@ -110,9 +119,13 @@ SUMMARY:${title}
 LOCATION:${location}
 DESCRIPTION:${description}
 END:VEVENT
+END:VEVENT
 END:VCALENDAR`;
 
-    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    // Fix: alcuni client vogliono \r\n
+    const icsFixed = ics.replace(/\n/g, "\r\n");
+
+    const blob = new Blob([icsFixed], { type: "text/calendar;charset=utf-8" });
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement("a");
