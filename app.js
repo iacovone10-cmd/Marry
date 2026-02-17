@@ -82,7 +82,7 @@
   }
 
   function downloadICS() {
-    // Evento: 10:30 -> 18:30 (puoi cambiare durata)
+    // Evento: 10:30 -> 18:30
     const startLocal = new Date(2026, 6, 31, 10, 30, 0);
     const endLocal   = new Date(2026, 6, 31, 18, 30, 0);
 
