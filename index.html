@@ -6,11 +6,11 @@
   <title>Invito • Vincenzo & Maria Giovanna</title>
   <meta name="theme-color" content="#7FBDEB" />
 
-  <!-- Font: Pristina non esiste su Google Fonts: la usiamo se presente su Windows,
-       altrimenti fallback "Allura" + serif elegante -->
+  <!-- Pristina non è Google Font: se c'è sul device la usa,
+       altrimenti Allura (molto simile) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -19,8 +19,8 @@
   <div class="bg" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- INTRO: BUSTA -->
-  <section class="intro" id="intro" aria-label="Busta invito">
+  <!-- PAGINA 1: BUSTA -->
+  <section class="screen intro" id="intro" aria-label="Busta invito">
     <div class="envelopeStage">
       <!-- SOLO QUESTO ALL'INIZIO -->
       <button class="openHint" id="openHint" type="button" aria-label="Apri busta">
@@ -28,17 +28,16 @@
       </button>
 
       <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri invito">
-        <!-- BACK -->
         <div class="envBack" aria-hidden="true"></div>
 
-        <!-- ANTE -->
+        <!-- Ante stile foto -->
         <div class="envPanel envLeft" aria-hidden="true"></div>
         <div class="envPanel envRight" aria-hidden="true"></div>
 
-        <!-- LEMBO (triangolo alto) -->
+        <!-- Lembo -->
         <div class="envFlap" aria-hidden="true"></div>
 
-        <!-- SIGILLO -->
+        <!-- Sigillo -->
         <div class="seal" aria-hidden="true">
           <div class="sealInner">
             <div class="sealMono">V<span class="heart">♥</span>M</div>
@@ -46,7 +45,10 @@
           <div class="sealShine" aria-hidden="true"></div>
         </div>
 
-        <!-- LETTERA: SOLO NOMI -->
+        <!-- Sparkles WOW -->
+        <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+
+        <!-- Letter: SOLO NOMI -->
         <div class="letter" id="letter" aria-hidden="true">
           <div class="letterInner">
             <div class="namesOnly">
@@ -59,26 +61,27 @@
               <button class="btn btnGhost" id="goDown" type="button">
                 Scorri <span class="btnIco">↓</span>
               </button>
+
               <a class="btn btnPrimary"
                  href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
                  target="_blank" rel="noopener">
                 RSVP su WhatsApp <span class="btnIco">✓</span>
               </a>
             </div>
+
+            <!-- questo compare SOLO dopo apertura -->
+            <div class="scrollTip" id="scrollTip" aria-hidden="true">Scorri ↓</div>
           </div>
         </div>
       </div>
-
-      <!-- Scorri: deve apparire SOLO DOPO apertura -->
-      <div class="scrollTip" id="scrollTip" aria-hidden="true">Scorri ↓</div>
     </div>
   </section>
 
-  <!-- PAGINE -->
+  <!-- CONTENUTO: nascosto finché non apri -->
   <main class="main" id="main" aria-label="Invito">
-    <!-- PAGINA 2: Cerimonia/Ricevimento (testi celeste polvere) -->
-    <header class="hero" id="invite">
-      <div class="heroShell">
+    <!-- PAGINA 2: INVITO -->
+    <section class="screen page" id="invite">
+      <div class="card heroShell reveal">
         <div class="heroHeader">
           <div class="badge">INVITO</div>
           <div class="heroDate">31 Luglio 2026</div>
@@ -111,9 +114,7 @@
             <div class="eventName">Chiesa Maria SS. Immacolata</div>
             <div class="eventTime">⏰ 10:30</div>
 
-            <a class="mapBtn"
-               href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6"
-               target="_blank" rel="noopener">
+            <a class="mapBtn" href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6" target="_blank" rel="noopener">
               📍 Apri su Google Maps
             </a>
           </article>
@@ -142,9 +143,7 @@
             <div class="eventName">Il Gabbiano</div>
             <div class="eventTime">⏰ 14:00</div>
 
-            <a class="mapBtn"
-               href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6"
-               target="_blank" rel="noopener">
+            <a class="mapBtn" href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6" target="_blank" rel="noopener">
               📍 Apri su Google Maps
             </a>
           </article>
@@ -162,11 +161,11 @@
           </button>
         </div>
       </div>
-    </header>
+    </section>
 
     <!-- PAGINA 3: REGALO -->
-    <section class="page" id="gift">
-      <div class="pageShell">
+    <section class="screen page" id="gift">
+      <div class="card pageShell reveal">
         <div class="pageTitle">🎁</div>
         <h3 class="pageHeading">Il regalo più bello</h3>
 
@@ -180,7 +179,7 @@
         </p>
 
         <a class="bigIconLink" href="PASTE_GIFT_LINK_HERE" target="_blank" rel="noopener" aria-label="Apri link regalo">
-          <!-- Icona pacco regalo -->
+          <!-- pacco regalo -->
           <svg viewBox="0 0 24 24" fill="none" class="bigIcon">
             <path d="M3 10h18v11H3V10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
             <path d="M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -191,15 +190,15 @@
         </a>
 
         <div class="miniNav">
-          <a class="miniLink" href="#invite">↑ Torna su</a>
-          <a class="miniLink" href="#photos">Vai alle foto →</a>
+          <a class="miniLink" href="#invite">← Invito</a>
+          <a class="miniLink" href="#photos">Foto →</a>
         </div>
       </div>
     </section>
 
     <!-- PAGINA 4: FOTO -->
-    <section class="page" id="photos">
-      <div class="pageShell">
+    <section class="screen page" id="photos">
+      <div class="card pageShell reveal">
         <div class="pageTitle">📸</div>
         <h3 class="pageHeading">Condividi le foto</h3>
 
@@ -216,8 +215,8 @@
           da custodire
         </p>
 
-        <a class="bigIconLink" href="PASTE_PHOTO_LINK_HERE" target="_blank" rel="noopener" aria-label="Apri link foto">
-          <!-- Icona fotocamera -->
+        <a class="bigIconLink" href="PASTE_PHOTO_LINK_HERE" target="_blank" rel="noopener" aria-label="Carica le foto">
+          <!-- fotocamera -->
           <svg viewBox="0 0 24 24" fill="none" class="bigIcon">
             <path d="M7 7h3l1-2h2l1 2h3a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
             <path d="M12 18a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.8"/>
@@ -228,15 +227,43 @@
 
         <div class="miniNav">
           <a class="miniLink" href="#gift">← Regalo</a>
-          <a class="miniLink" href="#invite">↑ Cerimonia</a>
+          <a class="miniLink" href="#thanks">Ringraziamenti →</a>
         </div>
+      </div>
+    </section>
 
-        <footer class="footer">
+    <!-- PAGINA 5: RINGRAZIAMENTI + DEADLINE -->
+    <section class="screen page" id="thanks">
+      <div class="card pageShell reveal">
+        <div class="pageTitle">🤍</div>
+        <h3 class="pageHeading">Grazie</h3>
+
+        <p class="pageText">
+          Grazie di cuore per l’affetto e la vicinanza.<br>
+          La vostra presenza renderà questa giornata<br>
+          ancora più speciale.<br><br>
+          Per organizzare al meglio, vi chiediamo<br>
+          gentilmente di darci conferma della presenza<br>
+          <strong>entro il 31 maggio</strong>.
+        </p>
+
+        <a class="btn btnPrimary"
+           href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026.%20(Conferma%20entro%2031%20maggio)"
+           target="_blank" rel="noopener">
+          Conferma su WhatsApp <span class="btnIco">✓</span>
+        </a>
+
+        <div class="footer">
           <div class="footerInner">
             <div class="footerSmall">Con amore,</div>
             <div class="footerNames">Vincenzo &amp; Maria Giovanna</div>
           </div>
-        </footer>
+        </div>
+
+        <div class="miniNav">
+          <a class="miniLink" href="#invite">↑ Torna all’invito</a>
+          <a class="miniLink" href="#intro">↑ Busta</a>
+        </div>
       </div>
     </section>
   </main>
