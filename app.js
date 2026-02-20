@@ -2,54 +2,26 @@
   const envelope = document.getElementById("envelope");
   const openHint = document.getElementById("openHint");
   const goDown = document.getElementById("goDown");
-
-  // Countdown elements
-  const cdDays = document.getElementById("cdDays");
-  const cdHours = document.getElementById("cdHours");
-  const cdMins = document.getElementById("cdMins");
-  const cdSecs = document.getElementById("cdSecs");
-
-  // Wedding date (local): 31/07/2026 10:30
-  const weddingDate = new Date(2026, 6, 31, 10, 30, 0);
-  const pad = (n) => String(n).padStart(2, "0");
-
-  function updateCountdown() {
-    if (!cdDays || !cdHours || !cdMins || !cdSecs) return;
-
-    const now = new Date();
-    const diff = weddingDate.getTime() - now.getTime();
-
-    if (diff <= 0) {
-      cdDays.textContent = "0";
-      cdHours.textContent = "00";
-      cdMins.textContent = "00";
-      cdSecs.textContent = "00";
-      return;
-    }
-
-    const totalSeconds = Math.floor(diff / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const mins = Math.floor((totalSeconds % 3600) / 60);
-    const secs = totalSeconds % 60;
-
-    cdDays.textContent = String(days);
-    cdHours.textContent = pad(hours);
-    cdMins.textContent = pad(mins);
-    cdSecs.textContent = pad(secs);
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
+  const scrollTip = document.getElementById("scrollTip");
 
   function openEnvelope() {
     if (!envelope) return;
     envelope.classList.add("is-open");
-    if (openHint) openHint.style.opacity = "0";
-    envelope.blur();
+
+    // Nascondi hint iniziale
+    if (openHint) openHint.style.display = "none";
+
+    // Mostra "Scorri" solo dopo apertura
+    if (scrollTip) {
+      scrollTip.classList.add("is-visible");
+      scrollTip.setAttribute("aria-hidden", "false");
+    }
   }
 
-  if (openHint) openHint.addEventListener("click", openEnvelope);
+  if (openHint) openHint.addEventListener("click", (e) => {
+    e.preventDefault();
+    openEnvelope();
+  });
 
   if (envelope) {
     envelope.addEventListener("click", openEnvelope);
@@ -77,6 +49,7 @@
 
   // Add to calendar (.ics)
   const addToCalendarBtn = document.getElementById("addToCalendar");
+  const pad = (n) => String(n).padStart(2, "0");
 
   function toICSDateUTC(d) {
     const dt = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
@@ -119,10 +92,8 @@ SUMMARY:${title}
 LOCATION:${location}
 DESCRIPTION:${description}
 END:VEVENT
-END:VEVENT
 END:VCALENDAR`;
 
-    // Fix: alcuni client vogliono \r\n
     const icsFixed = ics.replace(/\n/g, "\r\n");
 
     const blob = new Blob([icsFixed], { type: "text/calendar;charset=utf-8" });
