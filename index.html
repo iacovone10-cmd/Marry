@@ -4,11 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Invito • Vincenzo & Maria Giovanna</title>
-  <meta name="theme-color" content="#79B8E8" />
+  <meta name="theme-color" content="#7FBDEB" />
 
+  <!-- Font: Pristina non esiste su Google Fonts: la usiamo se presente su Windows,
+       altrimenti fallback "Allura" + serif elegante -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -17,23 +19,26 @@
   <div class="bg" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- INTRO: BUSTA + LETTERA -->
+  <!-- INTRO: BUSTA -->
   <section class="intro" id="intro" aria-label="Busta invito">
     <div class="envelopeStage">
+      <!-- SOLO QUESTO ALL'INIZIO -->
       <button class="openHint" id="openHint" type="button" aria-label="Apri busta">
         Tocca la busta per aprire ✨
       </button>
 
       <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri invito">
+        <!-- BACK -->
         <div class="envBack" aria-hidden="true"></div>
-        <div class="envSide envLeft" aria-hidden="true"></div>
-        <div class="envSide envRight" aria-hidden="true"></div>
-        <div class="envBottom" aria-hidden="true"></div>
 
-        <!-- lembo alto -->
+        <!-- ANTE -->
+        <div class="envPanel envLeft" aria-hidden="true"></div>
+        <div class="envPanel envRight" aria-hidden="true"></div>
+
+        <!-- LEMBO (triangolo alto) -->
         <div class="envFlap" aria-hidden="true"></div>
 
-        <!-- sigillo -->
+        <!-- SIGILLO -->
         <div class="seal" aria-hidden="true">
           <div class="sealInner">
             <div class="sealMono">V<span class="heart">♥</span>M</div>
@@ -41,55 +46,37 @@
           <div class="sealShine" aria-hidden="true"></div>
         </div>
 
-        <!-- LETTERA (nascosta all'inizio, appare solo in is-open) -->
+        <!-- LETTERA: SOLO NOMI -->
         <div class="letter" id="letter" aria-hidden="true">
           <div class="letterInner">
-            <div class="letterKicker">INVITO</div>
-
-            <h1 class="letterTitle">
-              Vincenzo <span class="amp">&amp;</span><br> Maria Giovanna
-            </h1>
-
-            <div class="letterSub">
-              Annunciano con grande gioia<br>
-              il loro matrimonio
+            <div class="namesOnly">
+              <div class="nameLine">Vincenzo</div>
+              <div class="andLine">&amp;</div>
+              <div class="nameLine">Maria Giovanna</div>
             </div>
 
-            <div class="letterChips">
-              <span class="chip">31 • 07 • 2026</span>
-              <span class="chip chipSoft">Marano di Napoli</span>
-            </div>
-
-            <div class="countdown" aria-label="Conto alla rovescia">
-              <div class="tile"><div class="num" id="cdDays">--</div><div class="lab">giorni</div></div>
-              <div class="tile"><div class="num" id="cdHours">--</div><div class="lab">ore</div></div>
-              <div class="tile"><div class="num" id="cdMins">--</div><div class="lab">min</div></div>
-              <div class="tile"><div class="num" id="cdSecs">--</div><div class="lab">sec</div></div>
-            </div>
-
-            <div class="ctaRow">
+            <div class="afterOpenRow">
+              <button class="btn btnGhost" id="goDown" type="button">
+                Scorri <span class="btnIco">↓</span>
+              </button>
               <a class="btn btnPrimary"
                  href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
                  target="_blank" rel="noopener">
                 RSVP su WhatsApp <span class="btnIco">✓</span>
               </a>
-
-              <button class="btn btnGhost" id="goDown" type="button">
-                Apri i dettagli <span class="btnIco">↓</span>
-              </button>
             </div>
-
-            <div class="microNote">Scorri verso il basso</div>
           </div>
         </div>
       </div>
 
-      <div class="scrollTip">Scorri ↓</div>
+      <!-- Scorri: deve apparire SOLO DOPO apertura -->
+      <div class="scrollTip" id="scrollTip" aria-hidden="true">Scorri ↓</div>
     </div>
   </section>
 
-  <!-- CONTENUTO -->
+  <!-- PAGINE -->
   <main class="main" id="main" aria-label="Invito">
+    <!-- PAGINA 2: Cerimonia/Ricevimento (testi celeste polvere) -->
     <header class="hero" id="invite">
       <div class="heroShell">
         <div class="heroHeader">
@@ -98,7 +85,7 @@
         </div>
 
         <h2 class="heroTitle">Vincenzo <span class="amp2">&amp;</span> Maria Giovanna</h2>
-        <p class="heroLead">Una giornata speciale da vivere insieme.</p>
+        <p class="heroLead">Saremo felici di condividere con voi questa giornata.</p>
 
         <div class="eventGrid">
           <!-- CERIMONIA -->
@@ -174,41 +161,74 @@
             📅 Aggiungi al calendario
           </button>
         </div>
-
-        <div class="fineLine">
-          <span class="dot"></span>
-          <span>Celeste polvere dominante • dettagli argento</span>
-        </div>
       </div>
     </header>
 
-    <section class="details" id="details">
-      <div class="detailsShell">
-        <div class="sectionHead">
-          <h3>Dettagli</h3>
-          <p>Tema elegante con tocchi celeste polvere e argento.</p>
+    <!-- PAGINA 3: REGALO -->
+    <section class="page" id="gift">
+      <div class="pageShell">
+        <div class="pageTitle">🎁</div>
+        <h3 class="pageHeading">Il regalo più bello</h3>
+
+        <p class="pageText">
+          Celebrare insieme questo giorno sarà<br>
+          per noi il dono più bello.<br><br>
+          Ma se desiderate contribuire alla<br>
+          realizzazione dei nostri sogni e progetti<br>
+          futuri potrete farlo cliccando sull’icona<br>
+          di seguito
+        </p>
+
+        <a class="bigIconLink" href="PASTE_GIFT_LINK_HERE" target="_blank" rel="noopener" aria-label="Apri link regalo">
+          <!-- Icona pacco regalo -->
+          <svg viewBox="0 0 24 24" fill="none" class="bigIcon">
+            <path d="M3 10h18v11H3V10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M12 10v11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M7.5 10c-1.6 0-2.7-1.4-2-2.8.7-1.4 2.7-1.4 4.2-.4L12 8.2l2.3-1.4c1.5-1 3.5-1 4.2.4.7 1.4-.4 2.8-2 2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="iconLabel">Apri il link</span>
+        </a>
+
+        <div class="miniNav">
+          <a class="miniLink" href="#invite">↑ Torna su</a>
+          <a class="miniLink" href="#photos">Vai alle foto →</a>
         </div>
+      </div>
+    </section>
 
-        <div class="detailGrid">
-          <article class="detailCard">
-            <div class="detailTitle">Dress code</div>
-            <div class="detailText">
-              Elegante con tocchi <strong>celeste polvere</strong> e dettagli <strong>argento</strong>.
-            </div>
-            <div class="tags">
-              <span class="tag">👗 Elegante</span>
-              <span class="tag">🩵 Powder Blue</span>
-              <span class="tag">✨ Silver</span>
-            </div>
-          </article>
+    <!-- PAGINA 4: FOTO -->
+    <section class="page" id="photos">
+      <div class="pageShell">
+        <div class="pageTitle">📸</div>
+        <h3 class="pageHeading">Condividi le foto</h3>
 
-          <article class="detailCard">
-            <div class="detailTitle">Note</div>
-            <ul class="list">
-              <li>Intolleranze o esigenze particolari? Scrivici su WhatsApp.</li>
-              <li>Bimbi/passeggini: nessun problema.</li>
-            </ul>
-          </article>
+        <p class="pageText">
+          Il giorno del nostro matrimonio sarà<br>
+          ancora più speciale grazie alla vostra<br>
+          presenza...<br><br>
+          Se scatterete delle foto durante la giornata,<br>
+          ci farebbe davvero piacere rivivere quei<br>
+          momenti anche attraverso i vostri occhi.<br><br>
+          Cliccando sull’icona qui sotto, potrete<br>
+          caricare i vostri scatti:<br>
+          ogni foto sarà per noi un prezioso ricordo<br>
+          da custodire
+        </p>
+
+        <a class="bigIconLink" href="PASTE_PHOTO_LINK_HERE" target="_blank" rel="noopener" aria-label="Apri link foto">
+          <!-- Icona fotocamera -->
+          <svg viewBox="0 0 24 24" fill="none" class="bigIcon">
+            <path d="M7 7h3l1-2h2l1 2h3a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M12 18a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M17.6 10.3h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="iconLabel">Carica le foto</span>
+        </a>
+
+        <div class="miniNav">
+          <a class="miniLink" href="#gift">← Regalo</a>
+          <a class="miniLink" href="#invite">↑ Cerimonia</a>
         </div>
 
         <footer class="footer">
