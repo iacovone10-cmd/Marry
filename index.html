@@ -2,200 +2,244 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invito | Vincenzo & Maria Giovanna</title>
-  <meta name="description" content="Invito digitale al matrimonio di Vincenzo e Maria Giovanna — 31 Luglio 2026" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Invito • Vincenzo & Maria Giovanna</title>
+  <meta name="theme-color" content="#0E7EA6" />
+
+  <!-- Pristina (se presente sul device) + fallback Allura -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
-  <!-- HERO -->
-  <header class="hero" id="top" aria-label="Invito digitale">
-    <!-- Cornice “PPT-style” (SVG inline) -->
-    <div class="frame" aria-hidden="true">
-      <svg viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet">
-        <!-- bordo esterno -->
-        <rect x="40" y="40" width="920" height="620" rx="26" fill="none" stroke="rgba(15,23,42,.20)" stroke-width="2"/>
-        <!-- bordo interno -->
-        <rect x="70" y="70" width="860" height="560" rx="22" fill="none" stroke="rgba(127,162,198,.35)" stroke-width="2"/>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-        <!-- corona centrale -->
-        <circle cx="500" cy="350" r="120" fill="none" stroke="rgba(15,23,42,.20)" stroke-width="2"/>
-        <circle cx="500" cy="350" r="96" fill="none" stroke="rgba(184,155,95,.35)" stroke-width="2"/>
+  <main class="snap">
 
-        <!-- decorazioni floreali (stile delicato, non foto) -->
-        <g opacity=".50" stroke="rgba(127,162,198,.55)" stroke-width="3" fill="none" stroke-linecap="round">
-          <!-- alto sinistra -->
-          <path d="M180 120c40 10 55 25 85 60"/>
-          <path d="M205 95c25 15 40 35 55 70"/>
-          <path d="M235 130c30 0 60 22 78 52"/>
-          <!-- alto destra -->
-          <path d="M820 120c-40 10-55 25-85 60"/>
-          <path d="M795 95c-25 15-40 35-55 70"/>
-          <path d="M765 130c-30 0-60 22-78 52"/>
-          <!-- basso destra -->
-          <path d="M820 580c-40-10-55-25-85-60"/>
-          <path d="M795 605c-25-15-40-35-55-70"/>
-          <path d="M765 570c-30 0-60-22-78-52"/>
-          <!-- basso sinistra -->
-          <path d="M180 580c40-10 55-25 85-60"/>
-          <path d="M205 605c25-15 40-35 55-70"/>
-          <path d="M235 570c30 0 60-22 78-52"/>
-        </g>
-      </svg>
-    </div>
+    <!-- PAGINA 1: BUSTA (come reference) -->
+    <section class="screen" id="p1" aria-label="Busta">
+      <div class="envelopeFrame">
+        <div class="envelopeRef" aria-hidden="false">
+          <div class="envTextTop">Scorri verso il basso</div>
 
-    <div class="hero__content">
-      <div class="monogram" aria-label="Monogramma MV">
-        <span>M</span><span>V</span>
-      </div>
+          <div class="envSeam" aria-hidden="true"></div>
 
-      <button class="scroll-hint" type="button" data-scroll="#invito">
-        Scorri verso il basso
-        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
-  </header>
-
-  <main id="invito">
-    <!-- NAMES -->
-    <section class="section section--names">
-      <div class="container">
-        <div class="card reveal card--center">
-          <p class="kicker">Annunciano con grande gioia</p>
-          <h1 class="names__title">
-            Vincenzo <span class="amp">&amp;</span><br/> Maria Giovanna
-          </h1>
-          <div class="divider" aria-hidden="true"></div>
-          <h2 class="headline">il loro matrimonio</h2>
-        </div>
-      </div>
-    </section>
-
-    <!-- DATE + LOCATIONS -->
-    <section class="section section--date">
-      <div class="container grid">
-        <div class="card reveal">
-          <div class="date-box">
-            <div class="date-box__month">LUGLIO</div>
-
-            <div class="date-box__row">
-              <div class="date-box__col">
-                <div class="date-box__dow">Venerdì</div>
-                <div class="date-box__time">10:30</div>
-              </div>
-
-              <div class="date-box__col date-box__col--day">
-                <div class="date-box__day">31</div>
-                <div class="date-box__year">2026</div>
-              </div>
+          <div class="envSeal" aria-hidden="true">
+            <div class="sealDisk">
+              <div class="sealMono">V<span class="heart">♥</span>M</div>
             </div>
-
-            <div class="countdown">
-              <div class="countdown__title">Mancano</div>
-              <div class="countdown__grid">
-                <div class="cd"><span class="cd__n" data-cd="days">--</span><span class="cd__l">giorni</span></div>
-                <div class="cd"><span class="cd__n" data-cd="hours">--</span><span class="cd__l">ore</span></div>
-                <div class="cd"><span class="cd__n" data-cd="mins">--</span><span class="cd__l">min</span></div>
-                <div class="cd"><span class="cd__n" data-cd="secs">--</span><span class="cd__l">sec</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="stack">
-          <div class="card reveal">
-            <div class="place">
-              <div class="place__icon" aria-hidden="true">⛪</div>
-              <div class="place__text">
-                <div class="place__label">Chiesa</div>
-                <div class="place__name" id="chiesaName">Chiesa (da Maps)</div>
-                <div class="place__details" id="chiesaDetails">Dettagli (da Maps)</div>
-                <div class="place__actions">
-                  <a class="link" href="#" id="mapsChiesa" target="_blank" rel="noopener">Apri su Maps</a>
-                  <button class="link link--btn" type="button" data-ical>Salva sul calendario</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card reveal">
-            <div class="place">
-              <div class="place__icon" aria-hidden="true">📍</div>
-              <div class="place__text">
-                <div class="place__label">Ricevimento</div>
-                <div class="place__name" id="venueName">Ristorante (da Maps)</div>
-                <div class="place__details" id="venueDetails">Dettagli (da Maps)</div>
-                <div class="place__actions">
-                  <a class="link" href="#" id="mapsLocation" target="_blank" rel="noopener">Apri su Maps</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card reveal">
-            <h3 class="h3">Festeggerai con noi?</h3>
-            <p class="muted">Conferma con un tap: si aprirà WhatsApp già compilato.</p>
-            <div class="rsvp">
-              <button class="btn btn--ghost" type="button" data-rsvp="NO">NO</button>
-              <button class="btn" type="button" data-rsvp="SI">SI</button>
-            </div>
-            <p class="small muted">È gradita gentile conferma entro il <strong>30 giugno</strong>.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- GIFT -->
-    <section class="section section--gift">
-      <div class="container">
-        <div class="card reveal">
-          <p class="lead">
-            Celebrare insieme questo giorno sarà per noi il dono più bello.
-            Ma se desiderate contribuire alla realizzazione dei nostri sogni e progetti futuri
-            potrete farlo cliccando sull’icona di seguito.
-          </p>
-          <p class="thanks">Grazie di Cuore</p>
+    <!-- PAGINA 2: FOGLIO FLOREALE (come reference) -->
+    <section class="screen" id="p2" aria-label="Nomi">
+      <div class="paperWrap">
+        <div class="paperCard">
+          <!-- Ornamenti floreali -->
+          <svg class="floral floralTL" viewBox="0 0 240 240" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#1A87B5" stop-opacity=".55"/>
+                <stop offset="1" stop-color="#1A87B5" stop-opacity=".10"/>
+              </linearGradient>
+            </defs>
+            <path d="M54 96c18-28 44-34 66-16 11 9 14 23 4 33-10 10-26 8-36-3 8 18 5 34-9 43-17 10-37 2-42-17-6-21 5-33 17-40z" fill="url(#g1)"/>
+            <circle cx="62" cy="88" r="10" fill="#1A87B5" opacity=".25"/>
+            <circle cx="90" cy="70" r="14" fill="#1A87B5" opacity=".18"/>
+            <path d="M30 150c30-18 58-10 76 16" fill="none" stroke="#1A87B5" stroke-opacity=".25" stroke-width="6" stroke-linecap="round"/>
+            <path d="M40 168c18-8 36-6 50 6" fill="none" stroke="#1A87B5" stroke-opacity=".18" stroke-width="5" stroke-linecap="round"/>
+          </svg>
 
-          <div class="copyrow">
-            <input id="giftLink" type="text" value="https://INSERISCI-QUI-IL-TUO-LINK" readonly />
-            <button class="btn btn--small" type="button" data-copy="#giftLink">Copia</button>
+          <svg class="floral floralBR" viewBox="0 0 240 240" aria-hidden="true">
+            <defs>
+              <linearGradient id="g2" x1="0" x2="1">
+                <stop offset="0" stop-color="#1A87B5" stop-opacity=".10"/>
+                <stop offset="1" stop-color="#1A87B5" stop-opacity=".55"/>
+              </linearGradient>
+            </defs>
+            <path d="M184 146c-18 28-44 34-66 16-11-9-14-23-4-33 10-10 26-8 36 3-8-18-5-34 9-43 17-10 37-2 42 17 6 21-5 33-17 40z" fill="url(#g2)"/>
+            <circle cx="178" cy="154" r="10" fill="#1A87B5" opacity=".25"/>
+            <circle cx="150" cy="172" r="14" fill="#1A87B5" opacity=".18"/>
+            <path d="M210 92c-30 18-58 10-76-16" fill="none" stroke="#1A87B5" stroke-opacity=".25" stroke-width="6" stroke-linecap="round"/>
+            <path d="M200 74c-18 8-36 6-50-6" fill="none" stroke="#1A87B5" stroke-opacity=".18" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+
+          <div class="paperInner">
+            <div class="paperNames">
+              <div class="scriptName">Vincenzo</div>
+              <div class="scriptAnd">&amp;</div>
+              <div class="scriptName">Maria Giovanna</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PHOTOS -->
-    <section class="section section--photos">
-      <div class="container">
-        <div class="card reveal">
-          <h3 class="h3">Foto del giorno</h3>
-          <p class="lead">
-            Cliccando qui sotto potrete caricare i vostri scatti:
-            ogni foto sarà per noi un prezioso ricordo da custodire.
-          </p>
-          <div class="copyrow">
-            <input id="photoLink" type="text" value="https://INSERISCI-QUI-LINK-UPLOAD" readonly />
-            <button class="btn btn--small" type="button" data-copy="#photoLink">Copia</button>
+    <!-- DOPO QUESTE DUE: INVITO -->
+    <section class="screen" id="invite" aria-label="Invito">
+      <div class="card heroShell">
+        <div class="heroHeader">
+          <div class="badge">INVITO</div>
+          <div class="heroDate">31 Luglio 2026</div>
+        </div>
+
+        <h2 class="heroTitle">Vincenzo <span class="amp2">&amp;</span> Maria Giovanna</h2>
+        <p class="heroLead">Una giornata speciale da vivere insieme.</p>
+
+        <div class="eventGrid">
+          <article class="eventCard eventLink" data-href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6" aria-label="Apri mappa Chiesa">
+            <div class="eventTop">
+              <div class="iconBox" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M10 4h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M4 10l8-5 8 5" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+                  <path d="M6 10v10h12V10" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+                  <path d="M10 20v-5a2 2 0 0 1 4 0v5" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <div class="eventLabel">Cerimonia</div>
+                <div class="eventMeta">Marano di Napoli</div>
+              </div>
+            </div>
+            <div class="eventName">Chiesa Maria SS. Immacolata</div>
+            <div class="eventTime">⏰ 10:30</div>
+            <a class="mapBtn" href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+          </article>
+
+          <article class="eventCard eventLink" data-href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6" aria-label="Apri mappa Ristorante">
+            <div class="eventTop">
+              <div class="iconBox" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M6 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M4 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M8 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M5 10v12" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  <path d="M14 2v8c0 1.5 1.2 2.7 2.7 2.7H18V22" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14 6h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <div class="eventLabel">Ricevimento</div>
+                <div class="eventMeta">Bacoli</div>
+              </div>
+            </div>
+            <div class="eventName">Il Gabbiano</div>
+            <div class="eventTime">⏰ 14:00</div>
+            <a class="mapBtn" href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+          </article>
+        </div>
+
+        <div class="actionsRow">
+          <a class="btn btnPrimary"
+             href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
+             target="_blank" rel="noopener">
+            RSVP su WhatsApp <span class="btnIco">✓</span>
+          </a>
+
+          <button class="btn btnGhost" id="addToCalendar" type="button">
+            📅 Aggiungi al calendario
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGALO -->
+    <section class="screen" id="gift" aria-label="Regalo">
+      <div class="card pageShell">
+        <div class="pageTitle">🎁</div>
+        <h3 class="pageHeading">Il regalo più bello</h3>
+
+        <p class="pageText">
+          Celebrare insieme questo giorno sarà<br>
+          per noi il dono più bello.<br><br>
+          Ma se desiderate contribuire alla<br>
+          realizzazione dei nostri sogni e progetti<br>
+          futuri potrete farlo cliccando sull’icona<br>
+          di seguito
+        </p>
+
+        <a class="bigIconLink" href="PASTE_GIFT_LINK_HERE" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" class="bigIcon">
+            <path d="M3 10h18v11H3V10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M12 10v11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M7.5 10c-1.6 0-2.7-1.4-2-2.8.7-1.4 2.7-1.4 4.2-.4L12 8.2l2.3-1.4c1.5-1 3.5-1 4.2.4.7 1.4-.4 2.8-2 2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="iconLabel">Apri il link</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOTO -->
+    <section class="screen" id="photos" aria-label="Foto">
+      <div class="card pageShell">
+        <div class="pageTitle">📸</div>
+        <h3 class="pageHeading">Condividi le foto</h3>
+
+        <p class="pageText">
+          Il giorno del nostro matrimonio sarà<br>
+          ancora più speciale grazie alla vostra<br>
+          presenza...<br><br>
+          Se scatterete delle foto durante la giornata,<br>
+          ci farebbe davvero piacere rivivere quei<br>
+          momenti anche attraverso i vostri occhi.<br><br>
+          Cliccando sull’icona qui sotto, potrete<br>
+          caricare i vostri scatti:<br>
+          ogni foto sarà per noi un prezioso ricordo<br>
+          da custodire
+        </p>
+
+        <a class="bigIconLink" href="PASTE_PHOTO_LINK_HERE" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" class="bigIcon">
+            <path d="M7 7h3l1-2h2l1 2h3a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M12 18a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M17.6 10.3h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="iconLabel">Carica le foto</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- RINGRAZIAMENTI -->
+    <section class="screen" id="thanks" aria-label="Ringraziamenti">
+      <div class="card pageShell">
+        <div class="pageTitle">🤍</div>
+        <h3 class="pageHeading">Grazie</h3>
+
+        <p class="pageText">
+          Grazie di cuore per l’affetto e la vicinanza.<br>
+          La vostra presenza renderà questa giornata<br>
+          ancora più speciale.<br><br>
+          Per organizzare al meglio, vi chiediamo<br>
+          gentilmente di darci conferma della presenza<br>
+          <strong>entro il 31 maggio</strong>.
+        </p>
+
+        <a class="btn btnPrimary"
+           href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026.%20(Conferma%20entro%2031%20maggio)"
+           target="_blank" rel="noopener">
+          Conferma su WhatsApp <span class="btnIco">✓</span>
+        </a>
+
+        <div class="footer">
+          <div class="footerInner">
+            <div class="footerSmall">Con amore,</div>
+            <div class="footerNames">Vincenzo &amp; Maria Giovanna</div>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="container">
-        <p class="footer__line">Vincenzo &amp; Maria Giovanna — 31.07.2026</p>
-        <a class="link" href="#top">Torna su</a>
-      </div>
-    </footer>
   </main>
 
-  <script src="./script.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
