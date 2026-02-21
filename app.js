@@ -2,6 +2,8 @@
   const envelope = document.getElementById("envelope");
   const openHint = document.getElementById("openHint");
   const startScroll = document.getElementById("startScroll");
+  const pages = document.getElementById("pages");
+  const snap = document.getElementById("snap");
 
   function openEnvelope(e) {
     e?.preventDefault?.();
@@ -13,13 +15,12 @@
     if (openHint) openHint.style.display = "none";
   }
 
-  // Bottone: click + touch
+  // click/touch su bottone e busta
   if (openHint) {
     openHint.addEventListener("click", openEnvelope, { passive: false });
     openHint.addEventListener("touchstart", openEnvelope, { passive: false });
   }
 
-  // Busta: click + touch + tastiera
   if (envelope) {
     envelope.addEventListener("click", openEnvelope, { passive: false });
     envelope.addEventListener("touchstart", openEnvelope, { passive: false });
@@ -28,18 +29,30 @@
     });
   }
 
-  // Scorri al contenuto
+  // 🔥 “Scorri” sulla lettera: mostra pagine e vai all’invito
   if (startScroll) {
-    startScroll.addEventListener("click", () => {
-      document.getElementById("invite")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    startScroll.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-      document.getElementById("invite")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, { passive: false });
+    const go = (e) => {
+      e?.preventDefault?.();
+
+      // mostra pagine, nasconde stage via CSS
+      document.body.classList.add("showPages");
+
+      // porta lo scroll all’inizio delle pagine
+      requestAnimationFrame(() => {
+        // reset scroll top
+        if (snap) snap.scrollTop = 0;
+
+        // vai a invito
+        const invite = document.getElementById("invite");
+        invite?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    };
+
+    startScroll.addEventListener("click", go, { passive: false });
+    startScroll.addEventListener("touchstart", go, { passive: false });
   }
 
-  // Card click -> maps
+  // card click -> maps
   document.querySelectorAll(".eventLink").forEach(card => {
     card.addEventListener("click", (e) => {
       if (e.target.closest("a")) return;
