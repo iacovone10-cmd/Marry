@@ -1,193 +1,77 @@
-// ====== CONFIG (personalizza qui) ======
-const CONFIG = {
-  // Data/ora matrimonio (Europe/Rome)
-  weddingISO: "2026-07-31T10:30:00+02:00",
-
-  // Link Google Maps (sostituisci con i tuoi)
-  mapsChiesa: "https://www.google.com/maps?q=Chiesa+Maria+SS.+Immacolata",
-  mapsLocation: "https://www.google.com/maps?q=Il+Gabbiano",
-
-  // WhatsApp (metti il tuo numero in formato internazionale, senza + e spazi)
-  whatsappNumber: "39INSERISCI_NUMERO",
-
-  // Link regalo / upload (metti i link reali anche negli input in pagina)
-  giftLink: "https://INSERISCI-QUI-IL-TUO-LINK",
-  photoLink: "https://INSERISCI-QUI-LINK-UPLOAD",
-
-  coupleNames: "Vincenzo e Maria Giovanna",
-};
-
-function pad2(n){ return String(n).padStart(2, "0"); }
-
-// ====== Smooth scroll from hero hint ======
-function setupScrollHint(){
-  const hint = document.querySelector("[data-scroll]");
-  if(!hint) return;
-
-  const go = () => {
-    const targetSel = hint.getAttribute("data-scroll");
-    const el = document.querySelector(targetSel);
-    if(el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  hint.addEventListener("click", go);
-  hint.addEventListener("keydown", (e) => {
-    if(e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
-  });
-}
-
-// ====== Reveal on scroll ======
-function setupReveal(){
-  const els = document.querySelectorAll(".reveal");
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => {
-      if(en.isIntersecting){
-        en.target.classList.add("is-visible");
-        io.unobserve(en.target);
-      }
+(() => {
+  // Click su tutta la card (Maps)
+  document.querySelectorAll(".eventLink").forEach(card => {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      const href = card.getAttribute("data-href");
+      if (href) window.open(href, "_blank", "noopener");
     });
-  }, { threshold: 0.12 });
+  });
 
-  els.forEach(el => io.observe(el));
-}
+  // Add to calendar (.ics)
+  const addToCalendarBtn = document.getElementById("addToCalendar");
+  const pad = (n) => String(n).padStart(2, "0");
 
-// ====== Countdown ======
-function setupCountdown(){
-  const nodes = {
-    days: document.querySelector('[data-cd="days"]'),
-    hours: document.querySelector('[data-cd="hours"]'),
-    mins: document.querySelector('[data-cd="mins"]'),
-    secs: document.querySelector('[data-cd="secs"]'),
-  };
-
-  const target = new Date(CONFIG.weddingISO);
-
-  function tick(){
-    const now = new Date();
-    let diff = Math.max(0, target - now);
-
-    const sec = Math.floor(diff / 1000);
-    const days = Math.floor(sec / 86400);
-    const hours = Math.floor((sec % 86400) / 3600);
-    const mins = Math.floor((sec % 3600) / 60);
-    const secs = sec % 60;
-
-    if(nodes.days) nodes.days.textContent = days;
-    if(nodes.hours) nodes.hours.textContent = pad2(hours);
-    if(nodes.mins) nodes.mins.textContent = pad2(mins);
-    if(nodes.secs) nodes.secs.textContent = pad2(secs);
+  function toICSDateUTC(d) {
+    const dt = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+    return (
+      dt.getUTCFullYear() +
+      pad(dt.getUTCMonth() + 1) +
+      pad(dt.getUTCDate()) + "T" +
+      pad(dt.getUTCHours()) +
+      pad(dt.getUTCMinutes()) +
+      pad(dt.getUTCSeconds()) + "Z"
+    );
   }
 
-  tick();
-  setInterval(tick, 1000);
-}
+  function downloadICS() {
+    const startLocal = new Date(2026, 6, 31, 10, 30, 0);
+    const endLocal   = new Date(2026, 6, 31, 18, 30, 0);
 
-// ====== Maps links + inputs ======
-function setupLinks(){
-  const aChiesa = document.getElementById("mapsChiesa");
-  const aLoc = document.getElementById("mapsLocation");
-  if(aChiesa) aChiesa.href = CONFIG.mapsChiesa;
-  if(aLoc) aLoc.href = CONFIG.mapsLocation;
+    const dtStart = toICSDateUTC(startLocal);
+    const dtEnd   = toICSDateUTC(endLocal);
 
-  const giftInput = document.getElementById("giftLink");
-  const photoInput = document.getElementById("photoLink");
-  const photoBtn = document.getElementById("photoBtn");
+    const title = "Matrimonio Vincenzo & Maria Giovanna";
+    const location = "Chiesa Maria SS. Immacolata (Marano di Napoli) · Il Gabbiano (Bacoli)";
+    const description = "Cerimonia ore 10:30. Ricevimento ore 14:00. Conferma entro 31 maggio.";
 
-  if(giftInput) giftInput.value = CONFIG.giftLink;
-  if(photoInput) photoInput.value = CONFIG.photoLink;
-  if(photoBtn) photoBtn.href = CONFIG.photoLink;
-
-  const giftBtn = document.getElementById("giftBtn");
-  if(giftBtn){
-    giftBtn.addEventListener("click", () => window.open(CONFIG.giftLink, "_blank", "noopener"));
-  }
-}
-
-// ====== Copy buttons ======
-function setupCopy(){
-  document.querySelectorAll("[data-copy]").forEach(btn => {
-    btn.addEventListener("click", async () => {
-      const sel = btn.getAttribute("data-copy");
-      const input = document.querySelector(sel);
-      if(!input) return;
-
-      try{
-        await navigator.clipboard.writeText(input.value);
-        const old = btn.textContent;
-        btn.textContent = "Copiato ✓";
-        setTimeout(() => (btn.textContent = old), 1100);
-      }catch{
-        // fallback
-        input.select();
-        document.execCommand("copy");
-      }
-    });
-  });
-}
-
-// ====== RSVP WhatsApp ======
-function setupRSVP(){
-  document.querySelectorAll("[data-rsvp]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const ans = btn.getAttribute("data-rsvp"); // SI / NO
-      const msg = `Ciao! Confermo: ${ans}. Matrimonio ${CONFIG.coupleNames} — 31/07/2026.`;
-      const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-      window.open(url, "_blank", "noopener");
-    });
-  });
-}
-
-// ====== Add to Calendar (.ics) ======
-function setupICS(){
-  const btn = document.querySelector("[data-ical]");
-  if(!btn) return;
-
-  btn.addEventListener("click", () => {
-    const start = new Date(CONFIG.weddingISO);
-    const end = new Date(start.getTime() + 60 * 60 * 1000); // 1h (modifica se vuoi)
-
-    const toICS = (d) => {
-      const yyyy = d.getUTCFullYear();
-      const mm = pad2(d.getUTCMonth() + 1);
-      const dd = pad2(d.getUTCDate());
-      const hh = pad2(d.getUTCHours());
-      const mi = pad2(d.getUTCMinutes());
-      const ss = pad2(d.getUTCSeconds());
-      return `${yyyy}${mm}${dd}T${hh}${mi}${ss}Z`;
-    };
+    const uid = `marry-${Date.now()}@githubpages`;
 
     const ics =
 `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Invito Digitale//IT
+PRODID:-//Marry Invite//IT
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:${Date.now()}@invito
-DTSTAMP:${toICS(new Date())}
-DTSTART:${toICS(start)}
-DTEND:${toICS(end)}
-SUMMARY:Matrimonio ${CONFIG.coupleNames}
-LOCATION:${CONFIG.mapsChiesa}
-DESCRIPTION:Inizio cerimonia. Link Maps: ${CONFIG.mapsChiesa}
+UID:${uid}
+DTSTAMP:${toICSDateUTC(new Date())}
+DTSTART:${dtStart}
+DTEND:${dtEnd}
+SUMMARY:${title}
+LOCATION:${location}
+DESCRIPTION:${description}
 END:VEVENT
 END:VCALENDAR`;
 
-    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const icsFixed = ics.replace(/\n/g, "\r\n");
+    const blob = new Blob([icsFixed], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "matrimonio.ics";
+    a.href = url;
+    a.download = "matrimonio_vincenzo_maria_giovanna.ics";
     document.body.appendChild(a);
     a.click();
     a.remove();
-  });
-}
 
-// ====== Init ======
-setupScrollHint();
-setupReveal();
-setupCountdown();
-setupLinks();
-setupCopy();
-setupRSVP();
-setupICS();
+    setTimeout(() => URL.revokeObjectURL(url), 500);
+  }
+
+  if (addToCalendarBtn) {
+    addToCalendarBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      downloadICS();
+    });
+  }
+})();
