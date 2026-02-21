@@ -1,165 +1,193 @@
-(() => {
-  const envelope = document.getElementById("envelope");
-  const openHint = document.getElementById("openHint");
-  const goDown = document.getElementById("goDown");
-  const scrollTip = document.getElementById("scrollTip");
-  const sparkles = document.getElementById("sparkles");
+// ====== CONFIG (personalizza qui) ======
+const CONFIG = {
+  // Data/ora matrimonio (Europe/Rome)
+  weddingISO: "2026-07-31T10:30:00+02:00",
 
-  function makeSparkles() {
-    if (!sparkles) return;
-    sparkles.innerHTML = "";
-    sparkles.classList.add("on");
+  // Link Google Maps (sostituisci con i tuoi)
+  mapsChiesa: "https://www.google.com/maps?q=Chiesa+Maria+SS.+Immacolata",
+  mapsLocation: "https://www.google.com/maps?q=Il+Gabbiano",
 
-    // 14 particelle
-    for (let i = 0; i < 14; i++) {
-      const s = document.createElement("span");
-      s.className = "spark";
+  // WhatsApp (metti il tuo numero in formato internazionale, senza + e spazi)
+  whatsappNumber: "39INSERISCI_NUMERO",
 
-      // attorno al sigillo (centro)
-      const baseX = 50;
-      const baseY = 48;
+  // Link regalo / upload (metti i link reali anche negli input in pagina)
+  giftLink: "https://INSERISCI-QUI-IL-TUO-LINK",
+  photoLink: "https://INSERISCI-QUI-LINK-UPLOAD",
 
-      // dx/dy random
-      const dx = (Math.random() * 260 - 130).toFixed(0) + "px";
-      const dy = (Math.random() * 220 - 110).toFixed(0) + "px";
+  coupleNames: "Vincenzo e Maria Giovanna",
+};
 
-      s.style.left = baseX + "%";
-      s.style.top = baseY + "%";
-      s.style.setProperty("--dx", dx);
-      s.style.setProperty("--dy", dy);
+function pad2(n){ return String(n).padStart(2, "0"); }
 
-      sparkles.appendChild(s);
-    }
+// ====== Smooth scroll from hero hint ======
+function setupScrollHint(){
+  const hint = document.querySelector("[data-scroll]");
+  if(!hint) return;
 
-    // spegni dopo 1s
-    setTimeout(() => {
-      sparkles.classList.remove("on");
-      sparkles.innerHTML = "";
-    }, 1100);
-  }
+  const go = () => {
+    const targetSel = hint.getAttribute("data-scroll");
+    const el = document.querySelector(targetSel);
+    if(el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
-  function openEnvelope() {
-    if (!envelope) return;
-    envelope.classList.add("is-open");
-
-    // mostra il resto: niente “tutto insieme” prima
-    document.body.classList.add("opened");
-
-    // nascondi hint iniziale
-    if (openHint) openHint.style.display = "none";
-
-    // “Scorri” solo dopo apertura
-    if (scrollTip) {
-      scrollTip.classList.add("is-visible");
-      scrollTip.setAttribute("aria-hidden", "false");
-    }
-
-    // WOW: sparkles
-    makeSparkles();
-  }
-
-  if (openHint) openHint.addEventListener("click", (e) => {
-    e.preventDefault();
-    openEnvelope();
+  hint.addEventListener("click", go);
+  hint.addEventListener("keydown", (e) => {
+    if(e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
   });
+}
 
-  if (envelope) {
-    envelope.addEventListener("click", openEnvelope);
-    envelope.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") openEnvelope();
+// ====== Reveal on scroll ======
+function setupReveal(){
+  const els = document.querySelectorAll(".reveal");
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        en.target.classList.add("is-visible");
+        io.unobserve(en.target);
+      }
     });
+  }, { threshold: 0.12 });
+
+  els.forEach(el => io.observe(el));
+}
+
+// ====== Countdown ======
+function setupCountdown(){
+  const nodes = {
+    days: document.querySelector('[data-cd="days"]'),
+    hours: document.querySelector('[data-cd="hours"]'),
+    mins: document.querySelector('[data-cd="mins"]'),
+    secs: document.querySelector('[data-cd="secs"]'),
+  };
+
+  const target = new Date(CONFIG.weddingISO);
+
+  function tick(){
+    const now = new Date();
+    let diff = Math.max(0, target - now);
+
+    const sec = Math.floor(diff / 1000);
+    const days = Math.floor(sec / 86400);
+    const hours = Math.floor((sec % 86400) / 3600);
+    const mins = Math.floor((sec % 3600) / 60);
+    const secs = sec % 60;
+
+    if(nodes.days) nodes.days.textContent = days;
+    if(nodes.hours) nodes.hours.textContent = pad2(hours);
+    if(nodes.mins) nodes.mins.textContent = pad2(mins);
+    if(nodes.secs) nodes.secs.textContent = pad2(secs);
   }
 
-  // Scroll to invite section
-  if (goDown) {
-    goDown.addEventListener("click", () => {
-      const invite = document.getElementById("invite");
-      if (invite) invite.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }
+  tick();
+  setInterval(tick, 1000);
+}
 
-  // Click su tutta la card (Maps)
-  document.querySelectorAll(".eventLink").forEach(card => {
-    card.addEventListener("click", (e) => {
-      if (e.target.closest("a")) return;
-      const href = card.getAttribute("data-href");
-      if (href) window.open(href, "_blank", "noopener");
+// ====== Maps links + inputs ======
+function setupLinks(){
+  const aChiesa = document.getElementById("mapsChiesa");
+  const aLoc = document.getElementById("mapsLocation");
+  if(aChiesa) aChiesa.href = CONFIG.mapsChiesa;
+  if(aLoc) aLoc.href = CONFIG.mapsLocation;
+
+  const giftInput = document.getElementById("giftLink");
+  const photoInput = document.getElementById("photoLink");
+  const photoBtn = document.getElementById("photoBtn");
+
+  if(giftInput) giftInput.value = CONFIG.giftLink;
+  if(photoInput) photoInput.value = CONFIG.photoLink;
+  if(photoBtn) photoBtn.href = CONFIG.photoLink;
+
+  const giftBtn = document.getElementById("giftBtn");
+  if(giftBtn){
+    giftBtn.addEventListener("click", () => window.open(CONFIG.giftLink, "_blank", "noopener"));
+  }
+}
+
+// ====== Copy buttons ======
+function setupCopy(){
+  document.querySelectorAll("[data-copy]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const sel = btn.getAttribute("data-copy");
+      const input = document.querySelector(sel);
+      if(!input) return;
+
+      try{
+        await navigator.clipboard.writeText(input.value);
+        const old = btn.textContent;
+        btn.textContent = "Copiato ✓";
+        setTimeout(() => (btn.textContent = old), 1100);
+      }catch{
+        // fallback
+        input.select();
+        document.execCommand("copy");
+      }
     });
   });
+}
 
-  // Add to calendar (.ics) – opzionale (lo lasciamo)
-  const addToCalendarBtn = document.getElementById("addToCalendar");
-  const pad = (n) => String(n).padStart(2, "0");
+// ====== RSVP WhatsApp ======
+function setupRSVP(){
+  document.querySelectorAll("[data-rsvp]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const ans = btn.getAttribute("data-rsvp"); // SI / NO
+      const msg = `Ciao! Confermo: ${ans}. Matrimonio ${CONFIG.coupleNames} — 31/07/2026.`;
+      const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank", "noopener");
+    });
+  });
+}
 
-  function toICSDateUTC(d) {
-    const dt = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
-    return (
-      dt.getUTCFullYear() +
-      pad(dt.getUTCMonth() + 1) +
-      pad(dt.getUTCDate()) + "T" +
-      pad(dt.getUTCHours()) +
-      pad(dt.getUTCMinutes()) +
-      pad(dt.getUTCSeconds()) + "Z"
-    );
-  }
+// ====== Add to Calendar (.ics) ======
+function setupICS(){
+  const btn = document.querySelector("[data-ical]");
+  if(!btn) return;
 
-  function downloadICS() {
-    const startLocal = new Date(2026, 6, 31, 10, 30, 0);
-    const endLocal   = new Date(2026, 6, 31, 18, 30, 0);
+  btn.addEventListener("click", () => {
+    const start = new Date(CONFIG.weddingISO);
+    const end = new Date(start.getTime() + 60 * 60 * 1000); // 1h (modifica se vuoi)
 
-    const dtStart = toICSDateUTC(startLocal);
-    const dtEnd   = toICSDateUTC(endLocal);
-
-    const title = "Matrimonio Vincenzo & Maria Giovanna";
-    const location = "Chiesa Maria SS. Immacolata (Marano di Napoli) · Il Gabbiano (Bacoli)";
-    const description = "Cerimonia ore 10:30. Ricevimento ore 14:00. Conferma entro 31 maggio.";
-
-    const uid = `marry-${Date.now()}@githubpages`;
+    const toICS = (d) => {
+      const yyyy = d.getUTCFullYear();
+      const mm = pad2(d.getUTCMonth() + 1);
+      const dd = pad2(d.getUTCDate());
+      const hh = pad2(d.getUTCHours());
+      const mi = pad2(d.getUTCMinutes());
+      const ss = pad2(d.getUTCSeconds());
+      return `${yyyy}${mm}${dd}T${hh}${mi}${ss}Z`;
+    };
 
     const ics =
 `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Marry Invite//IT
+PRODID:-//Invito Digitale//IT
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:${uid}
-DTSTAMP:${toICSDateUTC(new Date())}
-DTSTART:${dtStart}
-DTEND:${dtEnd}
-SUMMARY:${title}
-LOCATION:${location}
-DESCRIPTION:${description}
+UID:${Date.now()}@invito
+DTSTAMP:${toICS(new Date())}
+DTSTART:${toICS(start)}
+DTEND:${toICS(end)}
+SUMMARY:Matrimonio ${CONFIG.coupleNames}
+LOCATION:${CONFIG.mapsChiesa}
+DESCRIPTION:Inizio cerimonia. Link Maps: ${CONFIG.mapsChiesa}
 END:VEVENT
 END:VCALENDAR`;
 
-    const icsFixed = ics.replace(/\n/g, "\r\n");
-    const blob = new Blob([icsFixed], { type: "text/calendar;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
     const a = document.createElement("a");
-    a.href = url;
-    a.download = "matrimonio_vincenzo_maria_giovanna.ics";
+    a.href = URL.createObjectURL(blob);
+    a.download = "matrimonio.ics";
     document.body.appendChild(a);
     a.click();
     a.remove();
+  });
+}
 
-    setTimeout(() => URL.revokeObjectURL(url), 500);
-  }
-
-  if (addToCalendarBtn) {
-    addToCalendarBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      downloadICS();
-    });
-  }
-
-  // Animazioni “WOW” quando entri in ogni pagina
-  const io = new IntersectionObserver((entries) => {
-    for (const ent of entries) {
-      if (ent.isIntersecting) ent.target.classList.add("in-view");
-    }
-  }, { threshold: 0.18 });
-
-  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-})();
+// ====== Init ======
+setupScrollHint();
+setupReveal();
+setupCountdown();
+setupLinks();
+setupCopy();
+setupRSVP();
+setupICS();
