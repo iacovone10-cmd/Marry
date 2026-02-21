@@ -1,1 +1,463 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Marry • Invito</title>
+  <meta name="theme-color" content="#0E7EA6" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --teal:#0E7EA6;
+      --powder:#1A87B5;
+      --shadow: 0 22px 70px rgba(10,20,36,.18);
+      --r: 26px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: var(--powder);
+      overflow:hidden;
+      background:#EAF6FF;
+    }
+
+    /* background */
+    .bg{
+      position:fixed; inset:0; z-index:-3;
+      background:
+        radial-gradient(900px 520px at 20% 10%, rgba(127,189,235,.98), rgba(127,189,235,.10) 60%),
+        radial-gradient(800px 520px at 82% 20%, rgba(207,239,255,.98), rgba(207,239,255,.08) 62%),
+        radial-gradient(1000px 700px at 40% 92%, rgba(74,163,224,.50), rgba(74,163,224,0) 60%),
+        linear-gradient(180deg, #EAF6FF, #D8F0FF 55%, #EAF6FF);
+    }
+    .grain{
+      position:fixed; inset:0; z-index:-2; pointer-events:none;
+      background-image: radial-gradient(rgba(0,0,0,.10) 1px, transparent 1px);
+      background-size: 3px 3px;
+      opacity:.10;
+      mix-blend-mode: overlay;
+    }
+
+    /* ✅ VERSION badge: NON deve bloccare i tocchi */
+    .versionBadge{
+      position: fixed;
+      left: 10px; top: 10px;
+      z-index: 9999;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 12px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(255,255,255,.92);
+      color: var(--powder);
+      box-shadow: 0 10px 22px rgba(10,20,36,.12);
+      pointer-events: none; /* 🔥 */
+    }
+
+    /* Stage overlay */
+    .stage{
+      position: fixed;
+      inset: 0;
+      display:grid;
+      place-items:center;
+      padding: 18px 14px;
+      z-index: 50;
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    body.showPages .stage{
+      opacity: 0;
+      transform: scale(.98);
+      pointer-events:none;
+    }
+
+    .openHint{
+      position:absolute;
+      top: 12px;
+      z-index: 60;
+      border:0;
+      cursor:pointer;
+      font-weight: 900;
+      letter-spacing:.02em;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(255,255,255,.92);
+      box-shadow: 0 16px 40px rgba(10,20,36,.10);
+      color: var(--powder);
+      touch-action: manipulation;
+    }
+
+    .stageStack{
+      width: min(92vw, 520px);
+      height: min(70vh, 560px);
+      position: relative;
+    }
+
+    /* Envelope */
+    .envelopeRef{
+      position:absolute;
+      inset:0;
+      border-radius: 18px;
+      background: var(--teal);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      border: 3px solid rgba(255,255,255,.40);
+      touch-action: manipulation;
+      cursor: pointer;
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    body.opened .envelopeRef{
+      opacity: 0;
+      transform: scale(.985);
+      pointer-events:none;
+    }
+
+    .envTextTop{
+      position:absolute;
+      top: 18%;
+      left:0; right:0;
+      text-align:center;
+      font-weight: 900;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 10px 22px rgba(0,0,0,.18);
+      z-index: 5;
+      pointer-events:none;
+      transition: opacity .25s ease;
+    }
+    .envelopeRef.is-open .envTextTop{ opacity: 0; }
+
+    .envSeam{
+      position:absolute;
+      top:0; bottom:0;
+      left:50%;
+      width: 3px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.28);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.08);
+      z-index: 2;
+      pointer-events:none;
+    }
+    .envSeal{
+      position:absolute;
+      left:50%;
+      top: 45%;
+      transform: translate(-50%,-50%);
+      z-index: 6;
+      pointer-events:none;
+    }
+    .sealDisk{
+      width: 86px;
+      height: 86px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.95);
+      box-shadow: 0 18px 38px rgba(10,20,36,.20);
+      display:grid;
+      place-items:center;
+      position: relative;
+      overflow:hidden;
+    }
+    .sealMono{
+      font-family: "Pristina","Allura",cursive;
+      font-size: 34px;
+      color: var(--powder);
+    }
+    .heart{ color:#2a8fca; }
+
+    .sealGlow{
+      position:absolute;
+      inset:-60%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), transparent 55%);
+      opacity:0;
+      filter: blur(2px);
+      pointer-events:none;
+    }
+    body.opened .sealGlow{ animation: glow 900ms ease-out 1; }
+    @keyframes glow{
+      0%{ opacity:0; transform: scale(.95); }
+      20%{ opacity:.85; }
+      100%{ opacity:0; transform: scale(1.2); }
+    }
+
+    .envFlap{
+      position:absolute;
+      left:0; right:0; top:0;
+      height: 56%;
+      background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.05));
+      clip-path: polygon(0 0, 100% 0, 50% 72%);
+      transform-origin: top center;
+      transform: rotateX(0deg);
+      transition: transform .9s cubic-bezier(.2,.9,.2,1);
+      z-index: 4;
+      pointer-events:none;
+    }
+    .envDoor{
+      position:absolute;
+      top:0; bottom:0;
+      width:50%;
+      background: rgba(255,255,255,.06);
+      transition: transform .85s cubic-bezier(.2,.9,.2,1);
+      z-index: 3;
+      pointer-events:none;
+    }
+    .envDoorL{ left:0; border-right:1px solid rgba(0,0,0,.20); }
+    .envDoorR{ right:0; border-left:1px solid rgba(0,0,0,.20); }
+    .envelopeRef.is-open .envFlap{ transform: rotateX(165deg); }
+    .envelopeRef.is-open .envDoorL{ transform: translateX(-12%); }
+    .envelopeRef.is-open .envDoorR{ transform: translateX(12%); }
+
+    /* sparkles */
+    .sparkles{ position:absolute; inset:0; pointer-events:none; opacity:0; }
+    .sparkles.on{ opacity:1; }
+    .spark{
+      position:absolute;
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 0 18px rgba(127,189,235,.75);
+      animation: pop 900ms ease-out forwards;
+    }
+    @keyframes pop{
+      0%{ transform: translate(0,0) scale(.6); opacity:0; }
+      20%{ opacity:1; }
+      100%{ transform: translate(var(--dx), var(--dy)) scale(0); opacity:0; }
+    }
+
+    /* paper */
+    .paperCard{
+      position:absolute;
+      inset:0;
+      border-radius: 18px;
+      background: rgba(255,255,255,.94);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      border: 3px solid rgba(255,255,255,.40);
+      opacity:0;
+      transform: translateY(18px) scale(.98);
+      pointer-events:none;
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    body.opened .paperCard{
+      opacity:1;
+      transform: translateY(0) scale(1);
+      pointer-events:auto;
+    }
+    .paperInner{
+      position:absolute; inset:0;
+      display:grid;
+      place-items:center;
+      padding: 18px;
+      text-align:center;
+    }
+    .scriptName{
+      font-family: "Pristina","Allura",cursive;
+      font-size: 54px;
+      line-height: 1.05;
+      color: var(--powder);
+    }
+    .scriptAnd{
+      font-family: "Pristina","Allura",cursive;
+      font-size: 40px;
+      color: rgba(26,135,181,.85);
+      margin: 6px 0;
+    }
+    .afterOpen{ margin-top: 14px; }
+
+    /* pages */
+    .pages{
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    body.showPages .pages{
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .snap{
+      height: 100svh;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .screen{
+      min-height: 100svh;
+      display:grid;
+      place-items:center;
+      padding: 18px 14px;
+      scroll-snap-align: start;
+    }
+    .card{
+      width:min(980px, 94vw);
+      border-radius: calc(var(--r) + 12px);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.92);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .btn{
+      border:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:999px;
+      font-weight:950;
+      letter-spacing:.02em;
+      user-select:none;
+    }
+    .btnGhost{
+      color: rgba(26,135,181,.95);
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(255,255,255,.92);
+      box-shadow: 0 14px 36px rgba(10,20,36,.10);
+    }
+    .btnIco{
+      width:26px; height:26px;
+      display:grid; place-items:center;
+      border-radius:12px;
+      background: rgba(255,255,255,.64);
+      border: 1px solid rgba(255,255,255,.92);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="versionBadge">VERSIONE 2026-02-21 16:30 (INLINE JS)</div>
+
+  <section class="stage" id="stage">
+    <button class="openHint" id="openHint" type="button"
+      onclick="window.__openEnvelope && window.__openEnvelope(event)">
+      Tocca la busta per aprire ✨
+    </button>
+
+    <div class="stageStack">
+      <div class="envelopeRef" id="envelope" role="button" tabindex="0"
+        onclick="window.__openEnvelope && window.__openEnvelope(event)">
+        <div class="envTextTop" id="envTopText">Scorri verso il basso</div>
+        <div class="envSeam"></div>
+
+        <div class="envSeal">
+          <div class="sealDisk">
+            <div class="sealMono">V<span class="heart">♥</span>M</div>
+            <div class="sealGlow"></div>
+          </div>
+        </div>
+
+        <div class="envFlap"></div>
+        <div class="envDoor envDoorL"></div>
+        <div class="envDoor envDoorR"></div>
+
+        <div class="sparkles" id="sparkles"></div>
+      </div>
+
+      <div class="paperCard" id="paper">
+        <div class="paperInner">
+          <div>
+            <div class="scriptName">Vincenzo</div>
+            <div class="scriptAnd">&amp;</div>
+            <div class="scriptName">Maria Giovanna</div>
+          </div>
+          <div class="afterOpen">
+            <button class="btn btnGhost" id="startScroll" type="button"
+              onclick="window.__goPages && window.__goPages(event)">
+              Scorri <span class="btnIco">↓</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAGES (minime per ora, puoi rimettere le tue dopo) -->
+  <main class="pages" id="pages">
+    <div class="snap" id="snap">
+      <section class="screen" id="invite">
+        <div class="card">
+          <div style="font-weight:900;letter-spacing:.2em;font-size:12px;">INVITO</div>
+          <h2 style="margin:10px 0 6px;font-family:Fraunces,serif;color:#1A87B5;">Vincenzo &amp; Maria Giovanna</h2>
+          <p style="margin:0;font-weight:800;color:#1A87B5;">Cerimonia 10:30 • Ristorante 14:00</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // ✅ JS INLINE: garantito
+    (function(){
+      const envelope = document.getElementById("envelope");
+      const openHint = document.getElementById("openHint");
+      const startScroll = document.getElementById("startScroll");
+      const sparkles = document.getElementById("sparkles");
+      const snap = document.getElementById("snap");
+
+      function makeSparkles(){
+        if(!sparkles) return;
+        sparkles.innerHTML = "";
+        sparkles.classList.add("on");
+        for(let i=0;i<14;i++){
+          const s=document.createElement("span");
+          s.className="spark";
+          s.style.left="50%";
+          s.style.top="45%";
+          const dx=(Math.random()*260-130).toFixed(0)+"px";
+          const dy=(Math.random()*220-110).toFixed(0)+"px";
+          s.style.setProperty("--dx", dx);
+          s.style.setProperty("--dy", dy);
+          sparkles.appendChild(s);
+        }
+        setTimeout(()=>{ sparkles.classList.remove("on"); sparkles.innerHTML=""; }, 1100);
+      }
+
+      function openEnvelope(e){
+        e && e.preventDefault && e.preventDefault();
+        envelope && envelope.classList.add("is-open");
+        document.body.classList.add("opened");
+        if(openHint) openHint.style.display="none";
+        makeSparkles();
+      }
+
+      function goPages(e){
+        e && e.preventDefault && e.preventDefault();
+        document.body.classList.add("showPages");
+        requestAnimationFrame(()=>{
+          if(snap) snap.scrollTop = 0;
+          const invite = document.getElementById("invite");
+          invite && invite.scrollIntoView({behavior:"smooth", block:"start"});
+        });
+      }
+
+      // Export fallback
+      window.__openEnvelope = openEnvelope;
+      window.__goPages = goPages;
+
+      // Add listeners (click + touch)
+      const addTap = (el, fn) => {
+        if(!el) return;
+        el.addEventListener("click", fn, {passive:false});
+        el.addEventListener("touchstart", fn, {passive:false});
+      };
+      addTap(openHint, openEnvelope);
+      addTap(envelope, openEnvelope);
+      addTap(startScroll, goPages);
+    })();
+  </script>
+
+  <!-- app.js esterno (facoltativo) -->
+  <script src="./app.js?v=20260221-1630"></script>
+</body>
+</html>
