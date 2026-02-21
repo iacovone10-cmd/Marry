@@ -5,11 +5,7 @@ const CONFIG = {
   mapsChiesa: "https://maps.app.goo.gl/AxMDmZrY5AV3fbye6",
   mapsLocation: "https://maps.app.goo.gl/tg9SrnP2t5sffd3w5",
 
-  // (se vuoi, qui metti via/città precise; altrimenti lascia così)
-  chiesaDetails: "Apri su Maps per indicazioni e dettagli",
-  venueDetails: "Apri su Maps per indicazioni e dettagli",
-
-  // WhatsApp in formato internazionale senza + (es: 393331112233)
+  // WhatsApp senza + (es: 393331112233)
   whatsappNumber: "39INSERISCI_NUMERO",
 
   giftLink: "https://INSERISCI-QUI-IL-TUO-LINK",
@@ -40,17 +36,23 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 els.forEach(el=>io.observe(el));
 
-// maps + details + links
+// set links
 const aChiesa = document.getElementById("mapsChiesa");
 const aLoc = document.getElementById("mapsLocation");
 if(aChiesa) aChiesa.href = CONFIG.mapsChiesa;
 if(aLoc) aLoc.href = CONFIG.mapsLocation;
 
-const chiesaDet = document.getElementById("chiesaDetails");
-const venueDet = document.getElementById("venueDetails");
-if(chiesaDet) chiesaDet.textContent = CONFIG.chiesaDetails;
-if(venueDet) venueDet.textContent = CONFIG.venueDetails;
+// show the links as “details” (no scraping)
+const chiesaName = document.getElementById("chiesaName");
+const venueName = document.getElementById("venueName");
+const chiesaDetails = document.getElementById("chiesaDetails");
+const venueDetails = document.getElementById("venueDetails");
+if(chiesaName) chiesaName.textContent = "Maria SS. Immacolata";
+if(venueName) venueName.textContent = "Il Gabbiano";
+if(chiesaDetails) chiesaDetails.textContent = "Apri su Maps per indirizzo e indicazioni";
+if(venueDetails) venueDetails.textContent = "Apri su Maps per indirizzo e indicazioni";
 
+// gift/photo inputs
 const giftInput = document.getElementById("giftLink");
 const photoInput = document.getElementById("photoLink");
 if(giftInput) giftInput.value = CONFIG.giftLink;
