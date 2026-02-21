@@ -15,6 +15,38 @@ body{
   overflow:hidden;
 }
 
+.versionBadge{
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  z-index: 9999;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  background: rgba(255,255,255,.75);
+  border: 1px solid rgba(255,255,255,.92);
+  color: var(--powder);
+  box-shadow: 0 10px 22px rgba(10,20,36,.12);
+}
+
+/* background */
+.bg{
+  position:fixed; inset:0; z-index:-3;
+  background:
+    radial-gradient(900px 520px at 20% 10%, rgba(127,189,235,.98), rgba(127,189,235,.10) 60%),
+    radial-gradient(800px 520px at 82% 20%, rgba(207,239,255,.98), rgba(207,239,255,.08) 62%),
+    radial-gradient(1000px 700px at 40% 92%, rgba(74,163,224,.50), rgba(74,163,224,0) 60%),
+    linear-gradient(180deg, #EAF6FF, #D8F0FF 55%, #EAF6FF);
+}
+.grain{
+  position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background-image: radial-gradient(rgba(0,0,0,.10) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity:.10;
+  mix-blend-mode: overlay;
+}
+
 /* stage overlay */
 .stage{
   position: fixed;
@@ -31,7 +63,6 @@ body.showPages .stage{
   pointer-events:none;
 }
 
-/* button */
 .openHint{
   position:absolute;
   top: 12px;
@@ -68,8 +99,9 @@ body.showPages .stage{
   touch-action: manipulation;
   transition: opacity .35s ease, transform .35s ease;
 }
+
+/* quando appare la lettera: NASCONDI COMPLETAMENTE la busta */
 body.opened .envelopeRef{
-  /* ✅ la busta sparisce dietro: niente sottosfondo */
   opacity: 0;
   transform: scale(.985);
   pointer-events:none;
@@ -124,7 +156,7 @@ body.opened .envelopeRef{
 }
 .heart{ color:#2a8fca; }
 
-/* glow flash */
+/* WOW glow */
 .sealGlow{
   position:absolute;
   inset:-60%;
@@ -133,9 +165,7 @@ body.opened .envelopeRef{
   filter: blur(2px);
   pointer-events:none;
 }
-body.opened .sealGlow{
-  animation: glow 900ms ease-out 1;
-}
+body.opened .sealGlow{ animation: glow 900ms ease-out 1; }
 @keyframes glow{
   0%{ opacity:0; transform: scale(.95); }
   20%{ opacity:.85; }
@@ -209,11 +239,6 @@ body.opened .paperCard{
   transform: translateY(0) scale(1);
   pointer-events:auto;
 }
-
-.floral{ position:absolute; width:54%; height:54%; opacity:.9; }
-.floralTL{ left:-12%; top:-12%; transform: rotate(-8deg); }
-.floralBR{ right:-12%; bottom:-12%; transform: rotate(-8deg); }
-
 .paperInner{
   position:absolute; inset:0;
   display:grid;
@@ -233,9 +258,8 @@ body.opened .paperCard{
   color: rgba(26,135,181,.85);
   margin: 6px 0;
 }
-.afterOpen{ margin-top: 14px; }
 
-/* pages container */
+/* pages */
 .pages{
   position: fixed;
   inset: 0;
@@ -248,22 +272,19 @@ body.showPages .pages{
   opacity: 1;
   pointer-events: auto;
 }
-
 .snap{
   height: 100svh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
 }
-.snap .screen{
+.screen{
   min-height: 100svh;
   display:grid;
   place-items:center;
   padding: 18px 14px;
   scroll-snap-align: start;
 }
-
-/* cards */
 .card{
   width:min(980px, 94vw);
   border-radius: calc(var(--r) + 12px);
@@ -291,12 +312,9 @@ body.showPages .pages{
   font-size: 38px;
   color:#1A87B5;
 }
-.amp2{ opacity:.72; }
 .heroLead{ margin: 0 0 14px; font-weight: 750; opacity:.92; color:#1A87B5; }
-
 .eventGrid{ display:grid; grid-template-columns: 1fr; gap: 12px; margin-top:10px; }
 @media (min-width: 780px){ .eventGrid{ grid-template-columns: 1fr 1fr; } }
-
 .eventCard{
   border-radius: 26px;
   background: rgba(255,255,255,.76);
@@ -314,7 +332,7 @@ body.showPages .pages{
   border: 1px solid rgba(74,163,224,.26);
 }
 .eventLabel{ font-weight: 950; color:#1A87B5; }
-.eventMeta{ font-size: 12px; opacity:.84; margin-top:2px; color:#1A87B5; }
+.eventMeta{ font-size: 12px; opacity:.84; color:#1A87B5; }
 .eventName{ margin-top: 10px; font-weight: 950; color:#1A87B5; }
 .eventTime{
   margin-top: 8px;
@@ -341,24 +359,12 @@ body.showPages .pages{
   color:#1A87B5;
   text-decoration:none;
 }
-
 .actionsRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
 
 .pageShell{ text-align:center; }
-.pageTitle{ font-size:34px; font-weight:950; margin-bottom:4px; opacity:.95; color:#1A87B5; }
-.pageHeading{
-  font-family:"Fraunces", serif;
-  font-size:28px;
-  margin:6px 0 10px;
-  color:#1A87B5;
-}
-.pageText{
-  margin:0 auto 14px;
-  max-width:720px;
-  font-weight:750;
-  line-height:1.5;
-  color:#1A87B5;
-}
+.pageTitle{ font-size:34px; font-weight:950; margin-bottom:4px; color:#1A87B5; }
+.pageHeading{ font-family:"Fraunces", serif; font-size:28px; margin:6px 0 10px; color:#1A87B5; }
+.pageText{ margin:0 auto 14px; max-width:720px; font-weight:750; line-height:1.5; color:#1A87B5; }
 .bigIconLink{
   display:inline-flex;
   flex-direction:column;
@@ -372,9 +378,7 @@ body.showPages .pages{
   background: rgba(127,189,235,.20);
   border:1px solid rgba(74,163,224,.26);
   box-shadow: 0 18px 40px rgba(74,163,224,.14);
-  transition: transform .18s ease, filter .18s ease;
 }
-.bigIconLink:hover{ transform: translateY(-2px); filter: brightness(1.02); }
 .bigIconEmoji{ font-size:56px; line-height:1; }
 .iconLabel{ font-weight:950; letter-spacing:.02em; }
 
@@ -389,7 +393,6 @@ body.showPages .pages{
   border-radius:999px;
   font-weight:950;
   letter-spacing:.02em;
-  user-select:none;
 }
 .btnPrimary{
   color: rgba(26,135,181,.98);
