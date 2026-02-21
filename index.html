@@ -2,272 +2,211 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Invito • Vincenzo & Maria Giovanna</title>
-  <meta name="theme-color" content="#7FBDEB" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invito | Vincenzo & Maria Giovanna</title>
+  <meta name="description" content="Invito digitale al matrimonio di Vincenzo e Maria Giovanna — 31 Luglio 2026" />
 
-  <!-- Pristina non è Google Font: se c'è sul device la usa,
-       altrimenti Allura (molto simile) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
-  <div class="bg" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#invito">Vai al contenuto</a>
 
-  <!-- PAGINA 1: BUSTA -->
-  <section class="screen intro" id="intro" aria-label="Busta invito">
-    <div class="envelopeStage">
-      <!-- SOLO QUESTO ALL'INIZIO -->
-      <button class="openHint" id="openHint" type="button" aria-label="Apri busta">
-        Tocca la busta per aprire ✨
-      </button>
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true"></div>
 
-      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri invito">
-        <div class="envBack" aria-hidden="true"></div>
+    <div class="hero__content container">
+      <div class="monogram" aria-label="Monogramma MV">
+        <span>M</span><span>V</span>
+      </div>
 
-        <!-- Ante stile foto -->
-        <div class="envPanel envLeft" aria-hidden="true"></div>
-        <div class="envPanel envRight" aria-hidden="true"></div>
-
-        <!-- Lembo -->
-        <div class="envFlap" aria-hidden="true"></div>
-
-        <!-- Sigillo -->
-        <div class="seal" aria-hidden="true">
-          <div class="sealInner">
-            <div class="sealMono">V<span class="heart">♥</span>M</div>
-          </div>
-          <div class="sealShine" aria-hidden="true"></div>
-        </div>
-
-        <!-- Sparkles WOW -->
-        <div class="sparkles" id="sparkles" aria-hidden="true"></div>
-
-        <!-- Letter: SOLO NOMI -->
-        <div class="letter" id="letter" aria-hidden="true">
-          <div class="letterInner">
-            <div class="namesOnly">
-              <div class="nameLine">Vincenzo</div>
-              <div class="andLine">&amp;</div>
-              <div class="nameLine">Maria Giovanna</div>
-            </div>
-
-            <div class="afterOpenRow">
-              <button class="btn btnGhost" id="goDown" type="button">
-                Scorri <span class="btnIco">↓</span>
-              </button>
-
-              <a class="btn btnPrimary"
-                 href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
-                 target="_blank" rel="noopener">
-                RSVP su WhatsApp <span class="btnIco">✓</span>
-              </a>
-            </div>
-
-            <!-- questo compare SOLO dopo apertura -->
-            <div class="scrollTip" id="scrollTip" aria-hidden="true">Scorri ↓</div>
-          </div>
-        </div>
+      <div class="scroll-hint" role="button" tabindex="0" data-scroll="#invito" aria-label="Scorri verso il basso">
+        <span>Scorri verso il basso</span>
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- CONTENUTO: nascosto finché non apri -->
-  <main class="main" id="main" aria-label="Invito">
-    <!-- PAGINA 2: INVITO -->
-    <section class="screen page" id="invite">
-      <div class="card heroShell reveal">
-        <div class="heroHeader">
-          <div class="badge">INVITO</div>
-          <div class="heroDate">31 Luglio 2026</div>
+  <main id="invito">
+    <!-- NAMES -->
+    <section class="section section--names">
+      <div class="container">
+        <div class="card card--names reveal">
+          <div class="names">
+            <h1 class="names__title">
+              Vincenzo <span class="amp">&amp;</span> <br />
+              Maria Giovanna
+            </h1>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <h2 class="heroTitle">Vincenzo <span class="amp2">&amp;</span> Maria Giovanna</h2>
-        <p class="heroLead">Saremo felici di condividere con voi questa giornata.</p>
+    <!-- ANNOUNCEMENT + DATE -->
+    <section class="section section--date">
+      <div class="container grid">
+        <div class="card reveal">
+          <p class="kicker">Annunciano con grande gioia</p>
+          <h2 class="headline">il loro matrimonio</h2>
 
-        <div class="eventGrid">
-          <!-- CERIMONIA -->
-          <article class="eventCard eventLink"
-                   data-href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6"
-                   aria-label="Apri mappa Chiesa">
-            <div class="eventTop">
-              <div class="iconBox" aria-hidden="true">
-                <!-- Chiesa -->
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                  <path d="M10 4h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                  <path d="M4 10l8-5 8 5" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
-                  <path d="M6 10v10h12V10" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
-                  <path d="M10 20v-5a2 2 0 0 1 4 0v5" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
-                </svg>
+          <div class="date-box" aria-label="Data e ora del matrimonio">
+            <div class="date-box__month">LUGLIO</div>
+            <div class="date-box__row">
+              <div class="date-box__col">
+                <div class="date-box__dow">Venerdì</div>
+                <div class="date-box__time">10:30</div>
               </div>
-              <div>
-                <div class="eventLabel">Cerimonia</div>
-                <div class="eventMeta">Marano di Napoli</div>
+              <div class="date-box__col date-box__col--day">
+                <div class="date-box__day">31</div>
+                <div class="date-box__year">2026</div>
               </div>
             </div>
-            <div class="eventName">Chiesa Maria SS. Immacolata</div>
-            <div class="eventTime">⏰ 10:30</div>
 
-            <a class="mapBtn" href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6" target="_blank" rel="noopener">
-              📍 Apri su Google Maps
-            </a>
-          </article>
-
-          <!-- RICEVIMENTO -->
-          <article class="eventCard eventLink"
-                   data-href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6"
-                   aria-label="Apri mappa Ristorante">
-            <div class="eventTop">
-              <div class="iconBox" aria-hidden="true">
-                <!-- Ristorante -->
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M6 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                  <path d="M4 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                  <path d="M8 2v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                  <path d="M5 10v12" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                  <path d="M14 2v8c0 1.5 1.2 2.7 2.7 2.7H18V22" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M14 6h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div>
-                <div class="eventLabel">Ricevimento</div>
-                <div class="eventMeta">Bacoli</div>
+            <div class="countdown" aria-label="Countdown">
+              <div class="countdown__title">Mancano</div>
+              <div class="countdown__grid" id="countdown">
+                <div class="cd"><span class="cd__n" data-cd="days">--</span><span class="cd__l">giorni</span></div>
+                <div class="cd"><span class="cd__n" data-cd="hours">--</span><span class="cd__l">ore</span></div>
+                <div class="cd"><span class="cd__n" data-cd="mins">--</span><span class="cd__l">min</span></div>
+                <div class="cd"><span class="cd__n" data-cd="secs">--</span><span class="cd__l">sec</span></div>
               </div>
             </div>
-            <div class="eventName">Il Gabbiano</div>
-            <div class="eventTime">⏰ 14:00</div>
-
-            <a class="mapBtn" href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6" target="_blank" rel="noopener">
-              📍 Apri su Google Maps
-            </a>
-          </article>
-        </div>
-
-        <div class="actionsRow">
-          <a class="btn btnPrimary"
-             href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026."
-             target="_blank" rel="noopener">
-            RSVP su WhatsApp <span class="btnIco">✓</span>
-          </a>
-
-          <button class="btn btnGhost" id="addToCalendar" type="button">
-            📅 Aggiungi al calendario
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAGINA 3: REGALO -->
-    <section class="screen page" id="gift">
-      <div class="card pageShell reveal">
-        <div class="pageTitle">🎁</div>
-        <h3 class="pageHeading">Il regalo più bello</h3>
-
-        <p class="pageText">
-          Celebrare insieme questo giorno sarà<br>
-          per noi il dono più bello.<br><br>
-          Ma se desiderate contribuire alla<br>
-          realizzazione dei nostri sogni e progetti<br>
-          futuri potrete farlo cliccando sull’icona<br>
-          di seguito
-        </p>
-
-        <a class="bigIconLink" href="PASTE_GIFT_LINK_HERE" target="_blank" rel="noopener" aria-label="Apri link regalo">
-          <!-- pacco regalo -->
-          <svg viewBox="0 0 24 24" fill="none" class="bigIcon">
-            <path d="M3 10h18v11H3V10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            <path d="M12 10v11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            <path d="M7.5 10c-1.6 0-2.7-1.4-2-2.8.7-1.4 2.7-1.4 4.2-.4L12 8.2l2.3-1.4c1.5-1 3.5-1 4.2.4.7 1.4-.4 2.8-2 2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="iconLabel">Apri il link</span>
-        </a>
-
-        <div class="miniNav">
-          <a class="miniLink" href="#invite">← Invito</a>
-          <a class="miniLink" href="#photos">Foto →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAGINA 4: FOTO -->
-    <section class="screen page" id="photos">
-      <div class="card pageShell reveal">
-        <div class="pageTitle">📸</div>
-        <h3 class="pageHeading">Condividi le foto</h3>
-
-        <p class="pageText">
-          Il giorno del nostro matrimonio sarà<br>
-          ancora più speciale grazie alla vostra<br>
-          presenza...<br><br>
-          Se scatterete delle foto durante la giornata,<br>
-          ci farebbe davvero piacere rivivere quei<br>
-          momenti anche attraverso i vostri occhi.<br><br>
-          Cliccando sull’icona qui sotto, potrete<br>
-          caricare i vostri scatti:<br>
-          ogni foto sarà per noi un prezioso ricordo<br>
-          da custodire
-        </p>
-
-        <a class="bigIconLink" href="PASTE_PHOTO_LINK_HERE" target="_blank" rel="noopener" aria-label="Carica le foto">
-          <!-- fotocamera -->
-          <svg viewBox="0 0 24 24" fill="none" class="bigIcon">
-            <path d="M7 7h3l1-2h2l1 2h3a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M12 18a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M17.6 10.3h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-          <span class="iconLabel">Carica le foto</span>
-        </a>
-
-        <div class="miniNav">
-          <a class="miniLink" href="#gift">← Regalo</a>
-          <a class="miniLink" href="#thanks">Ringraziamenti →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAGINA 5: RINGRAZIAMENTI + DEADLINE -->
-    <section class="screen page" id="thanks">
-      <div class="card pageShell reveal">
-        <div class="pageTitle">🤍</div>
-        <h3 class="pageHeading">Grazie</h3>
-
-        <p class="pageText">
-          Grazie di cuore per l’affetto e la vicinanza.<br>
-          La vostra presenza renderà questa giornata<br>
-          ancora più speciale.<br><br>
-          Per organizzare al meglio, vi chiediamo<br>
-          gentilmente di darci conferma della presenza<br>
-          <strong>entro il 31 maggio</strong>.
-        </p>
-
-        <a class="btn btnPrimary"
-           href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026.%20(Conferma%20entro%2031%20maggio)"
-           target="_blank" rel="noopener">
-          Conferma su WhatsApp <span class="btnIco">✓</span>
-        </a>
-
-        <div class="footer">
-          <div class="footerInner">
-            <div class="footerSmall">Con amore,</div>
-            <div class="footerNames">Vincenzo &amp; Maria Giovanna</div>
           </div>
         </div>
 
-        <div class="miniNav">
-          <a class="miniLink" href="#invite">↑ Torna all’invito</a>
-          <a class="miniLink" href="#intro">↑ Busta</a>
+        <div class="stack">
+          <div class="card reveal">
+            <div class="place">
+              <div class="place__icon" aria-hidden="true">
+                <!-- Church icon -->
+                <svg viewBox="0 0 64 64"><path d="M32 6v10m0 0l-6 6m6-6l6 6M14 58V30l18-10 18 10v28M22 58V38h20v20M26 30h12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="place__text">
+                <div class="place__label">Chiesa</div>
+                <div class="place__name">Maria SS. Immacolata</div>
+                <div class="place__actions">
+                  <a class="link" href="#" id="mapsChiesa" target="_blank" rel="noopener">Apri su Maps</a>
+                  <button class="link link--btn" type="button" data-ical>Salva sul calendario</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="place">
+              <div class="place__icon" aria-hidden="true">
+                <!-- Venue icon -->
+                <svg viewBox="0 0 64 64"><path d="M12 58V26l20-10 20 10v32M22 58V36h20v22M18 26v-6h28v6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="place__text">
+                <div class="place__label">Ricevimento</div>
+                <div class="place__name">Il Gabbiano</div>
+                <div class="place__actions">
+                  <a class="link" href="#" id="mapsLocation" target="_blank" rel="noopener">Apri su Maps</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <h3 class="h3">Festeggerai con noi?</h3>
+            <p class="muted">Conferma con un tap: ti si aprirà WhatsApp già compilato.</p>
+
+            <div class="rsvp">
+              <button class="btn btn--ghost" type="button" data-rsvp="NO">NO</button>
+              <button class="btn" type="button" data-rsvp="SI">SI</button>
+            </div>
+
+            <p class="small muted">È gradita gentile conferma entro il <strong>30 giugno</strong>.</p>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- GIFT -->
+    <section class="section section--gift">
+      <div class="container">
+        <div class="card reveal">
+          <div class="two-col">
+            <div>
+              <p class="lead">
+                Celebrare insieme questo giorno sarà per noi il dono più bello.
+                Ma se desiderate contribuire alla realizzazione dei nostri sogni e progetti futuri
+                potrete farlo cliccando sull’icona di seguito.
+              </p>
+              <p class="thanks">Grazie di Cuore</p>
+            </div>
+
+            <div class="icon-card">
+              <button class="icon-btn" type="button" id="giftBtn" aria-label="Apri link regalo">
+                <!-- gift icon -->
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <path d="M10 28h44v28H10zM10 28h44M32 28v28" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 28c-6 0-8-8-2-10 6-2 12 10 12 10s-4 0-10 0zM42 28c6 0 8-8 2-10-6-2-12 10-12 10s4 0 10 0z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Contributo</span>
+              </button>
+
+              <div class="copyrow">
+                <input id="giftLink" type="text" value="https://INSERISCI-QUI-IL-TUO-LINK" readonly />
+                <button class="btn btn--small" type="button" data-copy="#giftLink">Copia</button>
+              </div>
+
+              <p class="small muted">Puoi sostituire il link con lista nozze / IBAN / pagina regalo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTOS UPLOAD -->
+    <section class="section section--photos">
+      <div class="container">
+        <div class="card reveal">
+          <h3 class="h3">Foto del giorno</h3>
+          <p class="lead">
+            Il giorno del nostro matrimonio sarà ancora più speciale grazie alla vostra presenza...
+            Se scatterete delle foto durante la giornata, ci farebbe davvero piacere rivivere quei momenti anche attraverso i vostri occhi.
+            Cliccando sull’icona qui sotto, potrete caricare i vostri scatti: ogni foto sarà per noi un prezioso ricordo da custodire.
+          </p>
+
+          <div class="photo-actions">
+            <a class="icon-btn" id="photoBtn" href="https://INSERISCI-QUI-LINK-UPLOAD" target="_blank" rel="noopener" aria-label="Carica le foto">
+              <!-- camera icon -->
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M16 20h8l4-6h8l4 6h8a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6H16a6 6 0 0 1-6-6V26a6 6 0 0 1 6-6z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="32" cy="38" r="10" fill="none" stroke="currentColor" stroke-width="3"/>
+              </svg>
+              <span>Carica le foto</span>
+            </a>
+
+            <div class="copyrow">
+              <input id="photoLink" type="text" value="https://INSERISCI-QUI-LINK-UPLOAD" readonly />
+              <button class="btn btn--small" type="button" data-copy="#photoLink">Copia</button>
+            </div>
+
+            <p class="small muted">
+              Consiglio: usa Google Drive / Google Photos / WedUploader e incolla qui il link.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__line">Vincenzo &amp; Maria Giovanna — 31.07.2026</p>
+        <a class="link" href="#top">Torna su</a>
+      </div>
+    </footer>
   </main>
 
-  <script src="./app.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
