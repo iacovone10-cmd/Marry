@@ -10,14 +10,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./styles.css?v=20260221-6" />
+  <link rel="stylesheet" href="./styles.css?v=20260221-1605" />
 </head>
 
 <body>
   <div class="bg" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- STAGE fullscreen -->
+  <!-- ✅ VERSIONE per verificare se il deploy è aggiornato -->
+  <div class="versionBadge">VERSIONE 2026-02-21 16:05</div>
+
+  <!-- STAGE -->
   <section class="stage" id="stage" aria-label="Busta e lettera">
     <button class="openHint" id="openHint" type="button">Tocca la busta per aprire ✨</button>
 
@@ -44,32 +47,6 @@
 
       <!-- LETTERA -->
       <div class="paperCard" id="paper" aria-label="Lettera">
-        <svg class="floral floralTL" viewBox="0 0 240 240" aria-hidden="true">
-          <defs>
-            <linearGradient id="g1" x1="0" x2="1">
-              <stop offset="0" stop-color="#1A87B5" stop-opacity=".55"/>
-              <stop offset="1" stop-color="#1A87B5" stop-opacity=".10"/>
-            </linearGradient>
-          </defs>
-          <path d="M54 96c18-28 44-34 66-16 11 9 14 23 4 33-10 10-26 8-36-3 8 18 5 34-9 43-17 10-37 2-42-17-6-21 5-33 17-40z" fill="url(#g1)"/>
-          <circle cx="62" cy="88" r="10" fill="#1A87B5" opacity=".25"/>
-          <circle cx="90" cy="70" r="14" fill="#1A87B5" opacity=".18"/>
-          <path d="M30 150c30-18 58-10 76 16" fill="none" stroke="#1A87B5" stroke-opacity=".25" stroke-width="6" stroke-linecap="round"/>
-        </svg>
-
-        <svg class="floral floralBR" viewBox="0 0 240 240" aria-hidden="true">
-          <defs>
-            <linearGradient id="g2" x1="0" x2="1">
-              <stop offset="0" stop-color="#1A87B5" stop-opacity=".10"/>
-              <stop offset="1" stop-color="#1A87B5" stop-opacity=".55"/>
-            </linearGradient>
-          </defs>
-          <path d="M184 146c-18 28-44 34-66 16-11-9-14-23-4-33 10-10 26-8 36 3-8-18-5-34 9-43 17-10 37-2 42 17 6 21-5 33-17 40z" fill="url(#g2)"/>
-          <circle cx="178" cy="154" r="10" fill="#1A87B5" opacity=".25"/>
-          <circle cx="150" cy="172" r="14" fill="#1A87B5" opacity=".18"/>
-          <path d="M210 92c-30 18-58 10-76-16" fill="none" stroke="#1A87B5" stroke-opacity=".25" stroke-width="6" stroke-linecap="round"/>
-        </svg>
-
         <div class="paperInner">
           <div class="paperNames">
             <div class="scriptName">Vincenzo</div>
@@ -90,7 +67,7 @@
   <!-- PAGES fullscreen -->
   <main class="pages" id="pages" tabindex="-1">
     <div class="snap" id="snap">
-      <!-- INVITO -->
+
       <section class="screen" id="invite">
         <div class="card inviteCard">
           <div class="heroHeader">
@@ -139,18 +116,14 @@
         </div>
       </section>
 
-      <!-- REGALO -->
       <section class="screen" id="gift">
         <div class="card pageShell">
           <div class="pageTitle">🎁</div>
           <h3 class="pageHeading">Il regalo più bello</h3>
           <p class="pageText">
-            Celebrare insieme questo giorno sarà<br>
-            per noi il dono più bello.<br><br>
-            Ma se desiderate contribuire alla realizzazione dei nostri sogni e progetti futuri,
-            potrete farlo cliccando sull’icona di seguito.
+            Celebrare insieme questo giorno sarà per noi il dono più bello.<br><br>
+            Se desiderate contribuire ai nostri progetti futuri, potete farlo cliccando sull’icona.
           </p>
-
           <a class="bigIconLink" href="PASTE_GIFT_LINK_HERE" target="_blank" rel="noopener">
             <span class="bigIconEmoji">🎁</span>
             <span class="iconLabel">Apri il link</span>
@@ -158,16 +131,13 @@
         </div>
       </section>
 
-      <!-- FOTO -->
       <section class="screen" id="photos">
         <div class="card pageShell">
           <div class="pageTitle">📸</div>
           <h3 class="pageHeading">Condividi le foto</h3>
           <p class="pageText">
-            Cliccando sull’icona qui sotto, potrete caricare i vostri scatti:<br>
-            ogni foto sarà per noi un prezioso ricordo da custodire.
+            Cliccando sull’icona qui sotto, potrete caricare i vostri scatti.
           </p>
-
           <a class="bigIconLink" href="PASTE_PHOTO_LINK_HERE" target="_blank" rel="noopener">
             <span class="bigIconEmoji">📸</span>
             <span class="iconLabel">Carica le foto</span>
@@ -175,17 +145,14 @@
         </div>
       </section>
 
-      <!-- THANKS -->
       <section class="screen" id="thanks">
         <div class="card pageShell">
           <div class="pageTitle">🤍</div>
           <h3 class="pageHeading">Grazie</h3>
           <p class="pageText">
-            Grazie di cuore per l’affetto e la vicinanza.<br><br>
             Per organizzare al meglio, vi chiediamo gentilmente di darci conferma della presenza
             <strong>entro il 31 maggio</strong>.
           </p>
-
           <a class="btn btnPrimary"
              href="https://wa.me/?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20(entro%2031%20maggio)."
              target="_blank" rel="noopener">
@@ -193,9 +160,10 @@
           </a>
         </div>
       </section>
+
     </div>
   </main>
 
-  <script src="./app.js?v=20260221-6"></script>
+  <script src="./app.js?v=20260221-1605"></script>
 </body>
 </html>
