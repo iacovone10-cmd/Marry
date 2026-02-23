@@ -1,111 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Vincenzo & Maria Giovanna — Invito</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V&MG Wedding</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Allura&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="locked">
-  <main class="scroll" id="scroll">
 
-    <!-- SEZIONE 1: BUSTA -->
-    <section class="panel hero" id="hero" aria-label="Busta">
-      <div class="hintTop" id="hintTop">Tocca il sigillo per aprire ✨</div>
+<div class="particles"></div>
 
-      <div class="envelopeScene" aria-label="Busta atelier">
-        <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri la busta">
+<section class="hero">
+  <div class="envelope-container">
 
-          <!-- base busta -->
-          <div class="envBase"></div>
+    <div class="envelope" id="envelope">
 
-          <!-- pieghe (come foto) -->
-          <div class="envFoldLeft"></div>
-          <div class="envFoldRight"></div>
-          <div class="envFoldBottom"></div>
+      <div class="envelope-back"></div>
 
-          <!-- flap superiore -->
-          <div class="envFlap" aria-hidden="true"></div>
+      <div class="flap"></div>
 
-          <!-- sigillo -->
-          <div class="sealWrap" id="sealWrap" aria-label="Sigillo">
-            <div class="seal" id="seal">
-              <span class="sealText" aria-label="V&MG">V&MG</span>
-              <i class="foilSweep" aria-hidden="true"></i>
-              <i class="sealGrain" aria-hidden="true"></i>
-            </div>
-            <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+      <div class="seal" id="seal">
+        <span>V&amp;MG</span>
+      </div>
+
+      <div class="letter">
+        <div class="letter-content">
+          <h2>INVITO</h2>
+          <div class="names">
+            <span class="script">Vincenzo</span>
+            <span class="amp">&amp;</span>
+            <span class="script">Maria Giovanna</span>
           </div>
-
-          <!-- lettera interna -->
-          <div class="letter" id="letter" aria-hidden="true">
-            <div class="paperTexture" aria-hidden="true"></div>
-
-            <div class="letterInner">
-              <div class="letterKicker">INVITO</div>
-
-              <div class="names">
-                <div class="script">Vincenzo</div>
-                <div class="amp">&amp;</div>
-                <div class="script">Maria Giovanna</div>
-              </div>
-
-              <div class="letterSub">Annunciano con grande gioia il loro matrimonio</div>
-
-              <div class="metaRow">
-                <span class="pill">31 · 07 · 2026</span>
-                <span class="pill">Celeste polvere</span>
-              </div>
-
-              <div class="divider"></div>
-
-              <button class="goDown" id="goDown" type="button">
-                Scorri <span aria-hidden="true">↓</span>
-              </button>
-            </div>
-          </div>
-
+          <p>Annunciano con grande gioia il loro matrimonio</p>
+          <button id="openDetails">Scopri i dettagli</button>
         </div>
       </div>
-    </section>
 
-    <!-- SEZIONE 2: DETTAGLI -->
-    <section class="panel details" id="details" aria-label="Dettagli">
-      <div class="card">
-        <h2>Dettagli</h2>
-        <p>Qui metti chiesa, ristorante, mappe, regalo, RSVP, ecc.</p>
+    </div>
 
-        <div class="grid">
-          <a class="tile" href="#" role="button">
-            <div class="tileTitle">📍 Chiesa</div>
-            <div class="tileText">Apri indicazioni</div>
-          </a>
-          <a class="tile" href="#" role="button">
-            <div class="tileTitle">🍽️ Ristorante</div>
-            <div class="tileText">Apri indicazioni</div>
-          </a>
-          <a class="tile" href="#" role="button">
-            <div class="tileTitle">💬 RSVP</div>
-            <div class="tileText">Conferma su WhatsApp</div>
-          </a>
-          <a class="tile" href="#" role="button">
-            <div class="tileTitle">🎁 Regalo</div>
-            <div class="tileText">Lista / link</div>
-          </a>
-        </div>
+  </div>
+</section>
 
-        <button class="backTop" id="backTop" type="button">Torna su ↑</button>
-      </div>
-    </section>
+<section class="details">
+  <div class="details-card">
+    <h1>Dettagli</h1>
+    <p>Chiesa • Ristorante • RSVP • Regalo</p>
+  </div>
+</section>
 
-  </main>
-
-  <script src="./app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
