@@ -10,6 +10,16 @@
 
   let opened = false;
 
+  // ✅ evita che su mobile rimanga “a metà” e mostri sotto i dettagli
+  window.addEventListener("load", () => {
+    try {
+      scroll.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      window.scrollTo(0, 0);
+    } catch (_) {
+      scroll.scrollTop = 0;
+    }
+  });
+
   function makeSparkles(){
     if(!sparkles) return;
     sparkles.innerHTML = "";
@@ -32,8 +42,11 @@
   }
 
   function unlockScroll(){
-    // sblocca la pagina: da qui in poi puoi scrollare senza blocchi
+    // ✅ sblocca la pagina: da qui in poi puoi scrollare
     document.body.classList.remove("locked");
+
+    // sicurezza: torna su prima di rendere scrollabile (evita bug su alcuni Android)
+    try { scroll.scrollTo({ top: 0, behavior: "instant" }); } catch(_){ scroll.scrollTop = 0; }
   }
 
   function openSeal(e){
@@ -53,12 +66,12 @@
     setTimeout(() => {
       envelope.classList.remove("opening");
       envelope.classList.add("opened");
+
       if (hintTop){
         hintTop.style.opacity = "0";
         hintTop.style.pointerEvents = "none";
       }
 
-      // IMPORTANTISSIMO: sblocco scroll dopo l'apertura
       unlockScroll();
     }, 720);
   }
@@ -75,11 +88,10 @@
     }
   });
 
-  // scorri alla sezione dettagli (solo dopo apertura, così non “si blocca”)
+  // scorri alla sezione dettagli (solo dopo apertura)
   goDown?.addEventListener("click", () => {
     if(!opened){
       openSeal();
-      // piccolo delay per dare tempo allo sblocco e all'animazione
       setTimeout(() => details?.scrollIntoView({ behavior: "smooth", block: "start" }), 820);
       return;
     }
@@ -87,7 +99,6 @@
   });
 
   backTop?.addEventListener("click", () => {
-    // torna su senza glitch
     scroll?.scrollTo({ top: 0, behavior: "smooth" });
   });
 })();
