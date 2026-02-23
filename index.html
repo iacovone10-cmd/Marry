@@ -2,39 +2,72 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Vincenzo & Maria Giovanna — Invito</title>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css?v=napoliwow1">
 </head>
-<body>
-  <main class="invite">
-    <!-- PRIMA PAGINA -->
-    <section class="fabric"></section>
-    <section class="paper">
-      <div class="seal" aria-hidden="true"></div>
-      <h1 class="names">
-        Vincenzo <span class="amp">&</span><br>
-        Maria Giovanna
-      </h1>
-      <p class="invite-text">vi invitano al loro matrimonio</p>
-      <div class="date">
-        <div class="day">31</div>
-        <div class="month-year">LUGLIO<br><span>2026</span></div>
+
+<body class="locked">
+  <!-- Background FX -->
+  <div class="fx" aria-hidden="true">
+    <div class="grain"></div>
+    <div class="dust" id="dust"></div>
+  </div>
+
+  <main class="invite" id="invite">
+
+    <!-- PRIMA PAGINA: ACQUERELLO NAPOLI -->
+    <section class="napoli" aria-label="Napoli acquerello">
+      <div class="napoliOverlay"></div>
+
+      <div class="napoliTop">
+        <div class="chip">INVITO</div>
+        <div class="napoliTitle">
+          Napoli · 31 Luglio 2026
+        </div>
       </div>
-      <p class="time">Cerimonia ore <strong>11:00</strong></p>
-      <p class="place">
-        Chiesa Maria SS. Immacolata
-        <span>Marano di Napoli</span>
-      </p>
-      <div class="scroll">Scorri ↓</div>
+
+      <div class="napoliCard" id="napoliCard">
+        <button class="sealBtn" id="sealBtn" type="button" aria-label="Apri invito">
+          <span class="sealText">V&MG</span>
+          <i class="foil" aria-hidden="true"></i>
+          <i class="sealGrain" aria-hidden="true"></i>
+        </button>
+
+        <h1 class="names">
+          Vincenzo <span class="amp">&</span><br>
+          Maria Giovanna
+        </h1>
+
+        <p class="invite-text">vi invitano al loro matrimonio</p>
+
+        <div class="date">
+          <div class="day">31</div>
+          <div class="month-year">LUGLIO<br><span>2026</span></div>
+        </div>
+
+        <p class="time">Cerimonia ore <strong>11:00</strong></p>
+
+        <p class="place">
+          Chiesa Maria SS. Immacolata
+          <span>Marano di Napoli</span>
+        </p>
+
+        <div class="helper" id="helper">Tocca il sigillo per aprire ✨</div>
+      </div>
+
+      <div class="hintScroll" id="hintScroll">Scorri ↓</div>
     </section>
 
-    <!-- SECONDA PAGINA -->
-    <section class="details">
+    <!-- SECONDA PAGINA: DETTAGLI (nascosta finché non apri) -->
+    <section class="details" id="details" aria-label="Dettagli">
+
       <h2 class="section-title">Dettagli</h2>
 
       <div class="card">
@@ -58,8 +91,8 @@
       <div class="rsvp">
         <p>Conferma entro il <strong>31 maggio 2026</strong></p>
         <a class="rsvp-btn"
-          href="https://api.whatsapp.com/send?text=Confermo%20con%20gioia%20la%20mia%20presenza%20al%20matrimonio%20del%2031%20luglio%202026"
-          target="_blank" rel="noopener">
+           href="https://api.whatsapp.com/send?text=Confermo%20con%20gioia%20la%20mia%20presenza%20al%20matrimonio%20del%2031%20luglio%202026"
+           target="_blank" rel="noopener">
           RSVP su WhatsApp
         </a>
       </div>
@@ -68,7 +101,12 @@
         Con affetto,<br>
         Vincenzo & Maria Giovanna
       </footer>
+
+      <button class="backTop" id="backTop" type="button">Torna su ↑</button>
     </section>
+
   </main>
+
+  <script src="./app.js?v=napoliwow1"></script>
 </body>
 </html>
