@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Invito • Vincenzo & Maria Giovanna</title>
+  <meta name="theme-color" content="#b6d7ec" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <noscript>
+    <div class="noscript">
+      Questo invito interattivo richiede JavaScript per aprire la busta.
+    </div>
+  </noscript>
+
+  <div class="sparkle-layer" aria-hidden="true"></div>
+
+  <main class="stage" id="stage" aria-label="Invito di matrimonio">
+
+    <!-- PAGE 1: ENVELOPE -->
+    <section class="screen screen--envelope" id="screen-envelope" aria-label="Busta">
+      <div class="envelope-wrap">
+        <div class="hint" id="hintTap">
+          <span class="hint__pill">Tocca il sigillo per aprire ✨</span>
+        </div>
+
+        <button class="envelope" id="envelope" aria-label="Apri la busta">
+          <span class="envelope__shadow" aria-hidden="true"></span>
+
+          <span class="envelope__back" aria-hidden="true"></span>
+          <span class="envelope__left" aria-hidden="true"></span>
+          <span class="envelope__right" aria-hidden="true"></span>
+          <span class="envelope__bottom" aria-hidden="true"></span>
+
+          <span class="envelope__flap" aria-hidden="true"></span>
+
+          <span class="wax" id="wax" aria-hidden="true">
+            <span class="wax__shine"></span>
+            <span class="wax__drip wax__drip--a"></span>
+            <span class="wax__drip wax__drip--b"></span>
+            <span class="wax__drip wax__drip--c"></span>
+            <span class="wax__monogram" aria-hidden="true">V&amp;MG</span>
+          </span>
+
+          <span class="letter" id="letter" aria-hidden="true">
+            <span class="letter__topline">INVITO</span>
+            <span class="letter__names">
+              <span class="letter__name">Vincenzo</span>
+              <span class="letter__amp">&amp;</span>
+              <span class="letter__name">Maria Giovanna</span>
+            </span>
+            <span class="letter__subtitle">Annunciano con grande gioia il loro matrimonio</span>
+            <span class="letter__chips">
+              <span class="chip">31 · 07 · 2026</span>
+              <span class="chip">Marano di Napoli</span>
+            </span>
+            <span class="letter__micro">Cerimonia 10:30 • Ricevimento 14:00</span>
+          </span>
+        </button>
+
+        <div class="scrollHint" id="scrollHint" hidden>
+          <button class="scrollHint__btn" id="scrollBtn" type="button" aria-label="Scorri verso il basso">
+            Scorri <span aria-hidden="true">↓</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: DETAILS -->
+    <section class="screen screen--details" id="screen-details" aria-label="Dettagli">
+      <div class="card card--wide">
+        <header class="card__header">
+          <div class="card__kicker">31 Luglio 2026</div>
+          <h1 class="card__title">Vincenzo <span class="amp">&amp;</span> Maria Giovanna</h1>
+          <p class="card__sub">Una giornata speciale da vivere insieme.</p>
+        </header>
+
+        <div class="grid">
+          <article class="tile">
+            <div class="tile__head">
+              <div class="icon icon--church" aria-hidden="true"></div>
+              <div>
+                <div class="tile__label">Cerimonia</div>
+                <div class="tile__place">Chiesa Maria SS. Immacolata</div>
+                <div class="tile__meta">Marano di Napoli • <strong>10:30</strong></div>
+              </div>
+            </div>
+            <a class="btn btn--soft" target="_blank" rel="noopener" href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6">
+              Apri su Google Maps
+            </a>
+          </article>
+
+          <article class="tile">
+            <div class="tile__head">
+              <div class="icon icon--rest" aria-hidden="true"></div>
+              <div>
+                <div class="tile__label">Ricevimento</div>
+                <div class="tile__place">Il Gabbiano</div>
+                <div class="tile__meta">Bacoli • <strong>14:00</strong></div>
+              </div>
+            </div>
+            <a class="btn btn--soft" target="_blank" rel="noopener" href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6">
+              Apri su Google Maps
+            </a>
+          </article>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btn--primary" id="rsvpBtn" href="https://wa.me/393496701639?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna%2C%20confermo%20la%20mia%20presenza%20al%20vostro%20matrimonio%20del%2031%2F07%2F2026.%20%F0%9F%92%99" target="_blank" rel="noopener">
+            RSVP su WhatsApp
+          </a>
+          <button class="btn btn--ghost" id="nextBtn" type="button">
+            Ringraziamenti →
+          </button>
+        </div>
+
+        <div class="note">
+          <span class="note__dot" aria-hidden="true"></span>
+          Per esigenze particolari (intolleranze, passeggini, ecc.) scriveteci su WhatsApp.
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: THANKS -->
+    <section class="screen screen--thanks" id="screen-thanks" aria-label="Ringraziamenti">
+      <div class="card card--tall">
+        <div class="floral" aria-hidden="true"></div>
+        <h2 class="thanksTitle">Grazie di cuore</h2>
+        <p class="thanksText">
+          La vostra presenza è per noi il dono più bello.<br/>
+          Per organizzare al meglio la giornata, vi chiediamo gentilmente di confermare la vostra presenza
+          <strong>entro il 31 maggio</strong>.
+        </p>
+
+        <div class="sealMini" aria-hidden="true">
+          <span class="sealMini__shine"></span>
+          <span class="sealMini__monogram">V&amp;MG</span>
+        </div>
+
+        <a class="btn btn--primary btn--wide" href="https://wa.me/393496701639?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna%2C%20confermo%20la%20mia%20presenza%20entro%20il%2031%20maggio.%20%F0%9F%92%99" target="_blank" rel="noopener">
+          Conferma ora su WhatsApp
+        </a>
+
+        <button class="btn btn--ghost btn--wide" id="backTop" type="button">
+          Torna all’inizio ↑
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
