@@ -2,36 +2,123 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Vincenzo & Maria Giovanna — Invito</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./styles.css?v=final" />
+  <link rel="stylesheet" href="./styles.css?v=wow1" />
 </head>
-<body>
 
-  <!-- CHANGELOG
-  - Eliminata sezione Foto definitivamente
-  - Sigillo: CSS-only (crema), immagini rosse disattivate
-  - Desktop: scala envelope aumentata e vuoti verticali rimossi
-  - Fade-in cinematico desktop
-  -->
+<body class="locked">
+  <!-- Background WOW -->
+  <div class="bg" aria-hidden="true">
+    <div class="grain"></div>
+    <div class="dust" id="dust"></div>
+    <div class="spot spotA"></div>
+    <div class="spot spotB"></div>
+  </div>
 
-  <header class="stage" id="stage">
-    <div class="hint">Tocca il sigillo per aprire ✨</div>
+  <main class="scroll" id="scroll">
 
-    <div class="envelope" id="envelope">
-      <div class="seal-wrap">
-        <div class="wax" id="wax">
-          <div class="wax__mono">V&MG</div>
+    <!-- HERO / BUSTA -->
+    <section class="panel hero" id="hero" aria-label="Busta">
+      <div class="hintTop" id="hintTop">Tocca il sigillo per aprire ✨</div>
+
+      <div class="stage">
+        <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri la busta">
+
+          <div class="envShadow" aria-hidden="true"></div>
+
+          <!-- base busta -->
+          <div class="envBase" aria-hidden="true"></div>
+
+          <!-- pieghe -->
+          <div class="envFoldLeft" aria-hidden="true"></div>
+          <div class="envFoldRight" aria-hidden="true"></div>
+          <div class="envFoldBottom" aria-hidden="true"></div>
+
+          <!-- flap superiore -->
+          <div class="envFlap" aria-hidden="true"></div>
+
+          <!-- sigillo -->
+          <div class="sealWrap" id="sealWrap" aria-label="Sigillo">
+            <div class="seal" id="seal">
+              <span class="sealText">V&MG</span>
+              <i class="foilSweep" aria-hidden="true"></i>
+              <i class="sealGrain" aria-hidden="true"></i>
+              <i class="sealCrack" aria-hidden="true"></i>
+            </div>
+            <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+          </div>
+
+          <!-- lettera -->
+          <div class="letter" id="letter" aria-hidden="true">
+            <div class="letterFoil" aria-hidden="true"></div>
+
+            <div class="letterInner">
+              <div class="kicker">INVITO</div>
+
+              <div class="names">
+                <div class="script">Vincenzo</div>
+                <div class="amp">&amp;</div>
+                <div class="script">Maria Giovanna</div>
+              </div>
+
+              <div class="subtitle">Annunciano con grande gioia il loro matrimonio</div>
+
+              <div class="metaRow">
+                <span class="pill">31 · 07 · 2026</span>
+                <span class="pill">Celeste polvere</span>
+              </div>
+
+              <div class="divider"></div>
+
+              <button class="cta" id="goDown" type="button">
+                Scopri i dettagli <span aria-hidden="true">→</span>
+              </button>
+
+              <div class="micro">Scorri dopo l’apertura</div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <script src="./app.js?v=final"></script>
+    <!-- DETTAGLI (non visibili prima dell'apertura) -->
+    <section class="panel details" id="details" aria-label="Dettagli">
+      <div class="card">
+        <h2>Dettagli</h2>
+        <p>Chiesa • Ristorante • RSVP • Regalo</p>
+
+        <div class="grid">
+          <a class="tile" href="#" role="button">
+            <div class="tileTitle">📍 Chiesa</div>
+            <div class="tileText">Apri indicazioni</div>
+          </a>
+          <a class="tile" href="#" role="button">
+            <div class="tileTitle">🍽️ Ristorante</div>
+            <div class="tileText">Apri indicazioni</div>
+          </a>
+          <a class="tile" href="#" role="button">
+            <div class="tileTitle">💬 RSVP</div>
+            <div class="tileText">Conferma su WhatsApp</div>
+          </a>
+          <a class="tile" href="#" role="button">
+            <div class="tileTitle">🎁 Regalo</div>
+            <div class="tileText">Lista / link</div>
+          </a>
+        </div>
+
+        <button class="backTop" id="backTop" type="button">Torna su ↑</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./app.js?v=wow1"></script>
 </body>
 </html>
