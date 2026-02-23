@@ -4,10 +4,13 @@
 
   --paper:#fbfbfc;
   --paper2:#f2f3f6;
-  --line: rgba(18, 28, 40, .08);
 
   --ink:#0b2230;
+
+  /* Celeste polvere */
   --powder:#1E7FB0;
+  --powderSoft: rgba(30,127,176,.10);
+  --powderGlow: rgba(30,127,176,.14);
 
   --gold1:#fff4c9;
   --gold2:#f6d67f;
@@ -29,19 +32,30 @@ body{
   color: var(--ink);
 }
 
-/* Lock scroll fino all'apertura (evita “blocchi strani” e scroll accidentali) */
+/* 🔒 LOCK: niente scroll finché non apri */
 body.locked{
   overflow: hidden;
   height: 100%;
 }
 
-/* container scroll (dopo apertura) */
+/* container scroll */
 .scroll{
   height: 100%;
   overflow-y: auto;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
+
+/* 🔒 durante il lock, blocca anche lo scroll del container */
+body.locked .scroll{
+  overflow: hidden;
+}
+
+/* 🔒 durante il lock, nascondi completamente i dettagli */
+body.locked .details{
+  display: none;
+}
+
 .panel{
   min-height: 100svh;
   display: grid;
@@ -73,7 +87,7 @@ body.locked{
   place-items: center;
 }
 
-/* -------- BUSTA (come foto) -------- */
+/* -------- BUSTA -------- */
 .envelope{
   width: min(92vw, 420px);
   aspect-ratio: 3 / 4.35;
@@ -84,13 +98,15 @@ body.locked{
   transform: translateZ(0);
 }
 
-/* “cornice” soffice */
+/* cornice soffice + lieve powder */
 .envelope::before{
   content:"";
   position:absolute;
   inset:-10px;
   border-radius: 36px;
-  background: rgba(255,255,255,.22);
+  background:
+    radial-gradient(520px 360px at 50% 20%, rgba(30,127,176,.10), rgba(255,255,255,.18) 55%),
+    rgba(255,255,255,.18);
   border: 1px solid rgba(255,255,255,.28);
   box-shadow: 0 30px 70px rgba(0,0,0,.10);
 }
@@ -101,6 +117,8 @@ body.locked{
   inset: 8% 6% 6% 6%;
   border-radius: 22px;
   background:
+    /* 💠 lieve aura celeste polvere nella prima schermata */
+    radial-gradient(520px 320px at 50% 12%, var(--powderSoft), rgba(255,255,255,0) 62%),
     radial-gradient(700px 340px at 50% 0%, rgba(0,0,0,.03), rgba(0,0,0,0) 70%),
     linear-gradient(180deg, var(--paper), var(--paper2));
   box-shadow:
@@ -122,7 +140,7 @@ body.locked{
   pointer-events:none;
 }
 
-/* pieghe: due diagonali + triangolo basso */
+/* pieghe */
 .envFoldLeft,
 .envFoldRight,
 .envFoldBottom{
@@ -155,7 +173,7 @@ body.locked{
   opacity:.70;
 }
 
-/* flap superiore (apertura) */
+/* flap superiore */
 .envFlap{
   position:absolute;
   inset: 8% 6% auto 6%;
@@ -171,7 +189,7 @@ body.locked{
   z-index: 6;
 }
 
-/* -------- SIGILLO ORO (come foto) -------- */
+/* -------- SIGILLO -------- */
 .sealWrap{
   position:absolute;
   top: 58%;
@@ -204,7 +222,7 @@ body.locked{
   overflow:hidden;
 }
 
-/* bordo irregolare “cera” */
+/* bordo irregolare */
 .seal::before{
   content:"";
   position:absolute;
@@ -218,16 +236,17 @@ body.locked{
   opacity:.85;
 }
 
-/* scritta emboss */
+/* ✅ testo V&MG elegante (inciso/emboss) */
 .sealText{
-  font-family: Allura, cursive;
-  font-size: 40px;
-  letter-spacing: .02em;
-  color: rgba(120,80,10,.45);
-  transform: translateY(-2px);
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: .12em;
+  color: rgba(120,80,10,.40);
+  transform: translateY(-1px);
   text-shadow:
-    0 1px 0 rgba(255,255,255,.35),   /* highlight */
-    0 -1px 0 rgba(0,0,0,.16);        /* incisione */
+    0 1px 0 rgba(255,255,255,.35),
+    0 -1px 0 rgba(0,0,0,.18);
   position: relative;
   z-index: 2;
 }
@@ -244,7 +263,7 @@ body.locked{
   pointer-events:none;
 }
 
-/* sweep foil (brilla al tocco) */
+/* sweep foil */
 .foilSweep{
   position:absolute;
   inset:-70%;
@@ -255,7 +274,7 @@ body.locked{
   pointer-events:none;
 }
 
-.envelope.focusSeal .sealWrap{ transform: translate(-50%,-50%) scale(1.12); }
+.envelope.focusSeal .sealWrap{ transform: translate(-50%,-50%) scale(1.10); }
 .envelope.focusSeal .foilSweep{
   opacity: .38;
   animation: foil 900ms ease-out 1;
@@ -309,8 +328,8 @@ body.locked{
   position:absolute;
   inset:-10%;
   background:
-    radial-gradient(circle at 30% 20%, rgba(30,127,176,.06), transparent 55%),
-    radial-gradient(circle at 80% 80%, rgba(30,127,176,.05), transparent 58%),
+    radial-gradient(circle at 30% 20%, rgba(30,127,176,.08), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(30,127,176,.06), transparent 58%),
     linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.92));
   pointer-events:none;
 }
