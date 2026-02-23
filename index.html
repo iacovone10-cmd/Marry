@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Vincenzo & Maria Giovanna</title>
+
+  <!-- Fonts (Pristina-like for names + elegant serif for text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <noscript style="padding:16px;display:block;font-family:system-ui;">
+    Questo invito usa animazioni: abilita JavaScript per visualizzarlo correttamente.
+  </noscript>
+
+  <!-- FULLSCREEN "envelope stage" (page 1) -->
+  <header class="stage" id="stage" aria-label="Busta">
+    <div class="stage__bg"></div>
+
+    <div class="hint" id="tapHint">
+      <span class="hint__pill">Tocca il sigillo per aprire ✨</span>
+    </div>
+
+    <div class="envelope" id="envelope" role="button" aria-label="Apri la busta" tabindex="0">
+      <div class="env env--back"></div>
+
+      <div class="env env--left"></div>
+      <div class="env env--right"></div>
+      <div class="env env--bottom"></div>
+      <div class="env env--top" aria-hidden="true"></div>
+
+      <!-- Seal (centered) -->
+      <div class="seal-wrap" aria-hidden="true">
+        <div class="wax" id="wax">
+          <div class="wax__spill" aria-hidden="true"></div>
+          <div class="wax__emboss" aria-hidden="true"></div>
+          <div class="wax__mono" aria-hidden="true">V&MG</div>
+        </div>
+      </div>
+
+      <!-- Letter (hidden until open) -->
+      <article class="letter" id="letter" aria-label="Invito - prima pagina">
+        <div class="letter__paper">
+          <div class="letter__orn letter__orn--tl" aria-hidden="true"></div>
+          <div class="letter__orn letter__orn--br" aria-hidden="true"></div>
+
+          <div class="letter__inner">
+            <div class="letter__kicker">INVITO</div>
+            <h1 class="names">
+              Vincenzo <span class="amp">&</span> <br/>
+              Maria Giovanna
+            </h1>
+            <p class="subtitle">Annunciano con grande gioia il loro matrimonio</p>
+
+            <div class="chips">
+              <span class="chip">31 • 07 • 2026</span>
+              <span class="chip">⛪ 10:30</span>
+              <span class="chip">🍽️ 14:00</span>
+            </div>
+
+            <button class="scrollCta" id="scrollCta" type="button">
+              Scorri per i dettagli ↓
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </header>
+
+  <!-- DETAILS (page 2/3/4) — hidden until envelope opened -->
+  <main class="pages" id="pages" aria-label="Dettagli" hidden>
+    <!-- Page 2: Ceremony + Restaurant + RSVP -->
+    <section class="page page--details" id="pageDetails">
+      <div class="card card--wide">
+        <div class="card__top">
+          <div class="card__title">Vincenzo & Maria Giovanna</div>
+          <div class="card__meta">31 Luglio 2026</div>
+        </div>
+
+        <div class="grid2">
+          <div class="infoBox">
+            <div class="infoBox__head">
+              <span class="ico">⛪</span>
+              <div>
+                <div class="infoBox__k">Cerimonia</div>
+                <div class="infoBox__place">Chiesa Maria SS. Immacolata</div>
+                <div class="infoBox__where">Marano di Napoli</div>
+              </div>
+            </div>
+
+            <div class="infoBox__actions">
+              <span class="badge">🕥 10:30</span>
+              <a class="btn btn--ghost" target="_blank" rel="noopener"
+                 href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6">Apri su Google Maps</a>
+            </div>
+          </div>
+
+          <div class="infoBox">
+            <div class="infoBox__head">
+              <span class="ico">🍽️</span>
+              <div>
+                <div class="infoBox__k">Ricevimento</div>
+                <div class="infoBox__place">Il Gabbiano</div>
+                <div class="infoBox__where">Bacoli</div>
+              </div>
+            </div>
+
+            <div class="infoBox__actions">
+              <span class="badge">🕑 14:00</span>
+              <a class="btn btn--ghost" target="_blank" rel="noopener"
+                 href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6">Apri su Google Maps</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rsvpRow">
+          <a class="btn btn--primary" id="rsvpBtn" href="https://wa.me/" target="_blank" rel="noopener">
+            RSVP su WhatsApp ✓
+          </a>
+          <span class="rsvpNote">Conferma entro <strong>31 Maggio</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 3: Gift -->
+    <section class="page page--gift">
+      <div class="card">
+        <div class="iconBig" aria-hidden="true">🎁</div>
+        <h2 class="h2">Il dono più bello</h2>
+        <p class="p">
+          Celebrare insieme questo giorno sarà per noi il dono più bello.<br/>
+          Ma se desiderate contribuire alla realizzazione dei nostri sogni e progetti futuri,
+          potrete farlo cliccando sull’icona di seguito.
+        </p>
+
+        <a class="btn btn--primary btn--icon" target="_blank" rel="noopener" href="https://example.com">
+          <span aria-hidden="true">🎁</span> Lista / IBAN
+        </a>
+      </div>
+    </section>
+
+    <!-- Page 4: Photos -->
+    <section class="page page--photos">
+      <div class="card">
+        <div class="iconBig" aria-hidden="true">📷</div>
+        <h2 class="h2">Condividi le foto</h2>
+        <p class="p">
+          Il giorno del nostro matrimonio sarà ancora più speciale grazie alla vostra presenza…<br/>
+          Se scatterete delle foto durante la giornata, ci farebbe davvero piacere rivivere quei momenti anche
+          attraverso i vostri occhi.<br/>
+          Cliccando sull’icona qui sotto, potrete caricare i vostri scatti:<br/>
+          ogni foto sarà per noi un prezioso ricordo da custodire.
+        </p>
+
+        <a class="btn btn--primary btn--icon" target="_blank" rel="noopener" href="https://example.com">
+          <span aria-hidden="true">📷</span> Carica le foto
+        </a>
+      </div>
+    </section>
+
+    <!-- Final Thanks -->
+    <section class="page page--thanks">
+      <div class="card">
+        <div class="spark" aria-hidden="true">✦ ✦ ✦</div>
+        <h2 class="h2">Grazie di cuore</h2>
+        <p class="p">
+          Siamo felici di condividere questo momento con voi.<br/>
+          Vi chiediamo gentilmente di darci conferma della presenza entro il <strong>31 Maggio</strong>.
+        </p>
+
+        <a class="btn btn--primary" href="#pageDetails">Torna ai dettagli</a>
+      </div>
+    </section>
+
+    <footer class="footerMark">V&MG • 31•07•2026</footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
