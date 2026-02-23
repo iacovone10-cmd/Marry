@@ -16,6 +16,4 @@ seal.addEventListener("click", () => {
 
 openDetails.addEventListener("click", ()=>{
   document.querySelector(".details").scrollIntoView({behavior:"smooth"});
-}); 
-
-
+});
