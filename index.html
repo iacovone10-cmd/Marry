@@ -2,223 +2,99 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Vincenzo & Maria Giovanna — Invito</title>
 
-  <!-- Font elegante (senza file locali) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
-  <!-- STAGE: prima schermata (solo busta) -->
-  <main class="stage" id="stage" aria-label="Invito digitale">
-    <div class="hintTop" id="openHint" role="note" aria-live="polite">
-      Tocca la busta per aprire ✨
-    </div>
+  <main class="stage" id="stage">
+    <div class="hintTop" id="hintTop">Tocca il sigillo per aprire ✨</div>
 
-    <section class="envelopeScene" aria-label="Busta con sigillo">
+    <section class="envelopeScene" aria-label="Busta atelier">
       <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri la busta">
-        <!-- Flap superiore -->
-        <div class="envFlapTop"></div>
 
-        <!-- Lati -->
-        <div class="envSideLeft"></div>
-        <div class="envSideRight"></div>
+        <!-- corpo busta -->
+        <div class="envBase"></div>
+        <div class="envInnerShadow"></div>
 
-        <!-- Parte inferiore -->
-        <div class="envBottom"></div>
+        <!-- flap superiore (apre) -->
+        <div class="envFlap"></div>
 
-        <!-- Sigillo ceralacca -->
-        <div class="sealWrap" id="sealWrap" aria-hidden="true">
+        <!-- pieghe laterali -->
+        <div class="envFoldL"></div>
+        <div class="envFoldR"></div>
+        <div class="envFoldB"></div>
+
+        <!-- SIGILLO ATELIER -->
+        <div class="sealWrap" id="sealWrap" aria-label="Sigillo ceralacca">
+          <!-- colata -->
+          <div class="waxDrip"></div>
+          <div class="waxDrip2"></div>
+
+          <!-- sigillo principale -->
           <div class="seal" id="seal">
-            <div class="sealMono">V&amp;MG</div>
+            <div class="sealRim"></div>
+            <div class="sealCracks"></div>
+            <div class="sealGrain"></div>
+
+            <!-- oro foil (testo) -->
+            <div class="monogram" aria-label="Monogramma">V&amp;MG</div>
+
+            <!-- highlight foil -->
+            <div class="foilSweep"></div>
           </div>
+
+          <!-- particelle scintillanti -->
+          <div class="sparkles" id="sparkles" aria-hidden="true"></div>
         </div>
 
-        <!-- Biglietto interno (esce fuori) -->
+        <!-- LETTERA -->
         <div class="letter" id="letter" aria-hidden="true">
+          <div class="paperTexture"></div>
           <div class="letterInner">
-            <div class="letterTopLine">Invito</div>
-            <div class="letterNames">
-              <span class="script">Vincenzo</span>
-              <span class="amp">&amp;</span>
-              <span class="script">Maria Giovanna</span>
+            <div class="letterKicker">INVITO</div>
+
+            <div class="names">
+              <div class="script">Vincenzo</div>
+              <div class="amp">&amp;</div>
+              <div class="script">Maria Giovanna</div>
             </div>
+
             <div class="letterSub">Annunciano con grande gioia il loro matrimonio</div>
 
-            <div class="letterMeta">
+            <div class="metaRow">
               <span class="pill">31 · 07 · 2026</span>
-              <span class="pill">Marano di Napoli</span>
+              <span class="pill">Tema celeste polvere</span>
             </div>
+
+            <div class="divider"></div>
+
+            <button class="goDown" id="goDown" type="button">
+              Scorri <span aria-hidden="true">↓</span>
+            </button>
           </div>
         </div>
-      </div>
 
-      <!-- Scorri (compare SOLO dopo apertura) -->
-      <button class="goDown" id="goDown" type="button" aria-label="Scorri alla prossima pagina">
-        Scorri <span aria-hidden="true">↓</span>
-      </button>
+      </div>
     </section>
 
-    <!-- PAGES: scorri solo dopo apertura -->
-    <div class="pages" id="pages" aria-label="Pagine invito">
-      <!-- PAGINA 1: Info (cerimonia + ricevimento) -->
-      <section class="page" id="p1" aria-label="Dettagli evento">
-        <div class="card">
-          <div class="kicker">INVITO</div>
-          <h1 class="title">Vincenzo <span class="muted">&amp;</span> Maria Giovanna</h1>
-          <p class="subtitle">Una giornata speciale da vivere insieme.</p>
-
-          <div class="twoCols">
-            <div class="miniCard">
-              <div class="miniTop">
-                <span class="iconCircle" aria-hidden="true">
-                  <!-- Chiesa icon -->
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2v5"></path>
-                    <path d="M9 5h6"></path>
-                    <path d="M4 10l8-6 8 6"></path>
-                    <path d="M6 10v10h12V10"></path>
-                    <path d="M10 20v-6h4v6"></path>
-                  </svg>
-                </span>
-                <div>
-                  <div class="miniLabel">Cerimonia</div>
-                  <div class="miniStrong">Chiesa Maria SS. Immacolata</div>
-                  <div class="miniSoft">Marano di Napoli</div>
-                </div>
-              </div>
-
-              <div class="miniBottom">
-                <span class="timePill">🕥 10:30</span>
-                <a class="btn" href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6" target="_blank" rel="noopener">
-                  Apri su Google Maps
-                </a>
-              </div>
-            </div>
-
-            <div class="miniCard">
-              <div class="miniTop">
-                <span class="iconCircle" aria-hidden="true">
-                  <!-- Ristorante icon -->
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 3v7a3 3 0 0 0 3 3h0V3"></path>
-                    <path d="M7 13v8"></path>
-                    <path d="M14 3v10"></path>
-                    <path d="M18 3v10a2 2 0 0 1-2 2h0"></path>
-                    <path d="M14 7h4"></path>
-                  </svg>
-                </span>
-                <div>
-                  <div class="miniLabel">Ricevimento</div>
-                  <div class="miniStrong">Il Gabbiano</div>
-                  <div class="miniSoft">Bacoli</div>
-                </div>
-              </div>
-
-              <div class="miniBottom">
-                <span class="timePill">🕑 14:00</span>
-                <a class="btn" href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6" target="_blank" rel="noopener">
-                  Apri su Google Maps
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="actions">
-            <!-- Sostituisci NUMERO con il tuo (formato internazionale, es +39...) -->
-            <a class="btnPrimary" id="rsvpBtn" href="https://wa.me/39XXXXXXXXXX?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20al%20matrimonio%20del%2031%2F07%2F2026.%20✨" target="_blank" rel="noopener">
-              RSVP su WhatsApp
-            </a>
-          </div>
-
-          <div class="softNote">Scorri per continuare ✨</div>
+    <!-- pagine (le puoi riattaccare dopo, ora teniamo solo esperienza atelier perfetta) -->
+    <section class="after" id="after" aria-hidden="true">
+      <div class="afterCard">
+        <div class="afterTitle">Perfetto ✨</div>
+        <div class="afterText">
+          Se vuoi, ora aggiungiamo le pagine (chiesa/ristorante, regalo, foto, ringraziamenti)
+          mantenendo lo stesso stile atelier.
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- PAGINA 2: Regalo -->
-      <section class="page" id="p2" aria-label="Regalo">
-        <div class="card cardSoft">
-          <div class="kicker">IL DONO PIÙ BELLO</div>
-          <h2 class="h2">Celebrare insieme questo giorno sarà<br>per noi il dono più bello.</h2>
-          <p class="p">
-            Ma se desiderate contribuire alla realizzazione dei nostri sogni e progetti futuri
-            potrete farlo cliccando sull’icona di seguito.
-          </p>
-
-          <a class="bigIconBtn" href="https://example.com" target="_blank" rel="noopener" aria-label="Apri lista regalo / IBAN">
-            <span class="bigIcon" aria-hidden="true">
-              <!-- Gift icon -->
-              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20 12v10H4V12"></path>
-                <path d="M2 7h20v5H2z"></path>
-                <path d="M12 22V7"></path>
-                <path d="M12 7H7.5a2.5 2.5 0 1 1 0-5C10 2 12 7 12 7Z"></path>
-                <path d="M12 7h4.5a2.5 2.5 0 1 0 0-5C14 2 12 7 12 7Z"></path>
-              </svg>
-            </span>
-            <span class="bigIconLabel">Apri il link regalo</span>
-          </a>
-
-          <div class="softNote">Grazie di cuore 🤍</div>
-        </div>
-      </section>
-
-      <!-- PAGINA 3: Foto -->
-      <section class="page" id="p3" aria-label="Condivisione foto">
-        <div class="card cardSoft">
-          <div class="kicker">I VOSTRI SCATTI</div>
-          <h2 class="h2">
-            Il giorno del nostro matrimonio sarà ancora più speciale grazie alla vostra presenza...
-          </h2>
-          <p class="p">
-            Se scatterete delle foto durante la giornata, ci farebbe davvero piacere rivivere quei momenti
-            anche attraverso i vostri occhi. Cliccando sull’icona qui sotto, potrete caricare i vostri scatti:
-            ogni foto sarà per noi un prezioso ricordo da custodire.
-          </p>
-
-          <a class="bigIconBtn" href="https://example.com" target="_blank" rel="noopener" aria-label="Carica le foto">
-            <span class="bigIcon" aria-hidden="true">
-              <!-- Camera icon -->
-              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-2h8l2 2h3a2 2 0 0 1 2 2z"></path>
-                <circle cx="12" cy="13" r="4"></circle>
-              </svg>
-            </span>
-            <span class="bigIconLabel">Carica le foto</span>
-          </a>
-
-          <div class="softNote">Ci farà emozionare 🤍</div>
-        </div>
-      </section>
-
-      <!-- PAGINA 4: Ringraziamenti + scadenza -->
-      <section class="page" id="p4" aria-label="Ringraziamenti">
-        <div class="card cardFinal">
-          <div class="kicker">GRAZIE</div>
-          <h2 class="h2">Siamo felici di condividere questo giorno con voi.</h2>
-          <p class="p">
-            Per organizzare al meglio, vi chiediamo gentilmente di darci conferma della vostra presenza
-            <strong>entro il 31 maggio</strong>.
-          </p>
-
-          <a class="btnPrimary big" href="https://wa.me/39XXXXXXXXXX?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna!%20Confermo%20la%20mia%20presenza%20(entri%20il%2031%20maggio).%20✨" target="_blank" rel="noopener">
-            Conferma presenza su WhatsApp
-          </a>
-
-          <div class="finalSparkles" aria-hidden="true">
-            <span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span>
-            <span class="spark s4"></span><span class="spark s5"></span><span class="spark s6"></span>
-          </div>
-
-          <div class="softNote">Con affetto, Vincenzo &amp; Maria Giovanna</div>
-        </div>
-      </section>
-    </div>
   </main>
 
   <script src="./app.js"></script>
