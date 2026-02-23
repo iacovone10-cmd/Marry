@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Vincenzo & Maria Giovanna — Invito</title>
+  <meta name="theme-color" content="#eaf2ff" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- STAGE: busta (WOW) -->
+  <section class="stage" id="stage" aria-label="Busta">
+    <div class="hintTop" id="hintTop">Tocca il sigillo per aprire ✨</div>
+
+    <div class="envelopeShell">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Apri la busta">
+        <div class="envPattern" aria-hidden="true"></div>
+        <div class="envBase" aria-hidden="true"></div>
+        <div class="envFoldL" aria-hidden="true"></div>
+        <div class="envFoldR" aria-hidden="true"></div>
+        <div class="envFoldB" aria-hidden="true"></div>
+        <div class="envFlap" aria-hidden="true"></div>
+
+        <!-- sigillo -->
+        <div class="sealWrap" id="sealWrap" aria-label="Sigillo">
+          <div class="seal" aria-hidden="true">
+            <div class="monogram">V&MG</div>
+          </div>
+          <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+        </div>
+
+        <!-- lettera -->
+        <div class="letter" id="letter" aria-hidden="true">
+          <div class="paperTexture" aria-hidden="true"></div>
+          <div class="letterInner">
+            <div class="letterKicker">INVITO</div>
+            <div class="names">
+              <div class="script">Vincenzo</div>
+              <div class="amp">&</div>
+              <div class="script">Maria Giovanna</div>
+            </div>
+            <div class="letterSub">Annunciano con grande gioia il loro matrimonio</div>
+
+            <div class="metaRow">
+              <span class="pill">31 · 07 · 2026</span>
+              <span class="pill">⛪ 11:00</span>
+              <span class="pill">🍽️ 14:00</span>
+            </div>
+
+            <div class="divider" aria-hidden="true"></div>
+
+            <button class="goDown" id="goDown" type="button">Scorri <span aria-hidden="true">↓</span></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PAGES -->
+  <main class="pages" id="pages" aria-label="Invito">
+    <div class="snap">
+
+      <!-- PAGE 1: dettagli -->
+      <section class="page" aria-label="Dettagli">
+        <div class="hero" aria-hidden="true"></div>
+
+        <div class="card">
+          <div class="kicker">INVITO</div>
+          <h1 class="title">Vincenzo <span class="muted">&</span> Maria Giovanna</h1>
+          <p class="subtitle">Una giornata speciale da vivere insieme.</p>
+
+          <div class="countdownWrap" aria-label="Countdown">
+            <div class="countdownLabel">Mancano</div>
+            <div class="countdown" id="countdown">
+              <div class="cd"><div class="cdNum" id="cdDays">—</div><div class="cdTxt">giorni</div></div>
+              <div class="cd"><div class="cdNum" id="cdHours">—</div><div class="cdTxt">ore</div></div>
+              <div class="cd"><div class="cdNum" id="cdMins">—</div><div class="cdTxt">min</div></div>
+              <div class="cd"><div class="cdNum" id="cdSecs">—</div><div class="cdTxt">sec</div></div>
+            </div>
+            <div class="countdownNote">31 · 07 · 2026</div>
+          </div>
+
+          <div class="grid2">
+            <article class="mini">
+              <div class="miniTop">
+                <span class="ico">⛪</span>
+                <div>
+                  <div class="miniLabel">Cerimonia</div>
+                  <div class="miniStrong">Chiesa Maria SS. Immacolata</div>
+                  <div class="miniSoft">Marano di Napoli — <strong>11:00</strong></div>
+                </div>
+              </div>
+              <a class="btn" href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6" target="_blank" rel="noopener">Apri su Google Maps</a>
+            </article>
+
+            <article class="mini">
+              <div class="miniTop">
+                <span class="ico">🍽️</span>
+                <div>
+                  <div class="miniLabel">Ricevimento</div>
+                  <div class="miniStrong">Il Gabbiano</div>
+                  <div class="miniSoft">Bacoli — <strong>14:00</strong></div>
+                </div>
+              </div>
+              <a class="btn" href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6" target="_blank" rel="noopener">Apri su Google Maps</a>
+            </article>
+          </div>
+
+          <div class="actions">
+            <a class="btnPrimary" href="https://api.whatsapp.com/send?text=Confermo%20con%20gioia%20la%20mia%20presenza%20al%20matrimonio%20del%2031%20luglio%202026" target="_blank" rel="noopener">RSVP su WhatsApp</a>
+            <div class="softNote">Conferma entro il <strong>31 maggio 2026</strong></div>
+          </div>
+
+          <div class="swipeHint">Scorri ↓</div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: regalo -->
+      <section class="page" aria-label="Regalo">
+        <div class="card cardSoft">
+          <div class="kicker">IL DONO PIÙ BELLO</div>
+          <h2 class="h2">Celebrare insieme questo giorno sarà per noi il dono più bello.</h2>
+          <p class="p">Se desiderate contribuire ai nostri sogni e progetti futuri, potete farlo cliccando qui sotto.</p>
+          <a class="bigIconBtn" href="#" onclick="return false;">
+            <span class="bigIco">🎁</span>
+            <span class="bigTxt">Link regalo (da impostare)</span>
+          </a>
+          <div class="softNote">Grazie di cuore 🤍</div>
+        </div>
+      </section>
+
+      <!-- PAGE 3: foto -->
+      <section class="page" aria-label="Foto">
+        <div class="card cardSoft">
+          <div class="kicker">I VOSTRI SCATTI</div>
+          <h2 class="h2">Ogni foto sarà per noi un ricordo prezioso.</h2>
+          <p class="p">Se scatterete delle foto durante la giornata, potete caricarle qui sotto (link da impostare).</p>
+          <a class="bigIconBtn" href="#" onclick="return false;">
+            <span class="bigIco">📸</span>
+            <span class="bigTxt">Carica le foto (da impostare)</span>
+          </a>
+          <div class="softNote">Ci emozionerà tantissimo 🤍</div>
+        </div>
+      </section>
+
+      <!-- PAGE 4: grazie -->
+      <section class="page" aria-label="Grazie">
+        <div class="card cardFinal">
+          <div class="kicker">GRAZIE</div>
+          <h2 class="h2">Siamo felici di condividere questo giorno con voi.</h2>
+          <p class="p">Per organizzarci al meglio, vi chiediamo gentilmente conferma entro il <strong>31 maggio 2026</strong>.</p>
+          <a class="btnPrimary big" href="https://api.whatsapp.com/send?text=Confermo%20la%20mia%20presenza%20(entri%20il%2031%20maggio)%20al%20matrimonio%20del%2031%20luglio%202026" target="_blank" rel="noopener">Conferma presenza su WhatsApp</a>
+          <div class="finalLine">Con affetto, Vincenzo & Maria Giovanna</div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

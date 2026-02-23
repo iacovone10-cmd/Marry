@@ -1,0 +1,257 @@
+:root{
+  --dusty-1:#ffffff;
+  --dusty-2:#EAF2FF;
+  --dusty-3:#BFD2F5;
+  --ink:#10233A;
+  --powder:#2E5FA7;
+  --muted:rgba(16,35,58,.62);
+  --card:rgba(255,255,255,.86);
+  --card2:rgba(255,255,255,.72);
+  --stroke:rgba(255,255,255,.70);
+  --shadow: 0 30px 90px rgba(0,0,0,.26);
+  --shadow2: 0 18px 44px rgba(0,0,0,.14);
+  --r: 26px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 680px at 50% 10%, rgba(255,255,255,.70), rgba(255,255,255,0) 62%),
+    radial-gradient(980px 980px at 20% 85%, rgba(255,255,255,.28), rgba(255,255,255,0) 70%),
+    linear-gradient(180deg, var(--dusty-3), var(--dusty-2));
+}
+
+/* stage overlay */
+.stage{
+  position:fixed; inset:0;
+  display:grid; place-items:center;
+  z-index:50;
+  transition: opacity .35s ease, transform .35s ease;
+}
+body.showPages .stage{opacity:0; transform:scale(.985); pointer-events:none}
+
+.hintTop{
+  position:fixed;
+  top: calc(14px + env(safe-area-inset-top));
+  left:50%; transform:translateX(-50%);
+  z-index:999;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(255,255,255,.82);
+  box-shadow:0 12px 30px rgba(0,0,0,.14);
+  color:rgba(12,47,66,.85);
+  font-weight:650;
+  backdrop-filter: blur(12px);
+}
+body.showPages .hintTop{display:none}
+
+.envelopeShell{width:min(92vw, 520px); padding:16px 14px 18px}
+.envelope{
+  width:100%;
+  aspect-ratio: 3 / 4.05;
+  position:relative;
+  border-radius:32px;
+  cursor:pointer;
+  outline:none;
+  transform:translateZ(0);
+  box-shadow: var(--shadow);
+}
+
+/* WOW Napoli watercolor background: uses SVG fallback always, and png if present */
+.envPattern{
+  position:absolute; inset:0;
+  border-radius:32px;
+  /* layer 1: user image (optional)  layer 2: embedded svg */
+  background-image:
+    url("napoli-acquerello.png"),
+    url("napoli-watercolor.svg");
+  background-size: cover, cover;
+  /* IMPORTANT: show Vesuvio / lungomare more (not only sky) */
+  background-position: center 35%, center;
+  background-repeat:no-repeat;
+  filter:saturate(1.05) contrast(1.03);
+}
+.envPattern::after{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:32px;
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.28) 55%, rgba(255,255,255,.55));
+  pointer-events:none;
+}
+
+/* envelope pieces */
+.envBase{position:absolute; inset:0; border-radius:32px; background: rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.22)}
+.envFoldL,.envFoldR,.envFoldB,.envFlap{position:absolute; inset:0; border-radius:32px; pointer-events:none}
+.envFoldB{clip-path: polygon(0 62%, 50% 92%, 100% 62%, 100% 100%, 0 100%);
+  background: rgba(255,255,255,.55);
+}
+.envFoldL{clip-path: polygon(0 0, 48% 50%, 0 100%);
+  background: rgba(255,255,255,.38);
+}
+.envFoldR{clip-path: polygon(100% 0, 52% 50%, 100% 100%);
+  background: rgba(255,255,255,.32);
+}
+.envFlap{clip-path: polygon(0 0, 50% 54%, 100% 0);
+  background: rgba(255,255,255,.72);
+  transform-origin: 50% 0%;
+  transition: transform .55s cubic-bezier(.2,.9,.2,1);
+}
+
+/* seal */
+.sealWrap{
+  position:absolute;
+  left:50%; top: 44%;
+  transform: translate(-50%,-50%);
+  z-index:10;
+}
+.seal{
+  width:92px; height:92px;
+  border-radius:50%;
+  background: radial-gradient(circle at 30% 28%, rgba(255,255,255,.95), rgba(255,255,255,.0) 45%),
+              radial-gradient(circle at 70% 70%, rgba(0,0,0,.16), rgba(0,0,0,0) 55%),
+              linear-gradient(180deg, #f7f7f4, #e9e7df);
+  box-shadow: 0 14px 36px rgba(0,0,0,.22), inset 0 10px 18px rgba(255,255,255,.92);
+  border: 1px solid rgba(142, 174, 222, .35);
+  display:grid; place-items:center;
+}
+.monogram{
+  font-family: Cinzel, serif;
+  letter-spacing:.12em;
+  font-weight:700;
+  color: rgba(46,95,167,.75);
+  font-size: 16px;
+}
+
+/* sparkles */
+.sparkles{position:absolute; inset:-24px; pointer-events:none}
+.sparkles i{position:absolute; width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.95); box-shadow:0 0 16px rgba(255,255,255,.9); opacity:0; transform: translateY(6px) scale(.6)}
+
+/* letter */
+.letter{
+  position:absolute;
+  left:50%; top: 56%;
+  transform: translate(-50%,-50%);
+  width: min(86%, 420px);
+  border-radius: 22px;
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(255,255,255,.92);
+  box-shadow: var(--shadow2);
+  overflow:hidden;
+  opacity:0;
+  transform: translate(-50%,-45%) scale(.98);
+  transition: opacity .45s ease, transform .45s ease;
+}
+.paperTexture{position:absolute; inset:0; opacity:.22;
+  background-image:
+    radial-gradient(10px 10px at 20% 25%, rgba(46,95,167,.12), transparent 60%),
+    radial-gradient(12px 12px at 80% 28%, rgba(46,95,167,.10), transparent 62%),
+    radial-gradient(12px 12px at 18% 78%, rgba(46,95,167,.10), transparent 62%),
+    radial-gradient(12px 12px at 84% 72%, rgba(46,95,167,.09), transparent 62%);
+}
+.letterInner{position:relative; padding: 22px 18px 18px; text-align:center}
+.letterKicker{font-family:Cinzel,serif; letter-spacing:.28em; font-weight:700; font-size:11px; color: rgba(46,95,167,.75)}
+.names{margin: 12px 0 8px; display:grid; gap:6px}
+.script{font-family: Allura, cursive; font-size: 44px; line-height: 1; color: rgba(16,35,58,.88)}
+.amp{font-family:Cinzel,serif; font-weight:700; font-size:16px; color: rgba(46,95,167,.85)}
+.letterSub{font-family:Cinzel,serif; letter-spacing:.14em; text-transform:uppercase; font-size:11px; color: rgba(16,35,58,.60)}
+.metaRow{display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin: 14px 0 10px}
+.pill{font-size:12px; padding:8px 12px; border-radius:999px; background: rgba(234,242,255,.9); border:1px solid rgba(46,95,167,.16); color: rgba(16,35,58,.74); font-weight:600}
+.divider{height:1px; width: 64%; margin: 12px auto 12px; background: linear-gradient(90deg, transparent, rgba(46,95,167,.26), transparent)}
+.goDown{appearance:none; border:0; cursor:pointer; padding: 10px 14px; border-radius: 999px; background: rgba(46,95,167,.92); color:#fff; font-weight:700}
+.goDown:active{transform: translateY(1px)}
+
+/* opened state */
+body.showPages .envFlap{transform: rotateX(180deg)}
+body.showPages .letter{opacity:1; transform: translate(-50%,-52%) scale(1)}
+
+/* pages */
+.pages{position:relative; height:100vh; overflow:auto; scroll-snap-type:y mandatory; -webkit-overflow-scrolling: touch;}
+.snap{min-height:100%;}
+.page{position:relative; min-height:100vh; scroll-snap-align:start; display:grid; place-items:center; padding: 22px 14px}
+
+.hero{
+  position:absolute;
+  inset:0 0 auto 0;
+  height: clamp(240px, 40vh, 420px);
+  background-image: url("napoli-acquerello.png"), url("napoli-watercolor.svg");
+  background-size: cover, cover;
+  background-position: center 35%, center;
+  background-repeat:no-repeat;
+  filter:saturate(1.05) contrast(1.03);
+}
+.hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(255,255,255,.0), rgba(255,255,255,.88) 72%, rgba(255,255,255,1));
+}
+
+.card{
+  width: min(94vw, 520px);
+  margin-top: clamp(130px, 18vh, 220px);
+  border-radius: var(--r);
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.78);
+  box-shadow: var(--shadow2);
+  padding: 22px 18px 18px;
+  backdrop-filter: blur(10px);
+}
+
+.kicker{font-family:Cinzel,serif; letter-spacing:.28em; font-weight:700; font-size:11px; color: rgba(46,95,167,.78); text-align:center}
+.title{margin: 12px 0 8px; font-family:Cinzel,serif; font-weight:700; font-size: 26px; line-height: 1.15; text-align:center}
+.muted{color: rgba(46,95,167,.72)}
+.subtitle{margin:0 0 16px; text-align:center; color: var(--muted)}
+
+.countdownWrap{margin: 14px 0 18px; padding: 14px 12px; border-radius: 18px; background: rgba(234,242,255,.75); border: 1px solid rgba(46,95,167,.14)}
+.countdownLabel{font-family:Cinzel,serif; letter-spacing:.2em; font-size:10px; text-transform:uppercase; color: rgba(46,95,167,.8); text-align:center}
+.countdown{display:flex; justify-content:space-between; gap:10px; margin-top:10px}
+.cd{flex:1; text-align:center; padding: 10px 8px; border-radius: 14px; background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.85)}
+.cdNum{font-weight:800; font-size:22px; color: rgba(16,35,58,.92)}
+.cdTxt{font-size:11px; color: rgba(16,35,58,.62)}
+.countdownNote{text-align:center; margin-top:10px; color: rgba(16,35,58,.62); font-weight:600}
+
+.grid2{display:grid; grid-template-columns: 1fr; gap: 12px; margin: 10px 0 14px}
+@media (min-width: 640px){ .grid2{grid-template-columns:1fr 1fr;} .title{font-size:28px} }
+
+.mini{border-radius: 18px; padding: 14px 14px 12px; background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.85)}
+.miniTop{display:flex; gap: 10px; align-items:flex-start}
+.ico{font-size: 22px; line-height: 1}
+.miniLabel{font-family:Cinzel,serif; letter-spacing:.18em; font-size:10px; text-transform:uppercase; color: rgba(46,95,167,.84)}
+.miniStrong{font-weight:800; margin-top:4px}
+.miniSoft{color: rgba(16,35,58,.70); margin-top:4px}
+
+.btn{display:inline-block; margin-top:10px; padding: 10px 12px; border-radius: 12px; text-decoration:none; text-align:center; background: rgba(234,242,255,.9); border: 1px solid rgba(46,95,167,.18); color: rgba(16,35,58,.86); font-weight:800}
+.btn:active{transform: translateY(1px)}
+
+.actions{margin-top: 8px; text-align:center}
+.btnPrimary{display:inline-block; padding: 12px 16px; border-radius: 999px; text-decoration:none; background: rgba(46,95,167,.96); color:#fff; font-weight:900; box-shadow: 0 14px 30px rgba(46,95,167,.22)}
+.btnPrimary.big{padding: 14px 18px; font-size: 15px}
+.softNote{margin-top:10px; color: rgba(16,35,58,.62)}
+.swipeHint{margin-top: 16px; text-align:center; opacity:.65}
+
+/* pages 2-4 */
+.cardSoft{background: var(--card2)}
+.h2{margin: 10px 0 10px; font-family: Cinzel, serif; font-weight:700; text-align:center}
+.p{margin: 0 0 14px; text-align:center; color: rgba(16,35,58,.72)}
+.bigIconBtn{display:flex; gap:12px; align-items:center; justify-content:center; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.85); text-decoration:none; color: rgba(16,35,58,.9); font-weight:900}
+.bigIco{font-size: 24px}
+.bigTxt{font-weight:900}
+
+.cardFinal{background: rgba(255,255,255,.90)}
+.finalLine{margin-top: 14px; text-align:center; color: rgba(16,35,58,.72); font-weight:800}
+
+/* make it feel snappy on mobile */
+@media (max-width: 420px){
+  .script{font-size:40px}
+  .seal{width:84px;height:84px}
+  .envPattern, .envelope{border-radius:28px}
+  .hero{background-position: center 42%, center}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto !important; transition:none !important; animation:none !important}
+}
