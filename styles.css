@@ -1,0 +1,166 @@
+:root{
+  --ink:#10233A;
+  --powder:#2E5FA7;
+  --dusty:#6f8fa8;
+  --dusty2:#BFD2F5;
+  --paper: rgba(255,255,255,.94);
+  --shadow: 0 26px 70px rgba(0,0,0,.22);
+  --shadow2: 0 16px 44px rgba(0,0,0,.14);
+  --r: 24px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:"Cormorant Garamond",serif;font-weight:500;color:var(--ink);background:#0f355a;overflow:hidden}
+
+.hero{
+  position:relative;
+  height:100vh;
+  background-image:url("sfondo-wedding.png");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center 30%;
+}
+.heroShade{position:absolute;inset:0;background:radial-gradient(900px 560px at 50% 28%, rgba(255,255,255,.04), rgba(255,255,255,0) 62%),linear-gradient(180deg, rgba(15,53,90,.08), rgba(15,53,90,.20) 60%, rgba(15,53,90,.30));pointer-events:none;}
+
+/* Sigillo CSS elegante (copre quello stampato) */
+.sealBtn{
+  position:absolute;
+  left:50%;
+  top:18.5%;
+  transform:translate(-50%,-50%);
+  width: 140px;
+  height: 140px;
+  border:0;
+  background:none;
+  cursor:pointer;
+  z-index:5;
+}
+@media(max-width:420px){
+  .sealBtn{width:124px;height:124px;top:18.5%;}
+}
+
+.sealShadow{
+  position:absolute;
+  left:12%; right:12%; bottom:-20px;
+  height:22px;
+  background:radial-gradient(ellipse at center, rgba(0,0,0,.35), transparent 72%);
+  filter: blur(6px);
+  opacity:.85;
+}
+
+.sealBtn::before{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:50% 50% 48% 48%;
+  background:
+    radial-gradient(75px 75px at 30% 26%, rgba(255,255,255,.70), rgba(255,255,255,0) 62%),
+    radial-gradient(86px 86px at 76% 82%, rgba(0,0,0,.20), rgba(0,0,0,0) 62%),
+    conic-gradient(from 210deg, #f3eadb, #fbf7ef, #f1e6d6, #fffaf3, #efe2cf);
+  box-shadow:
+    inset 0 12px 24px rgba(255,255,255,.22),
+    inset 0 -18px 30px rgba(0,0,0,.14),
+    0 22px 44px rgba(0,0,0,.28);
+  transform: scaleY(.92);
+}
+
+.sealRing{
+  position:absolute; inset:18px;
+  border-radius:50%;
+  border:1px solid rgba(111,143,168,.55);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.35);
+}
+
+.sealMono{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:Cinzel,serif;
+  font-weight:700;
+  letter-spacing:.12em;
+  color: rgba(46,95,167,.92);
+  transform: translateY(-2px);
+  text-shadow: 0 1px 0 rgba(255,255,255,.55);
+}
+
+/* crack + shine overlays */
+.sealCrack, .sealShine{position:absolute; inset:10px; border-radius:50%; pointer-events:none; opacity:0;}
+.sealCrack{
+  background:
+    radial-gradient(2px 70px at 52% 48%, rgba(120,140,160,.70), transparent 60%),
+    radial-gradient(2px 54px at 44% 60%, rgba(120,140,160,.50), transparent 60%),
+    radial-gradient(56px 2px at 58% 56%, rgba(255,255,255,.35), transparent 62%);
+  transform: rotate(-6deg) scale(.96);
+}
+.sealShine{
+  background: linear-gradient(130deg, transparent 0 35%, rgba(255,255,255,.72) 45%, transparent 55% 100%);
+  filter: blur(.6px);
+  transform: translateX(-40%) rotate(12deg);
+}
+
+body.press .sealShine{opacity:.40; animation: sweep .35s ease forwards;}
+body.opening .sealCrack{opacity:1; animation: crackIn .45s ease forwards;}
+body.opening .sealShine{opacity:.55; animation: sweep .55s ease forwards;}
+
+@keyframes sweep{to{transform: translateX(40%) rotate(12deg);}}
+@keyframes crackIn{to{transform: rotate(-6deg) scale(1);}}
+
+/* Overlay */
+.overlay{position:fixed;inset:0;display:grid;place-items:center;padding:18px 14px calc(18px + env(safe-area-inset-bottom));background:rgba(255,255,255,.10);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .25s ease;}
+
+.envelope{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);width:min(92vw,640px);height:min(70vh,520px);pointer-events:none;opacity:0;}
+.envBack{position:absolute;inset:0;border-radius:26px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);box-shadow:0 22px 60px rgba(0,0,0,.22);}
+.envFront{position:absolute;inset:0;border-radius:26px;background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.26));border:1px solid rgba(255,255,255,.18);clip-path:polygon(0 58%, 50% 92%, 100% 58%, 100% 100%, 0 100%);}
+.flap{position:absolute;left:0;right:0;top:0;height:54%;border-radius:26px 26px 0 0;background:linear-gradient(180deg, rgba(191,210,245,.55), rgba(255,255,255,.18));transform-origin:50% 0%;transform:rotateX(0deg);}
+
+.letter{width:min(92vw,640px);max-height:min(78vh,640px);overflow:auto;background:var(--paper);border:1px solid rgba(191,210,245,.35);border-radius:var(--r);box-shadow:var(--shadow);padding:28px 18px 20px;text-align:center;position:relative;opacity:0;transform:translateY(180px) scale(.96);transform-origin:50% 0%;}
+.letter::before{content:"";position:absolute;top:-14px;left:16px;right:16px;height:16px;border-radius:12px;background:rgba(191,210,245,.35);box-shadow:0 10px 20px rgba(0,0,0,.14);opacity:.9;}
+.close{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:999px;border:1px solid rgba(16,35,58,.12);background:rgba(255,255,255,.78);cursor:pointer;font-family:Inter,system-ui,sans-serif;}
+
+.letterTop{opacity:0;transform:translateY(10px);} 
+.names{font-family:'Great Vibes',cursive;font-size:48px;line-height:1.02;margin:2px 0 10px;color:rgba(16,35,58,.92)}
+.amp{font-family:Cinzel,serif;font-size:18px;margin:0 6px;color:rgba(46,95,167,.80)}
+.kicker{font-family:Cinzel,serif;text-transform:uppercase;letter-spacing:.20em;font-size:12px;margin:0 0 8px;color:rgba(111,143,168,.92)}
+.dateLine{font-weight:600;font-size:18px;color:rgba(16,35,58,.72);margin-bottom:6px}
+
+.letterBody{opacity:0;transform:translateY(10px);} 
+.grid{display:grid;gap:10px;margin-top:10px}
+@media(min-width:680px){.grid{grid-template-columns:1fr 1fr;}}
+.box{background:rgba(255,255,255,.88);border:1px solid rgba(46,95,167,.10);border-radius:16px;padding:12px;box-shadow:0 10px 22px rgba(0,0,0,.07)}
+.box h2{margin:0 0 6px;font-family:Cinzel,serif;letter-spacing:.18em;font-size:11px;text-transform:uppercase;color:rgba(46,95,167,.82)}
+.box p{margin:0;font-size:18px;color:rgba(16,35,58,.78)}
+.box span{opacity:.75}
+
+.btn{display:inline-block;margin-top:10px;padding:10px 12px;border-radius:12px;text-decoration:none;background:rgba(234,242,255,.95);border:1px solid rgba(46,95,167,.18);color:rgba(16,35,58,.88);font-weight:800;font-family:Inter,system-ui,sans-serif;}
+
+.rsvp{margin-top:14px}
+.rsvpTitle{margin:0;font-family:Cinzel,serif;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:rgba(111,143,168,.92)}
+.rsvpRow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.btnYes,.btnNo{display:inline-block;padding:12px 16px;border-radius:999px;text-decoration:none;font-family:Cinzel,serif;letter-spacing:.06em;font-weight:800;box-shadow:0 14px 28px rgba(0,0,0,.10);}
+.btnYes{background:rgba(46,95,167,.96);color:#fff;}
+.btnNo{background:rgba(255,255,255,.92);color:rgba(46,95,167,.92);border:1px solid rgba(111,143,168,.45);}
+.rsvpNote{margin:10px 0 0;font-size:18px;color:rgba(16,35,58,.72)}
+
+.thanks{margin-top:16px;opacity:.72;font-size:18px}
+
+/* OPEN state */
+body.open .overlay{opacity:1;pointer-events:auto}
+body.open .envelope{opacity:1}
+body.open .flap{animation: flapOpen .65s cubic-bezier(.2,.9,.2,1) forwards;}
+@keyframes flapOpen{to{transform:rotateX(180deg);}}
+body.open .letter{animation: letterOut .85s cubic-bezier(.15,0.95,.18,1) forwards;}
+@keyframes letterOut{0%{opacity:0;transform:translateY(210px) scale(.96);}55%{opacity:1;transform:translateY(-10px) scale(1.01);}100%{opacity:1;transform:translateY(0) scale(1);}}
+body.open .letterTop{animation: fadeUp .55s ease forwards;animation-delay:.35s;}
+body.open .letterBody{animation: fadeUp .55s ease forwards;animation-delay:.70s;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:420px){
+  .names{font-size:42px}
+  .letter{padding:26px 16px 18px}
+  .box p,.rsvpNote,.thanks{font-size:17px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important}
+  body.open .overlay{opacity:1;pointer-events:auto}
+  body.open .letter{opacity:1;transform:none}
+  body.open .letterTop, body.open .letterBody{opacity:1;transform:none}
+}
