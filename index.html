@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Vincenzo & Maria Giovanna — Invito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="closed">
+
+<!-- PAGINA 1: COPERTINA -->
+<section class="hero" id="hero">
+  <button class="wax" id="open" aria-label="Apri invito">
+    <span class="wax-shadow"></span>
+    <span class="wax-body"></span>
+    <span class="wax-rim"></span>
+    <span class="wax-mono">V&MG</span>
+  </button>
+  <div class="tapHint">Tocca il sigillo per aprire ✨</div>
+</section>
+
+<!-- PAGINA 2: DETTAGLI (inizialmente nascosta) -->
+<main class="details" id="details" aria-hidden="true">
+  <article class="card">
+    <h1 class="names">Vincenzo <span>&</span><br>Maria Giovanna</h1>
+    <p class="kicker">vi invitano al loro matrimonio</p>
+
+    <div class="date">31 luglio 2026 · ore 11:00</div>
+
+    <div class="grid">
+      <section class="box">
+        <h2>Cerimonia</h2>
+        <p>Chiesa Maria SS. Immacolata<br><span>Marano di Napoli</span></p>
+      </section>
+      <section class="box">
+        <h2>Ricevimento</h2>
+        <p>Il Gabbiano<br><span>Bacoli · ore 14:00</span></p>
+      </section>
+    </div>
+
+    <a class="btnPrimary" href="https://api.whatsapp.com/send?text=Confermo%20con%20gioia%20la%20mia%20presenza%20al%20matrimonio%20del%2031%20luglio%202026" target="_blank">RSVP su WhatsApp</a>
+
+    <footer class="thanks">Con affetto, Vincenzo & Maria Giovanna</footer>
+  </article>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
