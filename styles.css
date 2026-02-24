@@ -1,0 +1,69 @@
+:root{
+  --ink:#10233A;
+  --powder:#2E5FA7;
+  --dusty:#6f8fa8;
+  --paper: rgba(255,255,255,.95);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:"Cormorant Garamond",serif;background:#000;overflow:hidden;color:var(--ink)}
+
+.hero{height:100vh;position:relative;background:url('sfondo-wedding-clean.png') center/cover no-repeat;}
+.heroShade{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.10) 60%, rgba(0,0,0,.12));pointer-events:none;}
+
+/* Sigillo: più in basso e più elegante */
+.seal{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:128px;height:128px;border:0;background:none;cursor:pointer;z-index:5;}
+@media(min-width:900px){.seal{top:42%;width:136px;height:136px;}}
+@media(max-width:420px){.seal{top:48%;width:118px;height:118px;}}
+
+.sealShadow{position:absolute;left:12%;right:12%;bottom:-18px;height:18px;background:radial-gradient(ellipse,rgba(0,0,0,.38),transparent 70%);filter:blur(6px);}
+.sealBody{position:absolute;inset:0;border-radius:50%;background:
+  radial-gradient(70px 70px at 30% 25%,rgba(255,255,255,.78),transparent 62%),
+  radial-gradient(90px 90px at 74% 80%,rgba(0,0,0,.16),transparent 62%),
+  conic-gradient(from 200deg,#f1e6d6,#fffaf2,#efe2cf,#fff,#efe2cf);
+  box-shadow:inset 0 14px 26px rgba(255,255,255,.22),inset 0 -18px 28px rgba(0,0,0,.16),0 22px 44px rgba(0,0,0,.30);
+}
+.sealRing{position:absolute;inset:18px;border-radius:50%;border:1px solid rgba(111,143,168,.55);}
+.sealMono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;font-weight:700;letter-spacing:.14em;color:rgba(46,95,167,.92);transform:translateY(-2px);}
+
+/* Nascondi sigillo dopo click */
+body.open .seal{opacity:0;pointer-events:none;transition:opacity .28s ease;}
+
+/* Overlay + busta + lettera */
+.overlay{position:fixed;inset:0;display:grid;place-items:center;padding:18px 14px calc(18px + env(safe-area-inset-bottom));background:rgba(255,255,255,.12);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .35s ease;}
+body.open .overlay{opacity:1;pointer-events:auto;}
+
+.envelope{position:absolute;width:min(90vw,620px);height:min(70vh,520px);opacity:0;}
+body.open .envelope{opacity:1;}
+.envBack{position:absolute;inset:0;border-radius:26px;background:rgba(255,255,255,.16);box-shadow:0 22px 60px rgba(0,0,0,.22);}
+.envFront{position:absolute;inset:0;border-radius:26px;background:rgba(255,255,255,.26);clip-path:polygon(0 60%,50% 90%,100% 60%,100% 100%,0 100%);}
+.flap{position:absolute;top:0;left:0;right:0;height:55%;border-radius:26px 26px 0 0;background:linear-gradient(rgba(191,210,245,.55), rgba(255,255,255,.18));transform-origin:50% 0;transform:rotateX(0deg);}
+body.open .flap{animation:openFlap .7s ease forwards;}
+@keyframes openFlap{to{transform:rotateX(180deg);}}
+
+.letter{position:relative;width:min(92vw,560px);max-height:min(78vh,680px);overflow:auto;background:var(--paper);border-radius:26px;padding:30px 22px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.35);opacity:0;transform:translateY(160px) scale(.96);}
+body.open .letter{animation:letterOut .9s ease forwards .25s;}
+@keyframes letterOut{to{opacity:1;transform:translateY(0) scale(1);}}
+
+.close{position:absolute;top:10px;right:10px;border:none;background:#fff;border-radius:50%;width:34px;height:34px;cursor:pointer;}
+
+.names{font-family:'Great Vibes',cursive;font-size:44px;margin:0}
+.amp{font-family:Cinzel,serif;font-size:16px}
+.kicker{margin:6px 0 2px;font-family:Cinzel,serif;letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:rgba(111,143,168,.92)}
+.dateLine{margin:0 0 16px;font-size:18px;opacity:.85}
+
+.grid{display:grid;gap:12px;margin:10px 0 14px}
+@media(min-width:680px){.grid{grid-template-columns:1fr 1fr;}}
+.box{border:1px solid rgba(46,95,167,.12);border-radius:16px;padding:12px;background:rgba(255,255,255,.92)}
+.box h2{margin:0 0 6px;font-family:Cinzel,serif;letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:rgba(46,95,167,.88)}
+.box p{margin:0;font-size:18px}
+.box span{opacity:.75}
+.btn{display:inline-block;margin-top:10px;padding:10px 12px;border-radius:12px;text-decoration:none;background:rgba(234,242,255,.95);border:1px solid rgba(46,95,167,.18);color:rgba(16,35,58,.88);font-weight:800;font-family:Inter,system-ui,sans-serif;}
+
+.rsvpTitle{margin:0;font-family:Cinzel,serif;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:rgba(111,143,168,.92)}
+.rsvpRow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.rsvpRow a{padding:12px 16px;border-radius:999px;font-family:Cinzel,serif;letter-spacing:.06em;text-decoration:none;font-weight:800}
+.yes{background:rgba(46,95,167,.96);color:#fff;}
+.no{background:#fff;color:rgba(46,95,167,.92);border:1px solid rgba(111,143,168,.45)}
+.note{margin:10px 0 0;font-size:16px;opacity:.8}
+.thanks{margin-top:18px;font-size:18px;opacity:.75}
