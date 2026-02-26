@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Vincenzo & Maria Giovanna — Invito</title>
+  <meta name="theme-color" content="#f5f2ec" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<section class="hero">
+  <div class="heroShade"></div>
+  <button class="seal" id="open" aria-label="Apri invito">
+    <span class="sealBody"></span>
+    <span class="sealRing"></span>
+    <span class="sealMono">V&MG</span>
+  </button>
+</section>
+
+<section class="overlay" id="overlay" aria-hidden="true">
+  <article class="sheet" role="dialog" aria-label="Invito">
+    <button class="close" id="close" aria-label="Chiudi">✕</button>
+
+    <!-- Segnalibro elegante: tap sopra = su, tap sotto = giù -->
+    <aside class="bookmark" aria-label="Segnalibro">
+      <button class="bmHalf bmUp" id="bmUp" aria-label="Pagina precedente"></button>
+      <div class="bmBody" aria-hidden="true">
+        <div class="bmLabel" id="bmLabel">Invito</div>
+        <div class="bmHint">↑ ↓</div>
+      </div>
+      <button class="bmHalf bmDown" id="bmDown" aria-label="Pagina successiva"></button>
+    </aside>
+
+    <nav class="pagerNav" aria-label="Navigazione">
+      <button class="navBtn" id="up" aria-label="Su">↑</button>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+      <button class="navBtn" id="down" aria-label="Giù">↓</button>
+    </nav>
+
+    <div class="pager" id="pager">
+
+      <section class="page headerPage" data-title="Invito">
+        <h1 class="names">Vincenzo<br><span>&</span><br>Maria Giovanna</h1>
+        <p class="invite">vi invitano al loro matrimonio</p>
+        <div class="rule"></div>
+        <p class="date">31 luglio 2026 · ore 11:00</p>
+        <div class="hint">Swipe ↑ ↓ oppure usa il segnalibro</div>
+      </section>
+
+      <section class="page" data-title="Cerimonia">
+        <h2>Cerimonia</h2>
+        <p>Chiesa Maria SS. Immacolata<br><span>Marano di Napoli</span></p>
+        <p class="time">Ore 11:00</p>
+        <a class="map" href="https://maps.app.goo.gl/67K9Auu479Jeb2qx6" data-map-query="Chiesa Maria SS. Immacolata Marano di Napoli" target="_blank" rel="noopener">Apri su Google Maps</a>
+        <div class="ornament">❦</div>
+      </section>
+
+      <section class="page" data-title="Ricevimento">
+        <h2>Ricevimento</h2>
+        <p>Il Gabbiano<br><span>Bacoli</span></p>
+        <p class="time">Ore 14:00</p>
+        <a class="map" href="https://maps.app.goo.gl/G45W9W41TLqeAtuK6" data-map-query="Il Gabbiano Bacoli" target="_blank" rel="noopener">Apri su Google Maps</a>
+        <div class="ornament">❦</div>
+      </section>
+
+      <section class="page" data-title="RSVP">
+        <p class="rsvpTitle">Ci sarete?</p>
+        <div class="rsvpRow">
+          <a class="yes" href="https://api.whatsapp.com/send?text=S%C3%AC%2C%20con%20gioia%21" data-wa-text="Sì, con gioia!" target="_blank" rel="noopener">Sì, con gioia</a>
+          <a class="no" href="https://api.whatsapp.com/send?text=Purtroppo%20non%20potr%C3%B2%20esserci" data-wa-text="Purtroppo non potrò esserci" target="_blank" rel="noopener">Purtroppo no</a>
+        </div>
+        <p class="note">Gentile conferma entro il <strong>31 maggio 2026</strong></p>
+        <div class="ornament">❦</div>
+      </section>
+
+      <section class="page footerPage" data-title="Saluti">
+        <p class="thanks">Con affetto</p>
+        <p class="sign">Vincenzo &amp; Maria Giovanna</p>
+      </section>
+
+    </div>
+  </article>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
