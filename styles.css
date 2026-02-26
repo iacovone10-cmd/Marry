@@ -1,0 +1,54 @@
+:root{
+  --dusty:#5f819d;
+  --dustyLight:#d6e3ee;
+  --dustyBg:#eef4f9;
+  --ink:#0d2238;
+}
+html,body{margin:0;height:100%}
+body{font-family:'Cormorant Garamond',serif;overflow:hidden;color:var(--ink)}
+.hero{height:100vh;position:relative;background:url('napoli-illustrated-hero.png') center/cover no-repeat}
+.heroShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,0,0,.18))}
+.seal{position:absolute;left:50%;top:88%;transform:translate(-50%,-50%);width:104px;height:104px;border:none;background:none;cursor:pointer}
+.sealBody{position:absolute;inset:0;border-radius:50%;background:#fff;box-shadow:0 18px 36px rgba(0,0,0,.25)}
+.sealRing{position:absolute;inset:18px;border-radius:50%;border:1.6px solid var(--dusty)}
+.sealMono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;letter-spacing:.16em;color:var(--dusty)}
+body.open .seal{opacity:0;pointer-events:none}
+
+/* FLORAL BACKGROUND */
+.overlay{
+  position:fixed;inset:0;display:grid;place-items:center;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><g fill='none' stroke='%23c3d6e6' stroke-width='1.2' opacity='0.45'><circle cx='80' cy='80' r='28'/><circle cx='320' cy='120' r='34'/><circle cx='200' cy='300' r='40'/><path d='M80 52 v56 M52 80 h56'/><path d='M320 86 v68 M286 120 h68'/></g></svg>"),
+    linear-gradient(180deg,var(--dustyBg),#ffffff);
+  opacity:0;pointer-events:none
+}
+body.open .overlay{opacity:1;pointer-events:auto}
+
+.envelope{position:absolute;width:min(90vw,620px);height:380px;z-index:1}
+.envBack{position:absolute;inset:0;border-radius:26px;background:linear-gradient(180deg,#ffffff,var(--dustyBg));box-shadow:0 20px 50px rgba(0,0,0,.18)}
+.envFront{position:absolute;inset:0;border-radius:26px;background:rgba(255,255,255,.55);clip-path:polygon(0 60%,50% 90%,100% 60%,100% 100%,0 100%)}
+.flap{position:absolute;top:0;left:0;right:0;height:55%;border-radius:26px 26px 0 0;background:linear-gradient(180deg,var(--dustyLight),#fff);transform-origin:50% 0}
+body.open .flap{animation:openFlap .7s ease forwards}
+@keyframes openFlap{to{transform:rotateX(180deg)}}
+
+.letter{
+  position:relative;z-index:2;border-radius:32px;padding:26px 18px 22px;
+  max-width:92vw;max-height:88vh;overflow:auto;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 30px 80px rgba(0,0,0,.25)
+}
+.close{position:sticky;top:8px;float:right;border:none;background:#fff;border-radius:50%;width:34px;height:34px}
+.frame{border:1.5px solid var(--dustyLight);border-radius:22px;padding:18px;margin-bottom:14px;text-align:center;background:rgba(255,255,255,.95)}
+.names{font-family:'Great Vibes',cursive;font-size:46px;margin:0}
+.amp{font-family:Cinzel,serif;font-size:16px;color:var(--dusty)}
+.kicker{font-family:Cinzel,serif;letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--dusty)}
+.date{margin-top:6px;font-size:18px;opacity:.85}
+h2{font-family:Cinzel,serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dusty);margin-bottom:6px}
+span{opacity:.7}
+.map{display:inline-block;margin-top:8px;font-size:15px;color:var(--dusty);text-decoration:none;font-weight:600}
+.rsvpTitle{font-family:Cinzel,serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dusty)}
+.rsvpRow{display:flex;gap:12px;justify-content:center;margin-top:10px}
+.yes{background:var(--dusty);color:#fff;padding:12px 20px;border-radius:999px;text-decoration:none}
+.no{border:1px solid var(--dusty);color:var(--dusty);padding:12px 20px;border-radius:999px;text-decoration:none}
+.note{margin-top:10px;opacity:.75}
+.thanks{margin-top:16px;text-align:center;opacity:.75}
