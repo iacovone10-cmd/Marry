@@ -1,0 +1,112 @@
+:root{
+  --ink:#1f2b3a;
+  --paper:#f7f4ee;
+  --rule:#d9d3c7;
+  --gold:#c9b37e;
+}
+html,body{margin:0;height:100%}
+body{font-family:'Cormorant Garamond',serif;color:var(--ink);overflow:hidden;background:#fff}
+
+.hero{height:100vh;position:relative;background:url('napoli-illustrated-hero.png') center/cover no-repeat}
+.heroShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.22))}
+
+.seal{position:absolute;left:50%;top:88%;transform:translate(-50%,-50%);width:104px;height:104px;border:none;background:none;cursor:pointer}
+.sealBody{position:absolute;inset:0;border-radius:50%;background:#fff;box-shadow:0 18px 36px rgba(0,0,0,.25)}
+.sealRing{position:absolute;inset:18px;border-radius:50%;border:1.6px solid var(--rule)}
+.sealMono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;letter-spacing:.18em;color:var(--ink)}
+body.open .seal{opacity:0;pointer-events:none}
+
+/* Overlay fixed, NO scroll */
+.overlay{position:fixed;inset:0;display:grid;place-items:center;background:radial-gradient(circle,var(--paper),#ffffff);opacity:0;pointer-events:none}
+body.open .overlay{opacity:1;pointer-events:auto}
+
+/* Sheet fits screen (mobile-first) */
+.sheet{
+  position:relative;
+  width:min(92vw,430px);
+  height:min(92svh,760px);
+  background:var(--paper);
+  box-shadow:0 50px 140px rgba(0,0,0,.35);
+  padding:0;
+  overflow:hidden;
+}
+
+/* inner print frame */
+.sheet::before{
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:1px solid var(--rule);
+  pointer-events:none;
+}
+
+.close{position:absolute;top:10px;right:10px;border:none;background:transparent;font-size:20px;z-index:10}
+
+/* Pager */
+.pager{height:100%;width:100%;display:flex;flex-direction:column;transform:translateY(0);transition:transform .35s ease;will-change:transform}
+.page{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:56px 34px;
+  box-sizing:border-box;
+}
+
+/* Typography */
+.names{font-family:'Great Vibes',cursive;font-size:54px;line-height:1.05;margin:0}
+.names span{font-family:Cinzel,serif;font-size:18px}
+.invite{text-transform:uppercase;letter-spacing:.26em;font-size:12px;margin:18px 0}
+.rule{width:80px;height:1px;background:var(--rule);margin:22px auto}
+.date{font-size:18px;margin:0}
+.hint{margin-top:22px;opacity:.6;font-size:14px}
+
+h2{font-family:Cinzel,serif;font-size:12px;letter-spacing:.26em;text-transform:uppercase;margin:0 0 12px}
+.time{font-weight:600;margin:10px 0}
+span{opacity:.75}
+
+.ornament{font-size:22px;color:var(--gold);margin-top:26px}
+
+.map{display:inline-block;margin-top:12px;font-size:15px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);position:relative;z-index:5}
+
+.rsvpTitle{text-transform:uppercase;letter-spacing:.26em;font-size:12px;margin:0}
+.rsvpRow{display:flex;gap:14px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.yes,.no{padding:14px 22px;border-radius:0;text-decoration:none;position:relative;z-index:5}
+.yes{background:var(--ink);color:#fff}
+.no{border:1px solid var(--ink);color:var(--ink)}
+.note{margin-top:16px;opacity:.7}
+
+.thanks{margin:0;font-size:18px}
+.sign{margin:10px 0 0;font-size:18px;opacity:.85}
+
+/* Navigation (elegant, subtle) */
+.pagerNav{
+  position:absolute;
+  left:10px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:10;
+}
+.navBtn{
+  width:34px;height:34px;
+  border:1px solid var(--rule);
+  background:rgba(247,244,238,.85);
+  color:var(--ink);
+  font-size:16px;
+  border-radius:999px;
+}
+.dots{display:flex;flex-direction:column;gap:6px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(31,43,58,.22)}
+.dot.active{background:rgba(31,43,58,.65)}
+
+/* Smaller phones */
+@media (max-height:700px){
+  .sheet{height:min(94svh,720px)}
+  .page{padding:46px 26px}
+  .names{font-size:50px}
+}
