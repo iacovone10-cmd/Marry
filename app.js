@@ -13,9 +13,11 @@
   let lock=false;
 
   function update(){ if(bmLabel) bmLabel.textContent = title(index) || 'Invito'; }
+  function apply(){ pager.style.transform=`translate3d(0,${-index*100}%,0)`; }
+
   function go(i){
     index=clamp(i);
-    pager.style.transform=`translate3d(0,${-index*100}%,0)`;
+    apply();
     update();
     lock=true;
     setTimeout(()=>lock=false,260);
@@ -23,7 +25,7 @@
   function next(){ if(lock) return; go(index+1); }
   function prev(){ if(lock) return; go(index-1); }
 
-  if(openBtn) openBtn.onclick=()=>{document.body.classList.add('open');go(0)};
+  if(openBtn) openBtn.onclick=()=>{document.body.classList.add('open'); go(0)};
   if(closeBtn) closeBtn.onclick=()=>{document.body.classList.remove('open')};
 
   bmUp.onclick=prev;
