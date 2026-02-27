@@ -5,9 +5,10 @@ body{font-family:'Cormorant Garamond',serif;color:var(--ink);overflow:hidden;bac
 .hero{height:100vh;position:relative;background:url('napoli-illustrated-hero.png') center/cover no-repeat}
 .heroShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.22))}
 .heroCenter{position:absolute;inset:0;display:grid;place-items:center}
-.heroLower{align-items:end;padding-bottom:10vh}
+.heroLower{align-items:end;padding-bottom:14vh}
 .seal{position:relative;width:112px;height:112px;border:none;background:none;cursor:pointer;animation:sealFloat 6s ease-in-out infinite}
-.sealBody{position:absolute;inset:0;border-radius:50%;background:#fff;box-shadow:0 22px 46px rgba(50,90,160,.22), 0 22px 46px rgba(0,0,0,.18);inset:20px;border-radius:50%;border:1.6px solid rgba(31,43,58,.32)}
+.sealBody{position:absolute;inset:0;border-radius:50%;background:#fff;box-shadow:0 22px 46px rgba(0,0,0,.28)}
+.sealRing{position:absolute;inset:20px;border-radius:50%;border:1.6px solid rgba(31,43,58,.32)}
 .sealMono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;letter-spacing:.18em;color:rgba(31,43,58,.85)}
 .seal::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(255,255,255,.35);opacity:0;transition:opacity .25s ease}
 .seal:active{transform:translateY(2px) scale(.98)}
