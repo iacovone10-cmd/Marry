@@ -1,0 +1,129 @@
+.detailPage{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:64px 36px;
+  box-sizing:border-box;
+  position:relative;
+  background-color: #dfe8f1;
+}
+
+/* Cornice foglio */
+.detailPage::before{
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:1px solid rgba(108,143,176,.45);
+  box-shadow:
+    inset 0 0 0 6px rgba(255,255,255,.55),
+    inset 0 0 0 12px rgba(255,255,255,.25),
+    0 18px 40px rgba(0,0,0,.12);
+  pointer-events:none;
+  z-index:1;
+}
+
+
+:root{--ink:#1f2b3a;--paper:#eef3f8;--gold:#c9b37e}
+html,body{margin:0;height:100%}
+body{font-family:'Cormorant Garamond',serif;color:var(--ink);overflow:hidden;background:#fff;text-rendering:optimizeLegibility}
+.hero{height:100vh;position:relative;background:url('napoli-illustrated-hero.png') center/cover no-repeat}
+.heroShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.22))}
+.heroCenter{position:absolute;inset:0;display:grid;place-items:center}
+.heroLower{align-items:end;padding-bottom:14vh}
+.seal{position:relative;width:112px;height:112px;border:none;background:none;cursor:pointer;animation:sealFloat 6s ease-in-out infinite}
+.sealBody{position:absolute;inset:0;border-radius:50%;background:#fff;box-shadow:0 22px 46px rgba(0,0,0,.28)}
+.sealRing{position:absolute;inset:20px;border-radius:50%;border:1.6px solid rgba(31,43,58,.32)}
+.sealMono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;letter-spacing:.18em;color:rgba(31,43,58,.85)}
+.seal::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(255,255,255,.35);opacity:0;transition:opacity .25s ease}
+.seal:active{transform:translateY(2px) scale(.98)}
+.seal.tap{animation:none;transform:translateY(2px) scale(.985)}
+.seal.tap::after{opacity:.85}
+@keyframes sealFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.overlay{position:fixed;inset:0;display:grid;place-items:center;background:radial-gradient(circle,#ffffff,#f3f6fa);opacity:0;pointer-events:none}
+body.open .overlay{opacity:1;pointer-events:auto}
+.sheet{position:relative;width:min(92vw,430px);height:min(92svh,760px);overflow:hidden;box-shadow:0 60px 160px rgba(0,0,0,.35);transform:translateY(-120vh);transition:transform .9s cubic-bezier(.22,1,.36,1)}
+body.open .sheet{transform:translateY(0)}
+.close{position:absolute;top:10px;left:10px;border:1px solid rgba(31,43,58,.18);background:rgba(255,255,255,.70);width:34px;height:34px;border-radius:6px;z-index:30}
+.pager{height:100%;width:100%;display:flex;flex-direction:column;transition:transform .35s ease;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
+.detailPage>*{position:relative;z-index:1}
+.invite{text-transform:uppercase;letter-spacing:.22em;font-size:13px;margin:0;color:rgba(31,43,58,.92)}
+.rule{width:90px;height:1px;background:linear-gradient(90deg,transparent,rgba(31,43,58,.22),transparent);margin:22px auto}
+.date{font-size:19px;margin:0;color:rgba(31,43,58,.92)}
+h2{font-family:Cinzel,serif;font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin:10px 0;color:rgba(31,43,58,.92)}
+.sectionIcon{font-size:20px;color:rgba(31,43,58,.75);margin-bottom:6px}
+.microLine{width:26px;height:1px;background:linear-gradient(90deg,transparent,rgba(31,43,58,.30),transparent);transform:scaleY(.5);margin:8px auto 14px}
+.place{margin:0;font-size:18px;line-height:1.45;color:rgba(31,43,58,.92)}
+.place span{opacity:.78}
+.time{margin:10px 0;font-size:16px;color:rgba(31,43,58,.92)}
+.map{margin-top:10px;font-size:16px;color:rgba(31,43,58,.92);text-decoration:none;border-bottom:1px solid rgba(31,43,58,.22)}
+.rsvpRow{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap;justify-content:center}
+.yes,.no{padding:14px 22px;text-decoration:none;font-size:15px}
+.yes{background:rgba(31,43,58,.92);color:#fff}
+.no{border:1px solid rgba(31,43,58,.65);color:rgba(31,43,58,.92)}
+.note{margin-top:14px;font-size:15px;color:rgba(31,43,58,.86)}
+.thanks{margin:0;font-size:18px;color:rgba(31,43,58,.92)}
+.sign{margin:10px 0 0;font-size:18px;color:rgba(31,43,58,.92)}
+.bookmark{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:34px;height:120px;z-index:25;filter:drop-shadow(0 10px 16px rgba(0,0,0,.12))}
+.bookmark::before{content:"";position:absolute;inset:0;border-radius:16px 16px 10px 10px;background:linear-gradient(180deg,#eadfc9,#c9b37e);border:1px solid rgba(31,43,58,.14)}
+.bookmark::after{content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);border-left:17px solid transparent;border-right:17px solid transparent;border-top:12px solid #c9b37e}
+.bmBody{position:absolute;inset:8px 6px 18px;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.bmLabel{font-family:Cinzel,serif;font-size:9px;letter-spacing:.22em;writing-mode:vertical-rl;text-orientation:mixed;color:rgba(31,43,58,.85)}
+.bmHalf{position:absolute;left:0;right:0;height:50%;background:transparent;border:none}
+.bmUp{top:0}.bmDown{bottom:0}
+@media (max-height:700px){@media (prefers-reduced-motion: reduce){.seal{animation:none}.sheet,.pager{transition:none;transform:none}}
+
+
+/* === FIORI ORTENSIA REALISTICI – VISIBILI === */
+.detailPage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+  background-repeat:no-repeat;
+}
+
+/* Invito – ortensia grande basso dx */
+.detailPage[data-title="Invito"]::after{
+  background-image:
+    radial-gradient(circle at 85% 82%, rgba(108,143,176,.55) 0 22%, rgba(108,143,176,.35) 23% 38%, rgba(108,143,176,.18) 39% 55%, transparent 56%),
+    radial-gradient(circle at 80% 88%, rgba(122,160,195,.45) 0 18%, rgba(122,160,195,.25) 19% 34%, transparent 35%);
+  background-size:420px 420px, 300px 300px;
+}
+
+/* Cerimonia – ortensia laterale sx */
+.detailPage[data-title="Cerimonia"]::after{
+  background-image:
+    radial-gradient(circle at 5% 55%, rgba(108,143,176,.45) 0 20%, rgba(108,143,176,.28) 21% 38%, rgba(108,143,176,.15) 39% 55%, transparent 56%);
+  background-size:320px 320px;
+}
+
+/* Ricevimento – ortensia basso centro */
+.detailPage[data-title="Ricevimento"]::after{
+  background-image:
+    radial-gradient(circle at 50% 90%, rgba(108,143,176,.50) 0 22%, rgba(108,143,176,.30) 23% 40%, rgba(108,143,176,.16) 41% 58%, transparent 59%);
+  background-size:360px 360px;
+}
+
+/* RSVP – fiore leggero alto dx */
+.detailPage[data-title="RSVP"]::after{
+  background-image:
+    radial-gradient(circle at 90% 18%, rgba(108,143,176,.35) 0 18%, rgba(108,143,176,.20) 19% 34%, transparent 35%);
+  background-size:260px 260px;
+}
+
+/* Saluti – composizione doppia */
+.detailPage[data-title="Saluti"]::after{
+  background-image:
+    radial-gradient(circle at 75% 85%, rgba(108,143,176,.40) 0 20%, rgba(108,143,176,.25) 21% 38%, transparent 39%),
+    radial-gradient(circle at 25% 88%, rgba(108,143,176,.30) 0 18%, rgba(108,143,176,.18) 19% 32%, transparent 33%);
+  background-size:280px 280px, 240px 240px;
+}
+
+.detailPage > *{
+  position:relative;
+  z-index:3;
+}
