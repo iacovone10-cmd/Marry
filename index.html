@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang='it'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover' />
+  <title>Vincenzo & Maria Giovanna — Invito</title>
+  <meta name='theme-color' content='#000000' />
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap' rel='stylesheet'>
+  <link rel='stylesheet' href='styles.css' />
+</head>
+<body>
+
+<section class='cover'>
+  <img class='coverImg' src='napoli-illustrated-hero.png' alt='Napoli' />
+  <button class='seal' id='open' aria-label='Apri invito'>
+    <span class='sealWax'></span>
+    <span class='sealInner'></span>
+    <span class='sealMono'>M<br>G<br>V</span>
+  </button>
+</section>
+
+<section class='overlay' id='overlay' aria-hidden='true'>
+  <button class='close' id='close' aria-label='Chiudi'>✕</button>
+
+  <div class='pager' id='pager'>
+
+    <section class='page'>
+      <div class='frame'>
+        <img class='pageArt' src='invito.png' alt='Invito' />
+      </div>
+    </section>
+
+    <section class='page'>
+      <div class='frame'>
+        <img class='pageArt' src='chiesa.png' alt='Cerimonia' />
+        <a class='hotspot pinHot' href='https://maps.app.goo.gl/67K9Auu479Jeb2qx6' target='_blank' rel='noopener'></a>
+        <span class='pinVis'></span>
+      </div>
+    </section>
+
+    <section class='page'>
+      <div class='frame'>
+        <img class='pageArt' src='gabbiano.png' alt='Ricevimento' />
+        <a class='hotspot pinHot' href='https://maps.app.goo.gl/G45W9W41TLqeAtuK6' target='_blank' rel='noopener'></a>
+        <span class='pinVis'></span>
+      </div>
+    </section>
+
+    <section class='page'>
+      <div class='frame'>
+        <img class='pageArt' src='dono.png' alt='Dono' />
+        <a class='hotspot giftHot' href='https://example.com/lista-nozze' target='_blank' rel='noopener'></a>
+      </div>
+    </section>
+
+    <!-- RSVP FIXED ALIGNMENT -->
+    <section class='page'>
+      <div class='frame'>
+        <img class='pageArt' src='rsvp.png' alt='RSVP' />
+        <div class='rsvpRow'>
+          <a class='rsvpBtn yes' href='https://api.whatsapp.com/send?phone=393496701639&text=Ciao%2C%20grazie%20per%20l%27invito%2C%20verr%C3%B2%20con%20piacere%21' target='_blank' rel='noopener'>Sì, con gioia</a>
+          <a class='rsvpBtn no'  href='https://api.whatsapp.com/send?phone=393496701639&text=Ciao%2C%20grazie%20per%20l%27invito%2C%20ma%20non%20potr%C3%B2%20esserci'  target='_blank' rel='noopener'>Non potrò esserci</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<script src='app.js'></script>
+</body>
+</html>

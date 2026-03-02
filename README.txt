@@ -1,17 +1,14 @@
-✅ FIX WHATSAPP + PIN CELESTE POLVERE
+✅ FIX DEFINITIVO
 
-Cambiato RSVP su WhatsApp in formato più compatibile:
-- https://api.whatsapp.com/send?phone=...&text=...
+- ELIMINATO OGNI DORATO (linea + pin)
+- Pin chiesa/ristorante solo CELESTE POLVERE
+- RSVP rifatto con FLEX: bottoni perfettamente ALLINEATI
+- Link WhatsApp robusti (api.whatsapp.com)
 
-Aggiunto un PIN visibile e più elegante (celeste polvere) su Chiesa e Il Gabbiano.
-
-Metti in root:
-- napoli-illustrated-hero.png
-- invito.png
-- chiesa.png
-- gabbiano.png
-- dono.png
-- rsvp.png
-
-Se i bottoni RSVP non coincidono perfettamente, regola in styles.css:
-.yesHot e .noHot (left/top/width/height)
+File richiesti:
+napoli-illustrated-hero.png
+invito.png
+chiesa.png
+gabbiano.png
+dono.png
+rsvp.png
