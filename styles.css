@@ -1,0 +1,82 @@
+
+:root{--ink:#1f2b3a;--blue:#6f8ea8;--gold:#c9b37e}
+html,body{margin:0;height:100%}
+body{font-family:'Cormorant Garamond',serif;color:var(--ink);background:#fff;overflow:hidden}
+
+.hero{height:100vh;position:relative;background:url('napoli-illustrated-hero.png') center/cover no-repeat}
+.heroShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.24))}
+
+/* Sigillo (semplice e pulito) */
+.seal{position:absolute;left:50%;bottom:10vh;transform:translateX(-50%);width:112px;height:112px;border:none;background:none;cursor:pointer}
+.sealBody{position:absolute;inset:0;border-radius:50%;background:#fff;box-shadow:0 22px 46px rgba(0,0,0,.28)}
+.sealRing{position:absolute;inset:20px;border-radius:50%;border:1.6px solid rgba(31,43,58,.32)}
+.sealMono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;letter-spacing:.14em;line-height:1.1;color:rgba(31,43,58,.85)}
+
+/* Overlay */
+.overlay{position:fixed;inset:0;display:grid;place-items:center;background:#f6f8fb;opacity:0;pointer-events:none}
+body.open .overlay{opacity:1;pointer-events:auto}
+.sheet{position:relative;width:min(92vw,430px);height:min(92svh,760px);overflow:hidden;background:#fff;box-shadow:0 50px 140px rgba(0,0,0,.35);transform:translateY(-120vh);transition:transform .9s cubic-bezier(.22,1,.36,1)}
+body.open .sheet{transform:translateY(0)}
+.close{position:absolute;top:10px;left:10px;border:1px solid rgba(31,43,58,.18);background:rgba(255,255,255,.85);width:34px;height:34px;border-radius:8px;z-index:50}
+
+/* ✅ Scroll nativo + snap (mobile friendly) */
+.pager{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.page{min-height:100%;scroll-snap-align:start}
+
+/* Pagine */
+.detailPage{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:66px 34px;box-sizing:border-box;
+  background:#fdfefe;
+  /* fiori come sfondo, non dipendono da sprig/hydra png */
+  background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20430%20760%27%3E%0A%20%20%3Crect%20width%3D%27430%27%20height%3D%27760%27%20fill%3D%27none%27/%3E%0A%20%20%3C%21--%20top-left%20leaves%20--%3E%0A%20%20%3Cg%20opacity%3D%270.85%27%3E%0A%20%20%20%20%3Cpath%20d%3D%27M64%2098%20C40%2070%2C%2028%2044%2C%2018%2018%27%20fill%3D%27none%27%20stroke%3D%27%236f8ea8%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%20opacity%3D%270.45%27/%3E%0A%20%20%20%20%3Cg%20fill%3D%27%2388a5b8%27%20opacity%3D%270.55%27%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%2734%27%20cy%3D%2730%27%20rx%3D%2718%27%20ry%3D%2710%27%20transform%3D%27rotate%28-30%2034%2030%29%27/%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%2750%27%20cy%3D%2752%27%20rx%3D%2720%27%20ry%3D%2711%27%20transform%3D%27rotate%28-20%2050%2052%29%27/%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%2764%27%20cy%3D%2778%27%20rx%3D%2722%27%20ry%3D%2712%27%20transform%3D%27rotate%28-10%2064%2078%29%27/%3E%0A%20%20%20%20%3C/g%3E%0A%20%20%3C/g%3E%0A%0A%20%20%3C%21--%20bottom-right%20hydrangea%20%2B%20leaves%20--%3E%0A%20%20%3Cg%20transform%3D%27translate%28270%20560%29%27%20opacity%3D%270.92%27%3E%0A%20%20%20%20%3Cg%20fill%3D%27%2388a5b8%27%20opacity%3D%270.55%27%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%2740%27%20cy%3D%2770%27%20rx%3D%2730%27%20ry%3D%2716%27%20transform%3D%27rotate%2810%2040%2070%29%27/%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%2770%27%20cy%3D%2795%27%20rx%3D%2734%27%20ry%3D%2718%27%20transform%3D%27rotate%28-10%2070%2095%29%27/%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%2718%27%20cy%3D%27110%27%20rx%3D%2728%27%20ry%3D%2715%27%20transform%3D%27rotate%2822%2018%20110%29%27/%3E%0A%20%20%20%20%3C/g%3E%0A%20%20%20%20%3Cg%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%2770%27%20cy%3D%27120%27%20r%3D%2762%27%20fill%3D%27%23d8e0ea%27%20opacity%3D%270.25%27/%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%27%236f8ea8%27%20opacity%3D%270.40%27%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%27M20%20110%20C40%2088%2C%2068%2088%2C%2088%20110%20C68%20136%2C%2040%20136%2C%2020%20110Z%27/%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%27M48%2086%20C68%2064%2C%2096%2064%2C%20116%2086%20C96%20112%2C%2068%20112%2C%2048%2086Z%27%20opacity%3D%270.8%27/%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%27M48%20134%20C68%20112%2C%2096%20112%2C%20116%20134%20C96%20160%2C%2068%20160%2C%2048%20134Z%27%20opacity%3D%270.85%27/%3E%0A%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%27%23ffffff%27%20opacity%3D%270.35%27%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%2772%27%20cy%3D%2792%27%20r%3D%274%27/%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%2798%27%20cy%3D%27112%27%20r%3D%273.6%27/%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%2778%27%20cy%3D%27138%27%20r%3D%273.8%27/%3E%0A%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%20%20%3Cg%20fill%3D%27%23c9b37e%27%20opacity%3D%270.28%27%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%2796%27%20cy%3D%27126%27%20r%3D%272.8%27/%3E%0A%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%3C/g%3E%0A%20%20%3C/g%3E%0A%0A%20%20%3C%21--%20gold%20flourish%20hint%20%28very%20subtle%29%20--%3E%0A%20%20%3Cpath%20d%3D%27M120%20560%20C160%20540%2C%20190%20600%2C%20230%20565%20C270%20530%2C%20305%20600%2C%20350%20555%27%20fill%3D%27none%27%20stroke%3D%27%23c9b37e%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%20opacity%3D%270.35%27/%3E%0A%3C/svg%3E');
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+.detailPage::after{content:"";position:absolute;inset:12px;pointer-events:none;border:1px solid rgba(31,43,58,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.72),0 0 0 10px rgba(255,255,255,.55)}
+
+.content{position:relative;z-index:2;max-width:360px;width:100%;display:flex;flex-direction:column;align-items:center}
+
+/* Tipografia */
+.scriptTitle{font-family:'Great Vibes',cursive;color:var(--blue);font-size:42px;line-height:1.05;margin:0}
+.scriptTitle.small{font-size:34px}
+.scriptLine{font-style:italic;color:var(--blue);font-size:19px;line-height:1.65;margin:6px 0}
+.scriptDate{font-family:'Great Vibes',cursive;color:var(--blue);font-size:46px;line-height:1;margin:6px 0}
+.scriptDate span{font-family:'Cormorant Garamond',serif;font-size:30px;font-style:italic;opacity:.9}
+.rule{width:86px;height:1px;background:linear-gradient(90deg,transparent,rgba(31,43,58,.24),transparent);margin:18px auto}
+
+/* Foto: niente alone bianco */
+.mediaWrap{width:100%;display:flex;justify-content:center}
+.photo{width:86%;max-width:330px;height:150px;margin:18px 0 10px;
+  background-color:transparent;
+  background-repeat:no-repeat;background-size:cover;background-position:center;
+  border-radius:26px;
+  box-shadow:0 14px 28px rgba(0,0,0,.12);
+  filter:saturate(1.05) contrast(1.05);
+}
+.photo.church{background-image:url('chiesa.png')}
+.photo.venue{background-image:url('gabbiano.png')}
+
+/* Icone */
+.iconLink{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;margin-top:8px}
+.pin{width:34px;height:34px;display:inline-block;background:linear-gradient(180deg,#f0d08a,#b8943a);border-radius:50% 50% 50% 0;transform:rotate(-45deg)}
+.gift{width:110px;height:110px;display:inline-block;background:linear-gradient(180deg,#8aa7bd,#5f819d);border-radius:18px}
+.flourish{width:80%;max-width:360px;height:48px;margin-top:16px;background:linear-gradient(90deg,transparent,rgba(201,179,126,.75),transparent);opacity:.8}
+
+/* RSVP */
+.rsvpRow{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.yes,.no{min-width:140px;text-align:center;padding:14px 22px;border-radius:18px;text-decoration:none;font-style:italic;font-size:16px}
+.yes{background:rgba(111,142,168,.85);color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.10)}
+.no{border:1px solid rgba(111,142,168,.80);color:rgba(111,142,168,.95);background:rgba(255,255,255,.70)}
+
+/* Bookmark: SOLO click zone, senza testo (così sparisce 'Invito' che si vedeva) */
+.bookmark{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:34px;height:120px;z-index:60;opacity:.15}
+.bookmark:hover{opacity:.35}
+.bmHalf{position:absolute;left:0;right:0;height:50%;background:transparent;border:none}
+.bmUp{top:0}.bmDown{bottom:0}
+
+@media (max-height:700px){
+  .detailPage{padding:56px 28px}
+  .photo{height:140px}
+  .scriptTitle{font-size:38px}
+  .scriptDate{font-size:42px}
+}
