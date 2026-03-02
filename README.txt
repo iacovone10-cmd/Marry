@@ -1,1 +1,1 @@
-Metti nella root: cover.png, chiesa.png, gabbiano.png
+Metti in root: napoli-illustrated-hero.png, chiesa.png, gabbiano.png, sigillo.png, floral.png
