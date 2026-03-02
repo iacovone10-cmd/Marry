@@ -1,6 +1,9 @@
-✅ SAFE CROP VERTICALE (MINIMIZZA TAGLIO)
+✅ FIX WHATSAPP + PIN CELESTE POLVERE
 
-Questa versione elimina i bordi in alto/basso e taglia solo lateralmente quando serve.
+Cambiato RSVP su WhatsApp in formato più compatibile:
+- https://api.whatsapp.com/send?phone=...&text=...
+
+Aggiunto un PIN visibile e più elegante (celeste polvere) su Chiesa e Il Gabbiano.
 
 Metti in root:
 - napoli-illustrated-hero.png
@@ -10,10 +13,5 @@ Metti in root:
 - dono.png
 - rsvp.png
 
-Link:
-- Chiesa: https://maps.app.goo.gl/67K9Auu479Jeb2qx6
-- Il Gabbiano: https://maps.app.goo.gl/G45W9W41TLqeAtuK6
-- Dono: https://example.com/lista-nozze (sostituisci)
-- WhatsApp sì/no: 393496701639
-
-Hotspot regolabili in styles.css: .pinHot .giftHot .yesHot .noHot
+Se i bottoni RSVP non coincidono perfettamente, regola in styles.css:
+.yesHot e .noHot (left/top/width/height)
