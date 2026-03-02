@@ -1,6 +1,6 @@
-✅ INVITO UGUALE AI PNG + LINK CLICCABILI
+✅ FIX: LINK VISIBILI + INVITO SEMPRE ADATTATO
 
-Metti nella root del repo (stessi nomi):
+1) Carica questi file in root (stessi nomi):
 - napoli-illustrated-hero.png
 - invito.png
 - chiesa.png
@@ -8,11 +8,10 @@ Metti nella root del repo (stessi nomi):
 - dono.png
 - rsvp.png
 
-Link già inseriti:
-- Chiesa (pin): https://maps.app.goo.gl/67K9Auu479Jeb2qx6
-- Il Gabbiano (pin): https://maps.app.goo.gl/G45W9W41TLqeAtuK6
-- RSVP sì/no: WhatsApp su 393496701639
-- Dono: https://example.com/lista-nozze (sostituisci con il tuo link)
+2) Link inclusi:
+- Pin chiesa: https://maps.app.goo.gl/67K9Auu479Jeb2qx6
+- Pin gabbiano: https://maps.app.goo.gl/G45W9W41TLqeAtuK6
+- Dono: https://example.com/lista-nozze (sostituisci)
+- WhatsApp sì/no: 393496701639
 
-Se un hotspot non cade perfetto, modifica in styles.css:
-.pinHot, .giftHot, .yesHot, .noHot (left/top/width/height)
+Nota: ora il PIN è anche visibile (icona oro) e cliccabile.
