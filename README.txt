@@ -1,9 +1,7 @@
-✅ FIX DEFINITIVO
-
-- ELIMINATO OGNI DORATO (linea + pin)
-- Pin chiesa/ristorante solo CELESTE POLVERE
-- RSVP rifatto con FLEX: bottoni perfettamente ALLINEATI
-- Link WhatsApp robusti (api.whatsapp.com)
+✅ FIX
+- RIMOSSO DORATO: maschera su pin e linea (sostituiti con celeste polvere)
+- RSVP: eliminati box sovrapposti (hotspot invisibili) + coordinate riallineate
+- WhatsApp: api.whatsapp.com (senza target _blank)
 
 File richiesti:
 napoli-illustrated-hero.png
