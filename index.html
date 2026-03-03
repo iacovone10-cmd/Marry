@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang='it'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover'/>
+  <title>Vincenzo & Maria Giovanna — Invito</title>
+  <link href='styles.css' rel='stylesheet'/>
+</head>
+<body>
+
+<!-- COPERTINA -->
+<section class='cover' id='cover'>
+  <img class='coverImg' src='napoli-illustrated-hero.png' alt='Napoli'/>
+  <button class='seal' id='sealBtn' aria-label='Apri invito'>
+    <span class='sealWax'></span>
+    <span class='sealInner'></span>
+    <span class='sealMono'>M<br>G<br>V</span>
+  </button>
+  <div class='flash'></div>
+</section>
+
+<!-- OVERLAY (NESSUN SIGILLO QUI) -->
+<section class='overlay' id='overlay'>
+  <button class='close' id='closeBtn'>✕</button>
+
+  <div class='pager'>
+    <section class='page contain'>
+      <img src='invito.png' alt='Invito'/>
+    </section>
+
+    <section class='page'>
+      <img src='chiesa.png' alt='Cerimonia'/>
+    </section>
+
+    <section class='page'>
+      <img src='gabbiano.png' alt='Ricevimento'/>
+    </section>
+
+    <section class='page'>
+      <img src='dono.png' alt='Dono'/>
+    </section>
+
+    <section class='page'>
+      <img src='rsvp.png' alt='RSVP'/>
+      <a class='hotspot yes' href='https://api.whatsapp.com/send?phone=393496701639&text=Ciao%2C%20grazie%20per%20l%27invito%2C%20verr%C3%B2%20con%20piacere%21'></a>
+      <a class='hotspot no' href='https://api.whatsapp.com/send?phone=393496701639&text=Ciao%2C%20grazie%20per%20l%27invito%2C%20ma%20non%20potr%C3%B2%20esserci'></a>
+    </section>
+  </div>
+</section>
+
+<script src='app.js'></script>
+</body>
+</html>
