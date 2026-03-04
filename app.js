@@ -1,76 +1,35 @@
-(() => {
-  const envelope = document.getElementById("envelope");
-  const sealWrap = document.getElementById("sealWrap");
-  const hintTop = document.getElementById("hintTop");
-  const goDown = document.getElementById("goDown");
-  const sparkles = document.getElementById("sparkles");
-  const snap = document.getElementById("snap");
+const pages = Array.from(document.querySelectorAll('.page'));
+let currentIndex = 0;
 
-  let opened = false;
+function showPage(index) {
+  pages.forEach(p => p.classList.remove('active'));
+  pages[index].classList.add('active');
+  currentIndex = index;
+}
 
-  function makeSparkles(){
-    if(!sparkles) return;
-    sparkles.innerHTML = "";
-    sparkles.classList.add("on");
+function goNext() {
+  if (currentIndex < pages.length - 1) showPage(currentIndex + 1);
+}
 
-    for(let i=0;i<14;i++){
-      const s=document.createElement("span");
-      s.className="spark";
-      s.style.left="50%";
-      s.style.top="54%";
-      s.style.setProperty("--dx", (Math.random()*220-110).toFixed(0)+"px");
-      s.style.setProperty("--dy", (Math.random()*190-95).toFixed(0)+"px");
-      sparkles.appendChild(s);
-    }
+function goPrev() {
+  if (currentIndex > 0) showPage(currentIndex - 1);
+}
 
-    setTimeout(()=>{
-      sparkles.classList.remove("on");
-      sparkles.innerHTML = "";
-    }, 1100);
-  }
+/* Tap navigation:
+   - click a destra: avanti
+   - click a sinistra: indietro
+   - se clicchi un link (hotspot) NON deve cambiare pagina
+*/
+document.querySelectorAll('.nav-tap').forEach(container => {
+  container.addEventListener('click', (e) => {
+    // se ho cliccato un link/hotspot o bottone, non navigare
+    if (e.target.closest('a') || e.target.closest('button')) return;
 
-  function openSeal(e){
-    e?.preventDefault?.();
-    if(opened) return;
-    opened = true;
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const isRight = x > rect.width / 2;
 
-    envelope.classList.add("focusSeal");
-    try { navigator.vibrate && navigator.vibrate([18, 30, 18]); } catch(_){}
-
-    setTimeout(()=>{
-      envelope.classList.add("opening");
-      makeSparkles();
-    }, 240);
-
-    setTimeout(()=>{
-      envelope.classList.remove("opening");
-      envelope.classList.add("opened");
-
-      if(hintTop){
-        hintTop.style.opacity = "0";
-        hintTop.style.pointerEvents = "none";
-      }
-    }, 720);
-  }
-
-  function showPages(){
-    document.body.classList.add("showPages");
-    requestAnimationFrame(() => {
-      if(snap) snap.scrollTo({ top: 0, behavior: "auto" });
-    });
-  }
-
-  sealWrap.addEventListener("click", openSeal);
-  envelope.addEventListener("click", openSeal);
-
-  envelope.addEventListener("keydown", (e) => {
-    if(e.key === "Enter" || e.key === " "){
-      e.preventDefault();
-      openSeal(e);
-    }
+    if (isRight) goNext();
+    else goPrev();
   });
-
-  goDown.addEventListener("click", () => {
-    showPages();
-  });
-})();
+});
