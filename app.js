@@ -1,34 +1,85 @@
-const pages = Array.from(document.querySelectorAll('.page'));
-let currentIndex = 0;
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Maria Giovanna & Vincenzo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-function showPage(index) {
-  pages.forEach(p => p.classList.remove('active'));
-  pages[index].classList.add('active');
-  currentIndex = index;
-}
+  <!-- COVER -->
+  <section class="page active" id="cover">
+    <div class="page-inner nav-tap">
+      <img src="Cover.png" class="cover-image" alt="Copertina Napoli" />
+      <!-- Area cliccabile sopra il sigillo -->
+      <button class="seal-hit" type="button" onclick="goNext()" aria-label="Apri invito"></button>
+    </div>
+  </section>
 
-function goNext() {
-  if (currentIndex < pages.length - 1) showPage(currentIndex + 1);
-}
+  <!-- PAGINA 1: NOMI + DATA -->
+  <section class="page" id="page1">
+    <div class="page-inner nav-tap">
+      <img src="p1.png" alt="Nomi e data" class="page-bg" />
+    </div>
+  </section>
 
-function goPrev() {
-  if (currentIndex > 0) showPage(currentIndex - 1);
-}
+  <!-- PAGINA 2: CERIMONIA (pin -> Google Maps chiesa) -->
+  <section class="page" id="page2">
+    <div class="page-inner nav-tap">
+      <img src="p2.png" alt="Cerimonia" class="page-bg" />
+      <!-- HOTSPOT PIN CHIESA -->
+      <a class="hotspot hs-church"
+         href="PASTA_QUI_LINK_GOOGLE_MAPS_CHIESA"
+         target="_blank" rel="noopener"
+         aria-label="Apri mappa Chiesa"></a>
+    </div>
+  </section>
 
-// Tap navigation su ogni pagina (sx indietro, dx avanti)
-// Se tocchi un link o un bottone (hotspot), NON deve cambiare pagina.
-document.querySelectorAll('.nav-tap').forEach(container => {
-  container.addEventListener('click', (e) => {
-    const target = e.target;
+  <!-- PAGINA 3: RICEVIMENTO (pin -> Google Maps ristorante) -->
+  <section class="page" id="page3">
+    <div class="page-inner nav-tap">
+      <img src="p3.png" alt="Ricevimento" class="page-bg" />
+      <!-- HOTSPOT PIN RISTORANTE -->
+      <a class="hotspot hs-restaurant"
+         href="PASTA_QUI_LINK_GOOGLE_MAPS_RISTORANTE"
+         target="_blank" rel="noopener"
+         aria-label="Apri mappa Ristorante"></a>
+    </div>
+  </section>
 
-    // Se è un link/hotspot o button: lascia fare il link
-    if (target.closest('a') || target.closest('button')) return;
+  <!-- PAGINA 4: RSVP (Sì -> Google Form, No -> WhatsApp) -->
+  <section class="page" id="page4">
+    <div class="page-inner nav-tap">
+      <img src="p4.png" alt="Conferma presenza" class="page-bg" />
 
-    const rect = container.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const isRight = x > rect.width / 2;
+      <!-- Sì, con gioia -> Google Form RSVP -->
+      <a class="hotspot hs-yes"
+         href="PASTA_QUI_LINK_GOOGLE_FORM_RSVP"
+         target="_blank" rel="noopener"
+         aria-label="Conferma presenza (Google Form)"></a>
 
-    if (isRight) goNext();
-    else goPrev();
-  }, false);
-});
+      <!-- Non potrò esserci -> WhatsApp -->
+      <a class="hotspot hs-no"
+         href="https://wa.me/393496701639?text=Ciao%20Vincenzo%20e%20Maria%20Giovanna%2C%20purtroppo%20non%20potr%C3%B2%20esserci.%20%F0%9F%98%94"
+         target="_blank" rel="noopener"
+         aria-label="Avvisa su WhatsApp"></a>
+    </div>
+  </section>
+
+  <!-- PAGINA 5: REGALO (pacco -> Google Form IBAN) -->
+  <section class="page" id="page5">
+    <div class="page-inner nav-tap">
+      <img src="p5.png" alt="Regalo e ringraziamento" class="page-bg" />
+
+      <!-- HOTSPOT PACCO REGALO -> Google Form IBAN -->
+      <a class="hotspot hs-gift"
+         href="PASTA_QUI_LINK_GOOGLE_FORM_IBAN"
+         target="_blank" rel="noopener"
+         aria-label="Apri dettagli regalo (Google Form)"></a>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
