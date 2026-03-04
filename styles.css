@@ -1,91 +1,91 @@
-/* ===== RESET ===== */
+/* ===== RESET + MOBILE VIEWPORT FIX ===== */
 * { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
-body { background:#0b0b0b; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body{
+  background:#000;
+  overflow: hidden;              /* niente scroll pagina */
+  touch-action: manipulation;
+}
+html, body { overscroll-behavior: none; }
 
 /* ===== PAGINE ===== */
 .page{
   position: fixed;
   inset: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;                /* meglio di 100vh su mobile */
   display: none;
   background:#000;
 }
 .page.active{ display:block; }
 
-/* contenitore pagine (card centrata) */
 .page-inner{
   position: relative;
-  width: min(420px, 100vw);
-  height: 100vh;
-  margin: 0 auto;
+  width: 100vw;
+  height: 100svh;
   overflow: hidden;
 }
 
-/* immagini pagine (no tagli) */
+/* immagini pagine: FULL SCREEN (A) */
 .page-bg{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;             /* A: riempie tutto, niente bordi */
   object-position: center;
   display:block;
-  pointer-events: none; /* importantissimo: click passano agli hotspot */
+  pointer-events:none;           /* l'immagine non “ruba” click */
 }
 
-/* COVER: full screen */
-#cover .page-inner{
-  width: 100vw;
-  height: 100vh;
-}
+/* cover */
 .cover-image{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   object-fit: cover;
-  object-position:center;
+  object-position: center;
   display:block;
   pointer-events:none;
 }
 
-/* bottone sul sigillo cover */
+/* ===== AREA CLIC SIGILLO (COVER) ===== */
 #cover .seal-hit{
   position:absolute;
   left:50%;
   top:86%;
-  transform:translate(-50%,-50%);
+  transform:translate(-50%, -50%);
   width:120px;
   height:120px;
   border-radius:50%;
   border:none;
   background:transparent;
   cursor:pointer;
-  z-index: 10;
-}
-#cover .seal-hit:hover{
-  transform:translate(-50%,-50%) scale(1.05);
-}
-
-/* ===== HOTSPOT ===== */
-.hotspot{
-  position:absolute;
   z-index: 20;
-  display:block;
-  background: transparent;
-  cursor:pointer;
-  border-radius: 18px;
+}
+#cover .seal-hit:active{
+  transform: translate(-50%, -50%) scale(1.03);
 }
 
-/* DEBUG (attiva solo se devi vedere le aree)
-.hotspot{ outline:2px solid rgba(255,0,0,.45); background:rgba(255,0,0,.12); }
+/* ===== HOTSPOT (LINK INVISIBILI) ===== */
+.hotspot{
+  position: absolute;
+  z-index: 30;
+  display: block;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 22px;
+}
+
+/* DEBUG hotspot (se devi riallinearli, attiva 1 minuto e poi spegni) */
+/* .hotspot{ outline:2px solid rgba(255,0,0,.55); background:rgba(255,0,0,.15); } */
+
+/* ===== POSIZIONI HOTSPOT =====
+   (sono percentuali sulla pagina full screen; se cambi grafica, ritocca qui)
 */
 
-/* ===== POSIZIONI (regolabili) ===== */
-
-/* Pagina 2: pin chiesa */
+/* Page2: pin chiesa */
 #page2 .hs-church{
   left: 41%;
   top: 79%;
@@ -94,7 +94,7 @@ body { background:#0b0b0b; font-family: system-ui, -apple-system, Segoe UI, Robo
   border-radius: 999px;
 }
 
-/* Pagina 3: pin ristorante */
+/* Page3: pin ristorante */
 #page3 .hs-restaurant{
   left: 41%;
   top: 79%;
@@ -103,23 +103,21 @@ body { background:#0b0b0b; font-family: system-ui, -apple-system, Segoe UI, Robo
   border-radius: 999px;
 }
 
-/* Pagina 4: SI e NO */
+/* Page4: Sì / No  */
 #page4 .hs-yes{
   left: 14%;
   top: 52%;
   width: 34%;
   height: 10%;
-  border-radius: 22px;
 }
 #page4 .hs-no{
   left: 52%;
   top: 52%;
   width: 34%;
   height: 10%;
-  border-radius: 22px;
 }
 
-/* Pagina 5: regalo */
+/* Page5: pacco regalo */
 #page5 .hs-gift{
   left: 35%;
   top: 58%;
