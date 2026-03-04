@@ -1,1 +1,148 @@
+/* ===== RESET / BLOCCO SCROLL ===== */
+*{ box-sizing:border-box; }
+html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+  overflow:hidden;            /* IMPORTANTISSIMO: niente scroll verticale */
+}
+body{
+  background:#000;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overscroll-behavior: none;
+}
 
+/* ===== PAGINE FULLSCREEN ===== */
+.page{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  display:none;
+  background:#000;
+}
+.page.active{ display:block; }
+
+/* “Cornice” centrata tipo mobile (così le % degli hotspot restano stabili) */
+.page-inner{
+  position:relative;
+  width:min(420px, 100vw);
+  height:100vh;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+/* immagini pagine */
+.page-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;         /* NO tagli */
+  object-position:center;
+  display:block;
+  pointer-events:none;        /* così non “ruba” click ai link */
+}
+
+/* cover */
+.cover-inner{ width:100vw; }  /* la cover può usare tutta larghezza */
+.cover-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;           /* cover bella piena */
+  object-position:center;
+  display:block;
+  pointer-events:none;
+}
+
+/* ===== SIGILLO (AREA CLICCABILE) ===== */
+.seal-hit{
+  position:absolute;
+  left:50%;
+  top:86%;
+  transform:translate(-50%,-50%);
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  z-index:50;
+}
+.seal-hit:hover{ transform:translate(-50%,-50%) scale(1.05); }
+
+/* (opzionale) testo hint sotto sigillo */
+.hint{
+  position:absolute;
+  left:50%;
+  top:calc(86% + 70px);
+  transform:translateX(-50%);
+  padding:6px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.25);
+  color:rgba(255,255,255,.95);
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
+  font-size:15px;
+  letter-spacing:.2px;
+  z-index:60;
+}
+
+/* ===== HOTSPOT LINK ===== */
+.hotspot{
+  position:absolute;
+  z-index:40;
+  display:block;
+  background:transparent;
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* DEBUG (se vuoi vedere gli hotspot mentre li sistemi) */
+/* .hotspot{ outline:2px solid rgba(255,0,0,.45); background:rgba(255,0,0,.12); } */
+
+/* ===== POSIZIONI HOTSPOT (da rifinire) ===== */
+
+/* Page2: pin chiesa */
+#page2 .hs-church{
+  left:41%;
+  top:79%;
+  width:18%;
+  height:12%;
+  border-radius:999px;
+}
+
+/* Page3: pin ristorante */
+#page3 .hs-restaurant{
+  left:41%;
+  top:79%;
+  width:18%;
+  height:12%;
+  border-radius:999px;
+}
+
+/* Page4: bottoni SI/NO (regola questi se non combaciano perfettamente) */
+#page4 .hs-yes{
+  left:14%;
+  top:52%;
+  width:34%;
+  height:10%;
+  border-radius:24px;
+}
+#page4 .hs-no{
+  left:52%;
+  top:52%;
+  width:34%;
+  height:10%;
+  border-radius:24px;
+}
+
+/* Page5: pacco regalo */
+#page5 .hs-gift{
+  left:35%;
+  top:58%;
+  width:30%;
+  height:18%;
+  border-radius:22px;
+}
