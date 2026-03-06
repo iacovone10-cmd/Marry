@@ -1,86 +1,79 @@
-const pages = Array.from(document.querySelectorAll('.page'));
-let currentIndex = 0;
-let isTransitioning = false;
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maria Giovanna & Vincenzo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-function showPage(index){
-  if (isTransitioning || index < 0 || index >= pages.length) return;
+  <!-- COVER -->
+  <section class="page active" id="cover">
+    <div class="page-inner nav-tap">
+      <img src="Cover.png" class="cover-image" alt="Copertina Napoli" />
+      <button class="seal-hit" type="button" onclick="goNext()" aria-label="Apri invito"></button>
+    </div>
+  </section>
 
-  isTransitioning = true;
+  <!-- PAGINA 1: NOMI + DATA -->
+  <section class="page" id="page1">
+    <div class="page-inner nav-tap">
+      <img src="p1.png" class="page-bg" alt="Nomi e data">
+    </div>
+  </section>
 
-  const currentPage = pages[currentIndex];
-  const nextPage = pages[index];
+  <!-- PAGINA 2: CERIMONIA -->
+  <section class="page" id="page2">
+    <div class="page-inner nav-tap">
+      <img src="p2.png" class="page-bg" alt="Cerimonia">
+      <a class="hotspot hs-church"
+         href="https://maps.app.goo.gl/AxMDmZrY5AV3fbye6"
+         target="_blank" rel="noopener"
+         aria-label="Apri mappa chiesa"></a>
+    </div>
+  </section>
 
-  if (currentPage) {
-    currentPage.classList.add('fade-out');
-  }
+  <!-- PAGINA 3: RICEVIMENTO -->
+  <section class="page" id="page3">
+    <div class="page-inner nav-tap">
+      <img src="p3.png" class="page-bg" alt="Ricevimento">
+      <a class="hotspot hs-restaurant"
+         href="https://maps.app.goo.gl/tg9SrnP2t5sffd3w5"
+         target="_blank" rel="noopener"
+         aria-label="Apri mappa ristorante"></a>
+    </div>
+  </section>
 
-  setTimeout(() => {
-    pages.forEach(p => {
-      p.classList.remove('active', 'fade-out');
-    });
+  <!-- PAGINA 4: FESTEGGERAI CON NOI -->
+  <section class="page" id="page4">
+    <div class="page-inner nav-tap">
+      <img src="p4.png" class="page-bg" alt="Conferma presenza">
 
-    nextPage.classList.add('active');
-    currentIndex = index;
+      <a class="hotspot hs-yes"
+         href="https://forms.gle/D76T7ZXX16hAdkPu5"
+         target="_blank" rel="noopener"
+         aria-label="Conferma presenza"></a>
 
-    isTransitioning = false;
-  }, 320);
-}
+      <a class="hotspot hs-no"
+         href="https://wa.me/393496701639?text=Con%20dispiacere%20non%20potr%C3%B2%20esserci%20al%20matrimonio.%20Nome%20e%20cognome%3A%20"
+         target="_blank" rel="noopener"
+         aria-label="Non potrò esserci"></a>
+    </div>
+  </section>
 
-function goNext(){
-  if(currentIndex < pages.length - 1){
-    showPage(currentIndex + 1);
-  }
-}
+  <!-- PAGINA 5: REGALO -->
+  <section class="page" id="page5">
+    <div class="page-inner nav-tap">
+      <img src="p5.png" class="page-bg" alt="Regalo e ringraziamento">
 
-function goPrev(){
-  if(currentIndex > 0){
-    showPage(currentIndex - 1);
-  }
-}
+      <a class="hotspot hs-gift"
+         href="https://forms.gle/XPpDQJ7Za4FyLnaz9"
+         target="_blank" rel="noopener"
+         aria-label="Regalo agli sposi"></a>
+    </div>
+  </section>
 
-/* tap navigation */
-document.querySelectorAll('.nav-tap').forEach(container => {
-  container.addEventListener('click', (e) => {
-    const target = e.target;
-
-    /* se clicco su link o bottone non cambio pagina */
-    if (target.closest('a') || target.closest('button')) return;
-
-    const rect = container.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const isRight = x > rect.width / 2;
-
-    if (isRight) goNext();
-    else goPrev();
-  }, { passive:true });
-});
-
-/* swipe mobile */
-let touchStartX = 0;
-let touchEndX = 0;
-
-document.querySelectorAll('.nav-tap').forEach(container => {
-  container.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive:true });
-
-  container.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe(e);
-  }, { passive:true });
-});
-
-function handleSwipe(e){
-  const target = e.target;
-  if (target.closest('a') || target.closest('button')) return;
-
-  const delta = touchEndX - touchStartX;
-
-  if (Math.abs(delta) < 50) return;
-
-  if (delta < 0) {
-    goNext();
-  } else {
-    goPrev();
-  }
-}
+  <script src="script.js"></script>
+</body>
+</html>
