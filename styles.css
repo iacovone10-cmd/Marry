@@ -1,166 +1,192 @@
-/* ===== RESET ===== */
-* {
-  box-sizing: border-box;
+/* ===== RESET / MOBILE FIX ===== */
+*{ box-sizing:border-box; }
+html, body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
-  background: #000;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  overscroll-behavior: none;
-  touch-action: manipulation;
+body{
+  background:#000;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overscroll-behavior:none;
+  touch-action:manipulation;
 }
 
 /* ===== PAGINE ===== */
-.page {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100dvh;
-  display: none;
-  background: #000;
-  opacity: 0;
-  transform: scale(1.01);
-  transition: opacity 0.45s ease, transform 0.45s ease;
+.page{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100dvh;
+  display:none;
+  background:#000;
+  opacity:0;
+  transform:scale(1.02);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
-.page.active {
-  display: block;
-  opacity: 1;
-  transform: scale(1);
+.page.active{
+  display:block;
+  opacity:1;
+  transform:scale(1);
 }
 
-/* ===== CONTENITORE PAGINA ===== */
-.page-inner {
-  position: relative;
-  width: 100vw;
-  height: 100dvh;
-  overflow: hidden;
-  margin: 0 auto;
+.page-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
 }
 
-/* ===== IMMAGINI INTERNE ===== */
-.page-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;      /* mostra tutta la grafica */
-  object-position: center;
-  display: block;
-  pointer-events: none;
-  background: #000;
+/* ===== IMMAGINI ===== */
+.page-bg,
+.cover-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;          /* IMPORTANTISSIMO: si vedono intere su mobile */
+  object-position:center;
+  display:block;
+  pointer-events:none;
+  will-change: transform;
+  transition: transform 1.1s ease;
+}
+
+/* quando la pagina è attiva, micro movimento elegante */
+.page.active .page-bg,
+.page.active .cover-image{
+  transform: scale(1.015);
 }
 
 /* ===== COVER ===== */
-.cover-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;      /* cover intera visibile */
-  object-position: center;
-  display: block;
-  pointer-events: none;
-  background: #000;
+#cover .seal-hit{
+  position:absolute;
+  left:50%;
+  top:84.5%;
+  transform:translate(-50%,-50%);
+  width:118px;
+  height:118px;
+  border-radius:50%;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  z-index:50;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
 }
 
-/* ===== SIGILLO COVER ===== */
-.seal-hit {
-  position: absolute;
-  left: 50%;
-  top: 84.5%;
-  transform: translate(-50%, -50%);
-  width: 110px;
-  height: 110px;
-  border: none;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  z-index: 30;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.seal-hit:active {
-  transform: translate(-50%, -50%) scale(1.04);
+#cover .seal-hit:hover,
+#cover .seal-hit:active{
+  transform:translate(-50%,-50%) scale(1.06);
+  filter: drop-shadow(0 0 12px rgba(255,255,255,.35));
 }
 
 /* ===== HOTSPOT LINK ===== */
-.hotspot {
-  position: absolute;
-  z-index: 20;
-  display: block;
-  background: transparent;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+.hotspot{
+  position:absolute;
+  z-index:40;
+  display:block;
+  background:transparent;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
 }
 
-/* DEBUG: attivalo solo se vuoi vedere le aree cliccabili */
-/*
-.hotspot {
-  outline: 2px solid rgba(255, 0, 0, 0.45);
-  background: rgba(255, 0, 0, 0.12);
-}
-*/
+/* DEBUG hotspot */
+/* .hotspot{ outline:2px solid rgba(255,0,0,.45); background:rgba(255,0,0,.12); } */
 
 /* ===== POSIZIONI HOTSPOT ===== */
 
-/* pagina 2 - mappa chiesa */
-#page2 .hs-church {
-  left: 41%;
-  top: 79%;
-  width: 18%;
-  height: 12%;
-  border-radius: 999px;
+/* Page2: pin chiesa */
+#page2 .hs-church{
+  left:41%;
+  top:79%;
+  width:18%;
+  height:12%;
+  border-radius:999px;
 }
 
-/* pagina 3 - mappa ristorante */
-#page3 .hs-restaurant {
-  left: 41%;
-  top: 79%;
-  width: 18%;
-  height: 12%;
-  border-radius: 999px;
+/* Page3: pin ristorante */
+#page3 .hs-restaurant{
+  left:41%;
+  top:79%;
+  width:18%;
+  height:12%;
+  border-radius:999px;
 }
 
-/* pagina 4 - RSVP */
-#page4 .hs-yes {
-  left: 14%;
-  top: 52%;
-  width: 34%;
-  height: 10%;
-  border-radius: 24px;
+/* Page4: RSVP */
+#page4 .hs-yes{
+  left:14%;
+  top:52%;
+  width:34%;
+  height:10%;
+  border-radius:24px;
 }
 
-#page4 .hs-no {
-  left: 52%;
-  top: 52%;
-  width: 34%;
-  height: 10%;
-  border-radius: 24px;
+#page4 .hs-no{
+  left:52%;
+  top:52%;
+  width:34%;
+  height:10%;
+  border-radius:24px;
 }
 
-/* pagina 5 - regalo */
-#page5 .hs-gift {
-  left: 35%;
-  top: 58%;
-  width: 30%;
-  height: 18%;
-  border-radius: 24px;
+/* Page5: regalo */
+#page5 .hs-gift{
+  left:35%;
+  top:58%;
+  width:30%;
+  height:18%;
+  border-radius:22px;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  .seal-hit {
-    width: 104px;
-    height: 104px;
-    top: 84.5%;
+/* ===== EFFETTO VIGNETTA E LUCE ===== */
+.page::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.04), rgba(0,0,0,0.10));
+  z-index:5;
+}
+
+/* ===== TRANSIZIONE PIÙ “PREMIUM” ===== */
+.page.fade-out{
+  opacity:0;
+  transform:scale(1.03);
+}
+
+/* ===== MOBILE EXTRA ===== */
+@media (max-width: 768px){
+  #cover .seal-hit{
+    width:108px;
+    height:108px;
+    top:84%;
   }
+
+  #page4 .hs-yes,
+  #page4 .hs-no{
+    top:52.5%;
+  }
+
+  #page5 .hs-gift{
+    top:58%;
+  }
+}
+.hotspot{
+  position: absolute;
+  z-index: 40;
+  display: block;
+  cursor: pointer;
+  background: rgba(255, 0, 0, 0.18);   /* riempimento rosso trasparente */
+  outline: 2px solid rgba(255, 0, 0, 0.8); /* bordo rosso */
+  border-radius: 22px;
 }
