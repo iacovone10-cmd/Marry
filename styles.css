@@ -126,8 +126,8 @@ body{
 
 /* Page4: RSVP */
 #page4 .hs-yes{
-  left: 26%;
-  top: 54%;
+  left: 20%;
+  top: 70%;
   width: 148px;
   height: 58px;
   transform: translate(-50%, -50%);
@@ -135,8 +135,8 @@ body{
 }
 
 #page4 .hs-no{
-  left: 80%;
-  top: 60%;
+  left: 90%;
+  top: 80%;
   width: 148px;
   height: 58px;
   transform: translate(-50%, -50%);
@@ -197,6 +197,7 @@ body{
   outline: 2px solid rgba(255, 0, 0, 0.8); /* bordo rosso */
   border-radius: 22px;
 }
+
 
 
 
