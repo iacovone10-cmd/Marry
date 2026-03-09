@@ -179,11 +179,6 @@ body{
     top:84%;
   }
 
-  #page4 .hs-yes,
-  #page4 .hs-no{
-    top:52.5%;
-  }
-
   #page5 .hs-gift{
     top:58%;
   }
@@ -197,6 +192,7 @@ body{
   outline: 2px solid rgba(255, 0, 0, 0.8); /* bordo rosso */
   border-radius: 22px;
 }
+
 
 
 
