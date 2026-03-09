@@ -183,6 +183,15 @@ body{
     top:58%;
   }
 
+  .hotspot{
+  position:absolute;
+  z-index:40;
+  display:block;
+  background:transparent;
+  cursor:pointer;
+}
+
+
 
 
 
