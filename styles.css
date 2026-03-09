@@ -182,16 +182,7 @@ body{
   #page5 .hs-gift{
     top:58%;
   }
-}
-.hotspot{
-  position: absolute;
-  z-index: 40;
-  display: block;
-  cursor: pointer;
-  background: rgba(255, 0, 0, 0.18);   /* riempimento rosso trasparente */
-  outline: 2px solid rgba(255, 0, 0, 0.8); /* bordo rosso */
-  border-radius: 22px;
-}
+
 
 
 
