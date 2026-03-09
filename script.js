@@ -1,7 +1,7 @@
 const pages = Array.from(document.querySelectorAll('.page'));
 let currentIndex = 0;
 
-function showPage(index) {
+function showPage(index){
   pages.forEach(p => p.classList.remove('active'));
   pages[index].classList.add('active');
   currentIndex = index;
@@ -33,3 +33,4 @@ document.querySelectorAll('.nav-tap').forEach(container => {
     else goPrev();
   }, { passive: true });
 });
+
